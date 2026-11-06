@@ -1,0 +1,66 @@
+{
+  "case": "p05",
+  "behavior": "acknowledgment versus actual output",
+  "arm": "C",
+  "evicted": false,
+  "status": "fallback",
+  "answer": "I couldn’t verify the conversation constraints this time. Please try again.",
+  "events": [
+    "interpret:retry",
+    "interpret:error"
+  ],
+  "attempts": 0,
+  "score": {
+    "retained": false,
+    "violation": false,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "grindle"
+    ],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 633,
+      "completion_tokens": 92,
+      "total_tokens": 725,
+      "elapsed_ms": 2636.695
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 622,
+      "completion_tokens": 85,
+      "total_tokens": 707,
+      "elapsed_ms": 2538.558
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 609,
+      "completion_tokens": 146,
+      "total_tokens": 755,
+      "elapsed_ms": 2878.774
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 506,
+      "completion_tokens": 47,
+      "total_tokens": 553,
+      "elapsed_ms": 1643.52
+    }
+  ],
+  "setup_calls": 2,
+  "setup_ms": 5175.48,
+  "reply_ms": 4522.573,
+  "elapsed_ms": 9698.052,
+  "prompt_tokens": 2370,
+  "completion_tokens": 370,
+  "total_tokens": 2740,
+  "snapshot": "08592762d4354bf638428127ff6c49c15a4c99ba0bc70595c9186d6f969cc026"
+}

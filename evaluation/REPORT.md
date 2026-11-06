@@ -29,3 +29,5 @@ A full integration test caught a missing application instruction in the reduced 
 | D · Both | 1/4 | 4/7 | 3/4 | 1/9 | 8.85 | 5,839 |
 
 This revision failed confirmation. C had four fallbacks and three replay errors. D had six fallbacks and two replay errors. D retrieved the correct value after history eviction, but both controller arms completed fewer tasks than A. In c03, C used the correct unit but converted half a kilogram to 300 grams. In c04, B earned credit for a placeholder image description. In c08, the baseline earned clarification credit despite acting before asking. These cases illustrate why the delivered text belongs alongside the summary. See the [36 confirmation answers](results/v2/model/confirmation/rows/) and [complete metrics](results/v2/model/confirmation/summary.json).
+
+Replaying the original primary suite with this revision gave task passes A 5/9, B 5/9, C 1/9 and D 1/9. This was a regression check on previously seen fixtures. The [per-arm summary](results/v2-regression/model/primary/summary.json) and [individual answers](results/v2-regression/model/primary/rows/) are separate from the independent confirmation.

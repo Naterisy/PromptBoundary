@@ -1,0 +1,87 @@
+{
+  "case": "p03",
+  "behavior": "current explicit exception",
+  "arm": "C",
+  "evicted": false,
+  "status": "fallback",
+  "answer": "I couldn’t verify a response this time. Please try again.",
+  "events": [
+    "replace:r1",
+    "set:r2",
+    "intent:normal",
+    "audit:false_refusal",
+    "audit:false_refusal"
+  ],
+  "attempts": 2,
+  "score": {
+    "retained": null,
+    "violation": true,
+    "false_refusal": true,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "\\b(?:3|three)\\s+hours?\\b"
+    ],
+    "missing_boundary": [
+      "\\bhours?\\b"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 633,
+      "completion_tokens": 86,
+      "total_tokens": 719,
+      "elapsed_ms": 2647.939
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 610,
+      "completion_tokens": 118,
+      "total_tokens": 728,
+      "elapsed_ms": 3138.04
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 346,
+      "completion_tokens": 3,
+      "total_tokens": 349,
+      "elapsed_ms": 622.219
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 422,
+      "completion_tokens": 79,
+      "total_tokens": 501,
+      "elapsed_ms": 2128.429
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 414,
+      "completion_tokens": 3,
+      "total_tokens": 417,
+      "elapsed_ms": 732.948
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 422,
+      "completion_tokens": 48,
+      "total_tokens": 470,
+      "elapsed_ms": 1585.088
+    }
+  ],
+  "setup_calls": 1,
+  "setup_ms": 2648.043,
+  "reply_ms": 8207.11,
+  "elapsed_ms": 10855.154,
+  "prompt_tokens": 2847,
+  "completion_tokens": 337,
+  "total_tokens": 3184,
+  "snapshot": "08592762d4354bf638428127ff6c49c15a4c99ba0bc70595c9186d6f969cc026"
+}

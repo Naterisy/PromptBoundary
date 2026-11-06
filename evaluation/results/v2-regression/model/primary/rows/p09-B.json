@@ -1,0 +1,43 @@
+{
+  "case": "p09",
+  "behavior": "correction beyond visible window",
+  "arm": "B",
+  "evicted": true,
+  "status": "ok",
+  "answer": "Sure thing! Here’s the footer byline:\n\n**[Your Name]**\n\nFeel free to adjust or add anything else you need.",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "larch"
+    ],
+    "missing_boundary": [
+      "larch"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 679,
+      "completion_tokens": 28,
+      "total_tokens": 707,
+      "elapsed_ms": 1541.616
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 1541.625,
+  "elapsed_ms": 1541.625,
+  "prompt_tokens": 679,
+  "completion_tokens": 28,
+  "total_tokens": 707,
+  "snapshot": "08592762d4354bf638428127ff6c49c15a4c99ba0bc70595c9186d6f969cc026"
+}

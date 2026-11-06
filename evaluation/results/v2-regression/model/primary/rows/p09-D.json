@@ -1,0 +1,73 @@
+{
+  "case": "p09",
+  "behavior": "correction beyond visible window",
+  "arm": "D",
+  "evicted": true,
+  "status": "ok",
+  "answer": "Sure, here's the footer byline: Footer by Larch.",
+  "events": [
+    "set:r2",
+    "intent:normal",
+    "audit:pass"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": true,
+    "violation": false,
+    "false_refusal": null,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1282,
+      "completion_tokens": 20,
+      "total_tokens": 1302,
+      "elapsed_ms": 2315.879
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1336,
+      "completion_tokens": 101,
+      "total_tokens": 1437,
+      "elapsed_ms": 1944.347
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1239,
+      "completion_tokens": 68,
+      "total_tokens": 1307,
+      "elapsed_ms": 2137.871
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 976,
+      "completion_tokens": 15,
+      "total_tokens": 991,
+      "elapsed_ms": 754.617
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 1094,
+      "completion_tokens": 47,
+      "total_tokens": 1141,
+      "elapsed_ms": 1516.418
+    }
+  ],
+  "setup_calls": 2,
+  "setup_ms": 4260.464,
+  "reply_ms": 4409.131,
+  "elapsed_ms": 8669.594,
+  "prompt_tokens": 5927,
+  "completion_tokens": 251,
+  "total_tokens": 6178,
+  "snapshot": "08592762d4354bf638428127ff6c49c15a4c99ba0bc70595c9186d6f969cc026"
+}

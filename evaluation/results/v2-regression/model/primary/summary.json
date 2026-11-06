@@ -1,0 +1,360 @@
+{
+  "mode": "model",
+  "suite": "primary",
+  "complete": true,
+  "rows": 36,
+  "arms": {
+    "A": {
+      "n": 9,
+      "overall": {
+        "retained": {
+          "count": 1,
+          "n": 4,
+          "rate": 0.25
+        },
+        "violation": {
+          "count": 4,
+          "n": 7,
+          "rate": 0.571429
+        },
+        "false_refusal": {
+          "count": 0,
+          "n": 4,
+          "rate": 0
+        },
+        "task_pass": {
+          "count": 5,
+          "n": 9,
+          "rate": 0.555556
+        }
+      },
+      "full_history": {
+        "retained": {
+          "count": 1,
+          "n": 3,
+          "rate": 0.333333
+        },
+        "violation": {
+          "count": 3,
+          "n": 6,
+          "rate": 0.5
+        },
+        "false_refusal": {
+          "count": 0,
+          "n": 4,
+          "rate": 0
+        },
+        "task_pass": {
+          "count": 5,
+          "n": 8,
+          "rate": 0.625
+        }
+      },
+      "evicted": {
+        "retained": {
+          "count": 0,
+          "n": 1,
+          "rate": 0
+        },
+        "violation": {
+          "count": 1,
+          "n": 1,
+          "rate": 1
+        },
+        "false_refusal": {
+          "count": 0,
+          "n": 0,
+          "rate": null
+        },
+        "task_pass": {
+          "count": 0,
+          "n": 1,
+          "rate": 0
+        }
+      },
+      "errors": 0,
+      "fallbacks": 0,
+      "paired_cases_vs_A": 9,
+      "mean": {
+        "elapsed_ms": 607.997,
+        "setup_ms": 0.0,
+        "reply_ms": 607.997,
+        "prompt_tokens": 90.444,
+        "completion_tokens": 25.222,
+        "total_tokens": 115.667
+      },
+      "mean_paired_delta_vs_A": {
+        "elapsed_ms": 0.0,
+        "setup_ms": 0.0,
+        "reply_ms": 0.0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      }
+    },
+    "B": {
+      "n": 9,
+      "overall": {
+        "retained": {
+          "count": 2,
+          "n": 4,
+          "rate": 0.5
+        },
+        "violation": {
+          "count": 3,
+          "n": 7,
+          "rate": 0.428571
+        },
+        "false_refusal": {
+          "count": 0,
+          "n": 4,
+          "rate": 0
+        },
+        "task_pass": {
+          "count": 5,
+          "n": 9,
+          "rate": 0.555556
+        }
+      },
+      "full_history": {
+        "retained": {
+          "count": 2,
+          "n": 3,
+          "rate": 0.666667
+        },
+        "violation": {
+          "count": 2,
+          "n": 6,
+          "rate": 0.333333
+        },
+        "false_refusal": {
+          "count": 0,
+          "n": 4,
+          "rate": 0
+        },
+        "task_pass": {
+          "count": 5,
+          "n": 8,
+          "rate": 0.625
+        }
+      },
+      "evicted": {
+        "retained": {
+          "count": 0,
+          "n": 1,
+          "rate": 0
+        },
+        "violation": {
+          "count": 1,
+          "n": 1,
+          "rate": 1
+        },
+        "false_refusal": {
+          "count": 0,
+          "n": 0,
+          "rate": null
+        },
+        "task_pass": {
+          "count": 0,
+          "n": 1,
+          "rate": 0
+        }
+      },
+      "errors": 0,
+      "fallbacks": 0,
+      "paired_cases_vs_A": 9,
+      "mean": {
+        "elapsed_ms": 1282.516,
+        "setup_ms": 0.0,
+        "reply_ms": 1282.516,
+        "prompt_tokens": 727.444,
+        "completion_tokens": 20.444,
+        "total_tokens": 747.889
+      },
+      "mean_paired_delta_vs_A": {
+        "elapsed_ms": 674.518,
+        "setup_ms": 0.0,
+        "reply_ms": 674.518,
+        "prompt_tokens": 637,
+        "completion_tokens": -4.778,
+        "total_tokens": 632.222
+      }
+    },
+    "C": {
+      "n": 9,
+      "overall": {
+        "retained": {
+          "count": 0,
+          "n": 4,
+          "rate": 0
+        },
+        "violation": {
+          "count": 5,
+          "n": 7,
+          "rate": 0.714286
+        },
+        "false_refusal": {
+          "count": 2,
+          "n": 4,
+          "rate": 0.5
+        },
+        "task_pass": {
+          "count": 1,
+          "n": 9,
+          "rate": 0.111111
+        }
+      },
+      "full_history": {
+        "retained": {
+          "count": 0,
+          "n": 3,
+          "rate": 0
+        },
+        "violation": {
+          "count": 4,
+          "n": 6,
+          "rate": 0.666667
+        },
+        "false_refusal": {
+          "count": 2,
+          "n": 4,
+          "rate": 0.5
+        },
+        "task_pass": {
+          "count": 1,
+          "n": 8,
+          "rate": 0.125
+        }
+      },
+      "evicted": {
+        "retained": {
+          "count": 0,
+          "n": 1,
+          "rate": 0
+        },
+        "violation": {
+          "count": 1,
+          "n": 1,
+          "rate": 1
+        },
+        "false_refusal": {
+          "count": 0,
+          "n": 0,
+          "rate": null
+        },
+        "task_pass": {
+          "count": 0,
+          "n": 1,
+          "rate": 0
+        }
+      },
+      "errors": 4,
+      "fallbacks": 4,
+      "paired_cases_vs_A": 9,
+      "mean": {
+        "elapsed_ms": 8550.18,
+        "setup_ms": 5160.223,
+        "reply_ms": 3389.957,
+        "prompt_tokens": 2138.889,
+        "completion_tokens": 302.889,
+        "total_tokens": 2441.778
+      },
+      "mean_paired_delta_vs_A": {
+        "elapsed_ms": 7942.183,
+        "setup_ms": 5160.223,
+        "reply_ms": 2781.96,
+        "prompt_tokens": 2048.444,
+        "completion_tokens": 277.667,
+        "total_tokens": 2326.111
+      }
+    },
+    "D": {
+      "n": 9,
+      "overall": {
+        "retained": {
+          "count": 1,
+          "n": 4,
+          "rate": 0.25
+        },
+        "violation": {
+          "count": 4,
+          "n": 7,
+          "rate": 0.571429
+        },
+        "false_refusal": {
+          "count": 4,
+          "n": 4,
+          "rate": 1
+        },
+        "task_pass": {
+          "count": 1,
+          "n": 9,
+          "rate": 0.111111
+        }
+      },
+      "full_history": {
+        "retained": {
+          "count": 0,
+          "n": 3,
+          "rate": 0
+        },
+        "violation": {
+          "count": 4,
+          "n": 6,
+          "rate": 0.666667
+        },
+        "false_refusal": {
+          "count": 4,
+          "n": 4,
+          "rate": 1
+        },
+        "task_pass": {
+          "count": 0,
+          "n": 8,
+          "rate": 0
+        }
+      },
+      "evicted": {
+        "retained": {
+          "count": 1,
+          "n": 1,
+          "rate": 1
+        },
+        "violation": {
+          "count": 0,
+          "n": 1,
+          "rate": 0
+        },
+        "false_refusal": {
+          "count": 0,
+          "n": 0,
+          "rate": null
+        },
+        "task_pass": {
+          "count": 1,
+          "n": 1,
+          "rate": 1
+        }
+      },
+      "errors": 1,
+      "fallbacks": 6,
+      "paired_cases_vs_A": 9,
+      "mean": {
+        "elapsed_ms": 10853.855,
+        "setup_ms": 4356.762,
+        "reply_ms": 6497.093,
+        "prompt_tokens": 6367.111,
+        "completion_tokens": 335.111,
+        "total_tokens": 6702.222
+      },
+      "mean_paired_delta_vs_A": {
+        "elapsed_ms": 10245.858,
+        "setup_ms": 4356.762,
+        "reply_ms": 5889.096,
+        "prompt_tokens": 6276.667,
+        "completion_tokens": 309.889,
+        "total_tokens": 6586.556
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "case": "p01",
+  "behavior": "corrected project name",
+  "arm": "B",
+  "evicted": false,
+  "status": "ok",
+  "answer": "Saffron is ready.",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": true,
+    "violation": false,
+    "false_refusal": null,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 745,
+      "completion_tokens": 7,
+      "total_tokens": 752,
+      "elapsed_ms": 1274.762
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 1274.771,
+  "elapsed_ms": 1274.771,
+  "prompt_tokens": 745,
+  "completion_tokens": 7,
+  "total_tokens": 752,
+  "snapshot": "08592762d4354bf638428127ff6c49c15a4c99ba0bc70595c9186d6f969cc026"
+}

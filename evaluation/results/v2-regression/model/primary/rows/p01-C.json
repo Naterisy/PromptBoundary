@@ -1,0 +1,59 @@
+{
+  "case": "p01",
+  "behavior": "corrected project name",
+  "arm": "C",
+  "evicted": false,
+  "status": "error",
+  "answer": "",
+  "events": [
+    "runtime:ProtocolError"
+  ],
+  "attempts": 0,
+  "score": {
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "saffron"
+    ],
+    "missing_boundary": [
+      "saffron"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 630,
+      "completion_tokens": 84,
+      "total_tokens": 714,
+      "elapsed_ms": 2433.257
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 617,
+      "completion_tokens": 122,
+      "total_tokens": 739,
+      "elapsed_ms": 3207.842
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 511,
+      "completion_tokens": 43,
+      "total_tokens": 554,
+      "elapsed_ms": 1735.027
+    }
+  ],
+  "setup_calls": 3,
+  "setup_ms": 7376.517,
+  "reply_ms": 0.006,
+  "elapsed_ms": 7376.523,
+  "prompt_tokens": 1758,
+  "completion_tokens": 249,
+  "total_tokens": 2007,
+  "snapshot": "08592762d4354bf638428127ff6c49c15a4c99ba0bc70595c9186d6f969cc026"
+}

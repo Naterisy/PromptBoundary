@@ -1,0 +1,41 @@
+{
+  "case": "p08",
+  "behavior": "genuine ambiguity",
+  "arm": "B",
+  "evicted": false,
+  "status": "ok",
+  "answer": "Got it. Keep the otter pin and remove the pear pin.",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": [
+      "__CLARIFY__"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 734,
+      "completion_tokens": 15,
+      "total_tokens": 749,
+      "elapsed_ms": 1364.203
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 1364.212,
+  "elapsed_ms": 1364.212,
+  "prompt_tokens": 734,
+  "completion_tokens": 15,
+  "total_tokens": 749,
+  "snapshot": "08592762d4354bf638428127ff6c49c15a4c99ba0bc70595c9186d6f969cc026"
+}
