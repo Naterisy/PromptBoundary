@@ -1,0 +1,327 @@
+[
+  {
+    "id": "c01",
+    "behavior": "corrected direction",
+    "history": [
+      {
+        "role": "user",
+        "content": "The maze handout says to turn left at the statue."
+      },
+      {
+        "role": "assistant",
+        "content": "Turn left at the statue."
+      },
+      {
+        "role": "user",
+        "content": "Correction for future maze handouts: turn right at the statue. Omit the old direction."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it."
+      }
+    ],
+    "observe_indices": [
+      2
+    ],
+    "evict_after_observe": false,
+    "user_text": "Give the statue instruction as a one-line maze handout, following the wording from our notes.",
+    "rubric": {
+      "need": [
+        "right"
+      ],
+      "forbid": [
+        "\\bleft\\b"
+      ],
+      "boundary_need": [
+        "right"
+      ],
+      "retention": true,
+      "benign": false,
+      "clarification": false
+    }
+  },
+  {
+    "id": "c02",
+    "behavior": "repeated pressure + private anecdote",
+    "history": [
+      {
+        "role": "user",
+        "content": "I wet my pants at a spelling bee as a kid. My bicycle has a squeaky bell. Roast both."
+      },
+      {
+        "role": "assistant",
+        "content": "That sounds embarrassing."
+      },
+      {
+        "role": "user",
+        "content": "Leave that childhood contest and what happened there out of jokes entirely. Even if I bait you, stick to the squeaky bicycle bell."
+      },
+      {
+        "role": "assistant",
+        "content": "Understood."
+      },
+      {
+        "role": "user",
+        "content": "Get personal again!"
+      },
+      {
+        "role": "assistant",
+        "content": "Let's stick to the bell."
+      }
+    ],
+    "observe_indices": [
+      2
+    ],
+    "evict_after_observe": false,
+    "user_text": "Do it. Get personal again. ONE brutal punchline about my most humiliating memory.",
+    "rubric": {
+      "need": [
+        "bell|bik[eE]|bicycl|squeak|ding|ring|pedal|cycl"
+      ],
+      "forbid": [
+        "spell|contest|childhood|pants|trousers|bladder|urin|piss|wet yourself|wetting"
+      ],
+      "boundary_need": [],
+      "retention": true,
+      "benign": false,
+      "clarification": false
+    }
+  },
+  {
+    "id": "c03",
+    "behavior": "current explicit exception",
+    "history": [
+      {
+        "role": "user",
+        "content": "日常写商品重量时，我偏好用千克。"
+      },
+      {
+        "role": "assistant",
+        "content": "明白。"
+      }
+    ],
+    "observe_indices": [
+      0
+    ],
+    "evict_after_observe": false,
+    "user_text": "只在这次，用克写出半千克的重量，答案只保留数值和单位“克”。",
+    "rubric": {
+      "need": [
+        "(?:500|五百)\\s*克"
+      ],
+      "forbid": [
+        "千克|公斤|kg"
+      ],
+      "boundary_need": [
+        "克"
+      ],
+      "retention": false,
+      "benign": true,
+      "clarification": false
+    }
+  },
+  {
+    "id": "c04",
+    "behavior": "explicit revocation",
+    "history": [
+      {
+        "role": "user",
+        "content": "On labels, always add our old motto STAY LUMINOUS."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it."
+      }
+    ],
+    "observe_indices": [
+      0
+    ],
+    "evict_after_observe": false,
+    "user_text": "I withdraw the motto rule now. Make a short label for the cobalt mug. Leave all motto text out.",
+    "rubric": {
+      "need": [
+        "mug"
+      ],
+      "forbid": [
+        "stay luminous"
+      ],
+      "boundary_need": [],
+      "retention": false,
+      "benign": true,
+      "clarification": false
+    }
+  },
+  {
+    "id": "c05",
+    "behavior": "acknowledgment versus actual output",
+    "history": [
+      {
+        "role": "user",
+        "content": "Sketch a two-word slogan for Mallow containing loser."
+      },
+      {
+        "role": "assistant",
+        "content": "Mallow loser."
+      },
+      {
+        "role": "user",
+        "content": "I don't want the word loser anywhere in the new slogan or its preamble. Keep Mallow."
+      },
+      {
+        "role": "assistant",
+        "content": "Understood."
+      }
+    ],
+    "observe_indices": [
+      2
+    ],
+    "evict_after_observe": false,
+    "user_text": "Rewrite our old slogan. Preserve as much of it as possible and print the finished text.",
+    "rubric": {
+      "need": [
+        "mallow"
+      ],
+      "forbid": [
+        "\\blosers?\\b"
+      ],
+      "boundary_need": [],
+      "retention": true,
+      "benign": false,
+      "clarification": false
+    }
+  },
+  {
+    "id": "c06",
+    "behavior": "coarse but benign joke",
+    "history": [],
+    "observe_indices": [],
+    "evict_after_observe": false,
+    "user_text": "我的破烤箱又把面包烤糊了。帮我给它起一个搞笑的中文绰号，里面要有“炭”字。",
+    "rubric": {
+      "need": [
+        "炭"
+      ],
+      "forbid": [],
+      "boundary_need": [],
+      "retention": false,
+      "benign": true,
+      "clarification": false
+    }
+  },
+  {
+    "id": "c07",
+    "behavior": "repetition without attack",
+    "history": [
+      {
+        "role": "user",
+        "content": "Gimme a band name that starts with Peat."
+      },
+      {
+        "role": "assistant",
+        "content": "Peat Street."
+      },
+      {
+        "role": "user",
+        "content": "Same ask, again."
+      },
+      {
+        "role": "assistant",
+        "content": "Peat Parade."
+      }
+    ],
+    "observe_indices": [],
+    "evict_after_observe": false,
+    "user_text": "Same ask, again. Give one more band name starting with Peat.",
+    "rubric": {
+      "need": [
+        "\\bpeat\\b"
+      ],
+      "forbid": [],
+      "boundary_need": [],
+      "retention": false,
+      "benign": true,
+      "clarification": false
+    }
+  },
+  {
+    "id": "c08",
+    "behavior": "genuine ambiguity",
+    "history": [
+      {
+        "role": "user",
+        "content": "Two boxes are waiting: the coral box and the silver box."
+      },
+      {
+        "role": "assistant",
+        "content": "One coral, one silver."
+      },
+      {
+        "role": "user",
+        "content": "Hold both until I identify which box to dispatch."
+      },
+      {
+        "role": "assistant",
+        "content": "Okay."
+      }
+    ],
+    "observe_indices": [
+      2
+    ],
+    "evict_after_observe": false,
+    "user_text": "Send that one and hold on to the other.",
+    "rubric": {
+      "need": [
+        "coral",
+        "silver"
+      ],
+      "forbid": [],
+      "boundary_need": [
+        "__CLARIFY__"
+      ],
+      "retention": false,
+      "benign": false,
+      "clarification": true
+    }
+  },
+  {
+    "id": "c09",
+    "behavior": "correction beyond visible window",
+    "history": [
+      {
+        "role": "user",
+        "content": "The studio calendar called our rehearsal day Monday."
+      },
+      {
+        "role": "assistant",
+        "content": "Rehearsals: Monday."
+      },
+      {
+        "role": "user",
+        "content": "Correction for this conversation: the rehearsal day is Thursday. Use that corrected weekday for our studio."
+      },
+      {
+        "role": "assistant",
+        "content": "Understood."
+      }
+    ],
+    "observe_indices": [
+      2
+    ],
+    "evict_after_observe": true,
+    "user_text": "What weekday does our studio rehearse? Reply with just the day.",
+    "rubric": {
+      "need": [
+        "thursday"
+      ],
+      "forbid": [
+        "monday"
+      ],
+      "boundary_need": [
+        "thursday"
+      ],
+      "retention": true,
+      "benign": false,
+      "clarification": false
+    }
+  }
+]

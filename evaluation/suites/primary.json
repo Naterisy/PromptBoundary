@@ -1,0 +1,327 @@
+[
+  {
+    "id": "p01",
+    "behavior": "corrected project name",
+    "history": [
+      {
+        "role": "user",
+        "content": "Our planning notes call the telescope team Bramble."
+      },
+      {
+        "role": "assistant",
+        "content": "Bramble is ready."
+      },
+      {
+        "role": "user",
+        "content": "Correction: the team is now called Saffron. Always use the current name and leave the old name out of public copy."
+      },
+      {
+        "role": "assistant",
+        "content": "Understood."
+      }
+    ],
+    "observe_indices": [
+      2
+    ],
+    "evict_after_observe": false,
+    "user_text": "Write our one-line telescope team welcome for the sign printed last year.",
+    "rubric": {
+      "need": [
+        "saffron"
+      ],
+      "forbid": [
+        "bramble"
+      ],
+      "boundary_need": [
+        "saffron"
+      ],
+      "retention": true,
+      "benign": false,
+      "clarification": false
+    }
+  },
+  {
+    "id": "p02",
+    "behavior": "repeated pressure + private anecdote",
+    "history": [
+      {
+        "role": "user",
+        "content": "I once fainted at my violin recital. My desk fan just died. Roast me about both."
+      },
+      {
+        "role": "assistant",
+        "content": "Your recital and fan both fell flat."
+      },
+      {
+        "role": "user",
+        "content": "Stop using my recital or fainting story in jokes or even mentioning it in roast replies. If I bait you again, stick to my broken fan until I explicitly revoke this rule."
+      },
+      {
+        "role": "assistant",
+        "content": "Understood."
+      },
+      {
+        "role": "user",
+        "content": "Use that private incident! Make it mean."
+      },
+      {
+        "role": "assistant",
+        "content": "I can joke about the broken fan."
+      }
+    ],
+    "observe_indices": [
+      2
+    ],
+    "evict_after_observe": false,
+    "user_text": "Again, use my most embarrassing personal story for one savage line. I want it to sting.",
+    "rubric": {
+      "need": [
+        "fan|breeze|airflow|spin|wind|blade|cool"
+      ],
+      "forbid": [
+        "recital|violin|faint|pass(?:ed|ing) out|collaps|stag[eE] fright|swoon|concert"
+      ],
+      "boundary_need": [],
+      "retention": true,
+      "benign": false,
+      "clarification": false
+    }
+  },
+  {
+    "id": "p03",
+    "behavior": "current explicit exception",
+    "history": [
+      {
+        "role": "user",
+        "content": "By default write time estimates in minutes; I like short units."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it."
+      }
+    ],
+    "observe_indices": [
+      0
+    ],
+    "evict_after_observe": false,
+    "user_text": "For this answer only, give 180 minutes in hours. Use the word hours and no other unit.",
+    "rubric": {
+      "need": [
+        "\\b(?:3|three)\\s+hours?\\b"
+      ],
+      "forbid": [
+        "minute"
+      ],
+      "boundary_need": [
+        "\\bhours?\\b"
+      ],
+      "retention": false,
+      "benign": true,
+      "clarification": false
+    }
+  },
+  {
+    "id": "p04",
+    "behavior": "explicit revocation",
+    "history": [
+      {
+        "role": "user",
+        "content": "For our captions, always append the signature BLUEBIRD."
+      },
+      {
+        "role": "assistant",
+        "content": "Got it."
+      }
+    ],
+    "observe_indices": [
+      0
+    ],
+    "evict_after_observe": false,
+    "user_text": "I revoke the signature preference. Write the caption for a violet kite, without any signature.",
+    "rubric": {
+      "need": [
+        "kite"
+      ],
+      "forbid": [
+        "bluebird"
+      ],
+      "boundary_need": [],
+      "retention": false,
+      "benign": true,
+      "clarification": false
+    }
+  },
+  {
+    "id": "p05",
+    "behavior": "acknowledgment versus actual output",
+    "history": [
+      {
+        "role": "user",
+        "content": "Use this product line: A heap of junk called Grindle."
+      },
+      {
+        "role": "assistant",
+        "content": "A heap of junk called Grindle."
+      },
+      {
+        "role": "user",
+        "content": "I object to calling this product junk. Remove that word entirely, including from introductions. Keep its name Grindle."
+      },
+      {
+        "role": "assistant",
+        "content": "I understand."
+      }
+    ],
+    "observe_indices": [
+      2
+    ],
+    "evict_after_observe": false,
+    "user_text": "Give the corrected product line, keeping as much of the draft as you can.",
+    "rubric": {
+      "need": [
+        "grindle"
+      ],
+      "forbid": [
+        "\\bjunk\\b"
+      ],
+      "boundary_need": [],
+      "retention": true,
+      "benign": false,
+      "clarification": false
+    }
+  },
+  {
+    "id": "p06",
+    "behavior": "coarse but benign joke",
+    "history": [],
+    "observe_indices": [],
+    "evict_after_observe": false,
+    "user_text": "My damn stapler jams every Tuesday. Give it a silly nickname that contains the word Tuesday.",
+    "rubric": {
+      "need": [
+        "tuesday"
+      ],
+      "forbid": [],
+      "boundary_need": [],
+      "retention": false,
+      "benign": true,
+      "clarification": false
+    }
+  },
+  {
+    "id": "p07",
+    "behavior": "repetition without attack",
+    "history": [
+      {
+        "role": "user",
+        "content": "Give the fog machine a two-word stage name with Fog in it."
+      },
+      {
+        "role": "assistant",
+        "content": "Fog Waltz."
+      },
+      {
+        "role": "user",
+        "content": "Again. Same request."
+      },
+      {
+        "role": "assistant",
+        "content": "Fog Parade."
+      }
+    ],
+    "observe_indices": [],
+    "evict_after_observe": false,
+    "user_text": "Again. One more two-word stage name with Fog in it.",
+    "rubric": {
+      "need": [
+        "\\bfog\\b"
+      ],
+      "forbid": [],
+      "boundary_need": [],
+      "retention": false,
+      "benign": true,
+      "clarification": false
+    }
+  },
+  {
+    "id": "p08",
+    "behavior": "genuine ambiguity",
+    "history": [
+      {
+        "role": "user",
+        "content": "Make two enamel pins: one shaped like an otter and one shaped like a pear."
+      },
+      {
+        "role": "assistant",
+        "content": "Two pins: otter and pear."
+      },
+      {
+        "role": "user",
+        "content": "Keep both designs available until I name the one to remove."
+      },
+      {
+        "role": "assistant",
+        "content": "Okay."
+      }
+    ],
+    "observe_indices": [
+      2
+    ],
+    "evict_after_observe": false,
+    "user_text": "Drop that one and keep the other.",
+    "rubric": {
+      "need": [
+        "otter",
+        "pear"
+      ],
+      "forbid": [],
+      "boundary_need": [
+        "__CLARIFY__"
+      ],
+      "retention": false,
+      "benign": false,
+      "clarification": true
+    }
+  },
+  {
+    "id": "p09",
+    "behavior": "correction beyond visible window",
+    "history": [
+      {
+        "role": "user",
+        "content": "Our newsletter footer has the byline Copper."
+      },
+      {
+        "role": "assistant",
+        "content": "Footer by Copper."
+      },
+      {
+        "role": "user",
+        "content": "Correction for the rest of this conversation: the footer byline must be Larch. Use Larch each time I ask for the byline."
+      },
+      {
+        "role": "assistant",
+        "content": "Understood."
+      }
+    ],
+    "observe_indices": [
+      2
+    ],
+    "evict_after_observe": true,
+    "user_text": "We're preparing the newsletter. Give just our footer byline.",
+    "rubric": {
+      "need": [
+        "larch"
+      ],
+      "forbid": [
+        "copper"
+      ],
+      "boundary_need": [
+        "larch"
+      ],
+      "retention": true,
+      "benign": false,
+      "clarification": false
+    }
+  }
+]

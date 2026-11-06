@@ -1,0 +1,3 @@
+# Protocol amendment 1, recorded before either suite ran
+
+All prior user turns are ingested chronologically by the controller using observe with that turn's preceding transcript, matching the normal history import path. This supersedes the original protocol's selection of a specified correction turn. The prewritten observe_indices fixture field is ignored. The expansion removes an oracle hint and includes the actual ingestion cost of distracting and repeated turns. On the eviction item the history is also removed from serialized state before restoring the session. Scoring, split, stimuli, arm order and decision rule are unchanged. The original freeze manifest entries remain available for audit.
