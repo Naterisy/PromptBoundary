@@ -1,0 +1,38 @@
+{
+  "case": "p01",
+  "behavior": "corrected project name",
+  "arm": "A",
+  "evicted": false,
+  "status": "ok",
+  "answer": "I'm sorry, but I don't have access to the specific sign or the exact wording from last year. Could you please provide the original one-line welcome message for the Saffron team? I'll be happy to help you update it.",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": true,
+    "violation": false,
+    "false_refusal": null,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 108,
+      "completion_tokens": 50,
+      "total_tokens": 158,
+      "elapsed_ms": 1176.364
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 1176.372,
+  "elapsed_ms": 1176.372,
+  "prompt_tokens": 108,
+  "completion_tokens": 50,
+  "total_tokens": 158
+}

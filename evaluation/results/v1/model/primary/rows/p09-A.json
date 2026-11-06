@@ -1,0 +1,42 @@
+{
+  "case": "p09",
+  "behavior": "correction beyond visible window",
+  "arm": "A",
+  "evicted": true,
+  "status": "ok",
+  "answer": "Alibaba Cloud Qwen",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "larch"
+    ],
+    "missing_boundary": [
+      "larch"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 42,
+      "completion_tokens": 6,
+      "total_tokens": 48,
+      "elapsed_ms": 199.735
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 199.745,
+  "elapsed_ms": 199.745,
+  "prompt_tokens": 42,
+  "completion_tokens": 6,
+  "total_tokens": 48
+}

@@ -1,0 +1,66 @@
+{
+  "case": "p03",
+  "behavior": "current explicit exception",
+  "arm": "C",
+  "evicted": false,
+  "status": "ok",
+  "answer": "For this answer only, give 180 minutes in hours. Use the word hours and no other unit. 180 minutes is 3 hours.",
+  "events": [
+    "set:r3",
+    "intent:normal",
+    "audit:pass"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": true,
+    "false_refusal": false,
+    "task_pass": false,
+    "forbidden_hits": [
+      "minute"
+    ],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 414,
+      "completion_tokens": 133,
+      "total_tokens": 547,
+      "elapsed_ms": 2928.329
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 554,
+      "completion_tokens": 95,
+      "total_tokens": 649,
+      "elapsed_ms": 1924.525
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 487,
+      "completion_tokens": 38,
+      "total_tokens": 525,
+      "elapsed_ms": 1426.597
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 547,
+      "completion_tokens": 10,
+      "total_tokens": 557,
+      "elapsed_ms": 996.691
+    }
+  ],
+  "setup_calls": 1,
+  "setup_ms": 2928.432,
+  "reply_ms": 4348.101,
+  "elapsed_ms": 7276.533,
+  "prompt_tokens": 2002,
+  "completion_tokens": 276,
+  "total_tokens": 2278
+}

@@ -1,0 +1,38 @@
+{
+  "case": "p04",
+  "behavior": "explicit revocation",
+  "arm": "B",
+  "evicted": false,
+  "status": "ok",
+  "answer": "Sure, here’s the caption for a violet kite: \"A gentle breeze carries a vibrant violet kite aloft, its colorful wings fluttering in the sky.\"",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": false,
+    "false_refusal": false,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 634,
+      "completion_tokens": 33,
+      "total_tokens": 667,
+      "elapsed_ms": 1539.445
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 1539.454,
+  "elapsed_ms": 1539.454,
+  "prompt_tokens": 634,
+  "completion_tokens": 33,
+  "total_tokens": 667
+}

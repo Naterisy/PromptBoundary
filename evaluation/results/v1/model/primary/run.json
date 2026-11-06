@@ -1,0 +1,25 @@
+{
+  "suite": "primary",
+  "mode": "model",
+  "model": "pb-qwen",
+  "backend_id": "llama.cpp b12179; Qwen2.5-3B-Instruct Q4_K_M; sha256 626b4a6678b86442240e33df819e00132d3ba7dddfe1cdc4fbb18e0a9615c62d",
+  "base_url": "http://127.0.0.1:18764/v1",
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 384
+  },
+  "retries": 1,
+  "frozen": {
+    "PROTOCOL.md": "7b62988be0aaf139cdba561c589f9a464e56621ae1c27d20f8841a27e0f9035b",
+    "score.py": "a8228031820eaae3efb5efb5a7f6a12a15b2621f419543831b4d29eab401c2f8",
+    "suites/primary.json": "5b04964c75e9e9f55519cb771c5e3b20d3207dc1d5cc704a01460d0ae9882f62",
+    "suites/confirmation.json": "ec34987a44fdfff87c1ea33667059cbf42b342b202e9b2b9956e9646bfb51b1e",
+    "AMENDMENT-1.md": "f4447beacacbdc3fd1c75fbd23e84546aac513c4b7be35dd862f569c3ea82c06"
+  },
+  "sources": {
+    "evaluation/run.py": "0d3c040d97b90e66fafb263e1c19c86752224b69ae3097b673a4addc5cb248f7",
+    "promptboundary/core.py": "675c7ad623ad4b8fa15c745f8cfba5bf2923264e387a5a8d3c41a37903ae4a16",
+    "promptboundary/upstream.py": "04697ec7e673fd8f80d0feec5ea8d5ae8da548ccfc87915f5290e48e7dcd7798",
+    "SKILL.md": "b5a93d8de7e9a2003a69fc5c0aaf3545ea34c982d58fefd57cfc9a0c66547880"
+  }
+}

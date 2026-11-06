@@ -1,0 +1,40 @@
+{
+  "case": "p03",
+  "behavior": "current explicit exception",
+  "arm": "B",
+  "evicted": false,
+  "status": "ok",
+  "answer": "PromptBoundary: The user asked for a time estimate in hours, overriding the default of minutes. The response should now use hours.\n\n**Answer:**\n180 minutes is equivalent to **3 hours**.",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": true,
+    "false_refusal": false,
+    "task_pass": false,
+    "forbidden_hits": [
+      "minute"
+    ],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 640,
+      "completion_tokens": 43,
+      "total_tokens": 683,
+      "elapsed_ms": 1729.272
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 1729.28,
+  "elapsed_ms": 1729.28,
+  "prompt_tokens": 640,
+  "completion_tokens": 43,
+  "total_tokens": 683
+}

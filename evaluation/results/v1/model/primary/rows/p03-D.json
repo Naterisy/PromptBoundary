@@ -1,0 +1,59 @@
+{
+  "case": "p03",
+  "behavior": "current explicit exception",
+  "arm": "D",
+  "evicted": false,
+  "status": "fallback",
+  "answer": "I couldn’t verify the conversation constraints this time. Please try again.",
+  "events": [
+    "interpret:retry",
+    "interpret:error"
+  ],
+  "attempts": 0,
+  "score": {
+    "retained": null,
+    "violation": true,
+    "false_refusal": true,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "\\b(?:3|three)\\s+hours?\\b"
+    ],
+    "missing_boundary": [
+      "\\bhours?\\b"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 992,
+      "completion_tokens": 16,
+      "total_tokens": 1008,
+      "elapsed_ms": 1776.225
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1039,
+      "completion_tokens": 137,
+      "total_tokens": 1176,
+      "elapsed_ms": 2566.353
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1070,
+      "completion_tokens": 80,
+      "total_tokens": 1150,
+      "elapsed_ms": 1493.241
+    }
+  ],
+  "setup_calls": 1,
+  "setup_ms": 1776.297,
+  "reply_ms": 4059.794,
+  "elapsed_ms": 5836.091,
+  "prompt_tokens": 3101,
+  "completion_tokens": 233,
+  "total_tokens": 3334
+}
