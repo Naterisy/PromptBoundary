@@ -1,5 +1,6 @@
 """A tiny deterministic fixture shared by the CLI demo and smoke tests."""
 import json
+from .upstream import GENERATION_CONTEXT
 
 
 SET_RULE = "For this conversation, use bullet points."
@@ -12,7 +13,13 @@ SAMPLE = "A comet is an icy body that orbits the Sun."
 
 def mock_response(messages, structured):
     if not structured:
-        return SAMPLE
+        user = messages[-1]["content"]
+        context = {}
+        if len(messages) > 1 and messages[-2]["content"].startswith(GENERATION_CONTEXT):
+            context = json.loads(messages[-2]["content"][len(GENERATION_CONTEXT):])
+        content = "Understood." if user in (SET_RULE, CLEAR_RULE) else SAMPLE
+        bullets = any(r["rule"] == RULE for r in context.get("constraints", []))
+        return "- " + content if bullets else content
     data = json.loads(messages[-1]["content"])
     user = data["user_text"]
     if "records" in data and "candidate" not in data and "constraints" not in data:
@@ -26,12 +33,8 @@ def mock_response(messages, structured):
                         "id": existing["id"], "quote": user}]
         result = {"intent": "normal", "actions": actions, "alternative": ""}
     else:
-        content = "Understood." if user in (SET_RULE, CLEAR_RULE) else SAMPLE
         bullets = any(r["rule"] == RULE for r in data["constraints"])
-        if "candidate" in data:
-            valid = not bullets or data["candidate"].startswith("- ")
-            result = {"verdict": "pass" if valid else "violation",
-                      "reason": "" if valid else "Use a bullet point."}
-        else:
-            result = {"text": "- " + content if bullets else content}
+        valid = not bullets or data["candidate"].startswith("- ")
+        result = {"verdict": "pass" if valid else "violation",
+                  "reason": "" if valid else "Use a bullet point."}
     return json.dumps(result, ensure_ascii=False)

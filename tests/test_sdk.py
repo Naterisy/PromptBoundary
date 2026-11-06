@@ -11,7 +11,7 @@ from promptboundary import BoundaryController, MockModel, OpenAICompatible, Stag
 from promptboundary.cli import main
 from promptboundary.demo import DEMO_TURNS, SAMPLE, SET_RULE
 from promptboundary.middleware import ClientError, handle_chat, make_server
-from promptboundary.upstream import completion_object
+from promptboundary.upstream import GENERATION_CONTEXT, completion_object
 
 
 @contextlib.contextmanager
@@ -79,6 +79,34 @@ class SDKTests(unittest.TestCase):
         self.assertIsNone(stage.calls[0]["total_tokens"])
         self.assertEqual(stage.calls[0]["usage_source"], "unavailable")
 
+    def test_generation_preserves_roles_and_literal_answer(self):
+        class Recorder:
+            def complete(self, messages, **params):
+                self.messages, self.params = messages, params
+                return completion_object("test", 'Here is a literal {"text":"field"}.')
+
+        backend = Recorder()
+        model = StageModel(backend, {"temperature": 0.25}, system_prefix="frozen skill")
+        history = [msg("system", "app system"), msg("developer", "app instructions"),
+                   msg("user", "I have a parrot."), msg("assistant", "I see.")]
+        data = {"history": history, "user_text": "Write a caption.", "mode": "conflict",
+                "constraints": [{"kind": "correction", "rule": "Bird is a parrot.", "scope": "photo",
+                                 "quote": "private evidence is not a system instruction"}],
+                "alternative": "Caption the bird.", "feedback": "Write in English."}
+        result = model("generate", {"instructions": "Write naturally.", "data": data})
+        self.assertEqual(backend.params, {"temperature": 0.25})
+        self.assertEqual(backend.messages[1:5], history)
+        self.assertTrue(backend.messages[0]["content"].startswith("frozen skill\n\nWrite naturally."))
+        self.assertEqual(backend.messages[-1], msg("user", data["user_text"]))
+        self.assertEqual(backend.messages[-2]["role"], "user")
+        context = json.loads(backend.messages[-2]["content"].removeprefix(GENERATION_CONTEXT))
+        self.assertEqual(context["constraints"], [{"kind": "correction", "scope": "photo",
+                                                   "rule": "Bird is a parrot."}])
+        self.assertEqual(context["feedback"], data["feedback"])
+        self.assertEqual(context["mode"], "conflict")
+        self.assertEqual(result, {"text": 'Here is a literal {"text":"field"}.'})
+        self.assertEqual(model.calls[0]["stage"], "generate")
+
     def test_cli_output_is_machine_readable(self):
         out = io.StringIO()
         with contextlib.redirect_stdout(out):
@@ -110,7 +138,10 @@ class SDKTests(unittest.TestCase):
 
             def complete(self, messages, **params):
                 result = super().complete(messages, **params)
-                self.calls.append((json.loads(messages[-1]["content"]), result["usage"]))
+                # Structured stages carry history in their JSON input, while
+                # the draft receives it directly as native conversation messages.
+                history = json.loads(messages[-1]["content"])["history"] if "response_format" in params else messages
+                self.calls.append((history, result["usage"]))
                 return result
 
         spy = Spy()
@@ -122,7 +153,7 @@ class SDKTests(unittest.TestCase):
         self.assertEqual((status, source), ("ok", "mock_estimate"))
         self.assertEqual(len(spy.calls), 4)
         self.assertEqual(answer["usage"]["total_tokens"], sum(u["total_tokens"] for _, u in spy.calls))
-        self.assertTrue(all(instruction in data["history"] for data, _ in spy.calls))
+        self.assertTrue(all(instruction in history for history, _ in spy.calls))
         other, _, _ = handle_chat(spy, body(current))
         self.assertEqual(other["choices"][0]["message"]["content"], SAMPLE)
 

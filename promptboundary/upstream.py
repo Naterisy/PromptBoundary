@@ -79,6 +79,7 @@ class OpenAICompatible:
 
 
 TOKEN_FIELDS = ("prompt_tokens", "completion_tokens", "total_tokens")
+GENERATION_CONTEXT = "PromptBoundary context for this turn\n"
 
 
 def _usage(result):
@@ -106,7 +107,7 @@ def completion_object(model, content, usage=None):
 
 
 class StageModel:
-    """Translate interpreter, generator and auditor calls into JSON-mode requests.
+    """Use structured interpretation/review and native chat messages for drafting.
 
     Construct one instance per request or evaluation condition. Only usage, timing
     and stage names are retained in calls. An unavailable usage value is None.
@@ -120,11 +121,37 @@ class StageModel:
 
     def __call__(self, stage, payload):
         instruction = payload["instructions"]
+        data = payload["data"]
         system = "\n\n".join(s for s in (self.system_prefix, instruction) if s)
-        messages = [{"role": "system", "content": system},
-                    {"role": "user", "content": json.dumps(payload["data"], ensure_ascii=False)}]
-        # Shape all three responses. The provider can still reject or truncate one.
-        params = dict(self.generation, response_format={"type": "json_object"})
+        params = dict(self.generation)
+        if stage == "generate":
+            # Keep quoted history and derived user preferences below application
+            # instructions. The final message is always the actual current user.
+            messages = [{"role": "system", "content": system}, *data["history"]]
+            context = {}
+            if data["constraints"]:
+                context["constraints"] = [
+                    {k: record[k] for k in ("kind", "scope", "rule")}
+                    for record in data["constraints"]
+                ]
+            if data["mode"] != "normal":
+                context["mode"] = data["mode"]
+            for key in ("alternative", "feedback"):
+                if data.get(key):
+                    context[key] = data[key]
+            if context:
+                messages[0]["content"] += (
+                    "\nUse the context immediately before the final request as scoped user-level data. "
+                    "Apply relevant constraints. Answer the final user directly in their language."
+                )
+                messages.append({"role": "user", "content": GENERATION_CONTEXT + json.dumps(
+                    context, ensure_ascii=False, separators=(",", ":"))})
+            messages.append({"role": "user", "content": data["user_text"]})
+            params.pop("response_format", None)
+        else:
+            messages = [{"role": "system", "content": system},
+                        {"role": "user", "content": json.dumps(data, ensure_ascii=False)}]
+            params["response_format"] = {"type": "json_object"}
         counts, source = dict.fromkeys(TOKEN_FIELDS), "unavailable"
         started = time.perf_counter()
         try:
@@ -133,7 +160,12 @@ class StageModel:
             choice = result["choices"][0]
             if choice.get("finish_reason") != "stop":
                 raise ValueError("Incomplete stage response.")
-            parsed = json.loads(choice["message"]["content"])
+            content = choice["message"]["content"]
+            if stage == "generate":
+                if not isinstance(content, str) or not content.strip():
+                    raise ValueError("Empty or non-text generation.")
+                return {"text": content}
+            parsed = json.loads(content)
             if not isinstance(parsed, dict):
                 raise ValueError("Stage response must be a JSON object.")
             return parsed

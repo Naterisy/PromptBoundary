@@ -43,6 +43,60 @@ def verify_freeze(directory=HERE):
     return manifest
 
 
+class VerifiedBackend:
+    """Keep a sticky failure when a loopback server reports fixture provenance.
+
+    The controller can absorb stage exceptions, so the outer runner checks the
+    flag before publishing a row as well as before issuing another request.
+    """
+    def __init__(self, upstream):
+        self.upstream = upstream
+        self.model = upstream.model
+        self.fixture_detected = False
+
+    def complete(self, messages, **params):
+        if self.fixture_detected:
+            raise ValueError("Fixture endpoint cannot generate measured evidence.")
+        response = self.upstream.complete(messages, **params)
+        marker = response.get("promptboundary_usage_source")
+        if response.get("model") == MockModel.model or marker == "mock_estimate":
+            self.fixture_detected = True
+            raise ValueError("Fixture endpoint cannot generate measured evidence.")
+        return response
+
+
+def fingerprint(value):
+    encoded = json.dumps(value, ensure_ascii=False, sort_keys=True,
+                         separators=(",", ":"), allow_nan=False).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def checked_rows(directory, cases, snapshot, mode):
+    """Validate persisted rows before skipping completed cells or aggregating."""
+    expected = {f"{case['id']}-{arm}.json": (case, arm) for case in cases for arm in ARMS}
+    if len(expected) != len(cases) * len(ARMS):
+        raise ValueError("Duplicate case/arm in frozen suite.")
+    loaded = {}
+    for path in sorted(directory.glob("*.json")):
+        if path.name not in expected:
+            raise ValueError(f"Unexpected row filename: {path.name}")
+        case, arm = expected[path.name]
+        row = read(path)
+        if (not isinstance(row, dict) or row.get("case") != case["id"] or row.get("arm") != arm
+                or row.get("snapshot") != snapshot or row.get("behavior") != case["behavior"]
+                or row.get("evicted") is not case["evict_after_observe"]):
+            raise ValueError(f"Row does not match its snapshot or case/arm: {path.name}")
+        if row.get("status") not in {"ok", "clarify", "fallback", "error"} or not isinstance(row.get("answer"), str):
+            raise ValueError(f"Invalid status or delivered text: {path.name}")
+        rescored = score(case, row["answer"], row["status"])
+        if fingerprint(rescored) != fingerprint(row.get("score")):
+            raise ValueError(f"Stored score disagrees with frozen rubric: {path.name}")
+        if mode == "model" and any(c.get("usage_source") == "mock_estimate" for c in row["calls"]):
+            raise ValueError(f"Fixture usage in measured row: {path.name}")
+        loaded[(case["id"], arm)] = row
+    return loaded
+
+
 def total(calls, key):
     if not calls or any(c[key] is None for c in calls):
         return None
@@ -122,7 +176,11 @@ def measures(rows):
 
 
 def summarize(rows, cases):
-    result = {"complete": len(rows) == len(cases) * len(ARMS), "rows": len(rows), "arms": {}}
+    expected = {(case["id"], arm) for case in cases for arm in ARMS}
+    observed = {(row["case"], row["arm"]) for row in rows}
+    if len(expected) != len(cases) * len(ARMS) or len(observed) != len(rows) or observed - expected:
+        raise ValueError("Unexpected or duplicate case/arm identities.")
+    result = {"complete": observed == expected, "rows": len(rows), "arms": {}}
     baseline = {r["case"]: r for r in rows if r["arm"] == "A"}
     for arm in ARMS:
         subset = [r for r in rows if r["arm"] == arm]
@@ -171,9 +229,11 @@ def main():
         parser.error("Use a nonempty, unique subset of ABCD.")
     if not args.mock and not is_loopback(args.base_url):
         parser.error("This evaluation runner only contacts a loopback endpoint.")
+    if not args.mock and (not args.backend_id.strip() or args.model == MockModel.model):
+        parser.error("Measured runs require --backend-id and a real model ID.")
     frozen = verify_freeze()
     cases = read(HERE / "suites" / (args.suite + ".json"))
-    upstream = MockModel() if args.mock else OpenAICompatible(args.base_url, args.model)
+    upstream = MockModel() if args.mock else VerifiedBackend(OpenAICompatible(args.base_url, args.model))
     skill_path = PROJECT / "SKILL.md"
     skill = skill_path.read_text(encoding="utf-8")
     mode = "mock_wiring_only" if args.mock else "model"
@@ -189,17 +249,24 @@ def main():
     stamp = dest / "run.json"
     if stamp.exists() and read(stamp) != provenance:
         parser.error("Snapshot mismatch. Resume identical code/configuration or choose a fresh --out.")
+    if not stamp.is_file() and any((dest / "rows").glob("*.json")):
+        parser.error("Missing run manifest for existing rows. Restore it or choose a fresh --out.")
+    snapshot = fingerprint(provenance)
+    existing = checked_rows(dest / "rows", cases, snapshot, mode)
     save(stamp, provenance)
     for i, case in enumerate(cases):
         start = i % len(ARMS)
         for arm in ARMS[start:] + ARMS[:start]:
             path = dest / "rows" / f"{case['id']}-{arm}.json"
-            if arm not in args.arms or path.is_file():
+            if arm not in args.arms or (case["id"], arm) in existing:
                 continue
             row = run_case(case, arm, upstream, skill)
+            if isinstance(upstream, VerifiedBackend) and upstream.fixture_detected:
+                parser.error("Endpoint returned the mock model ID or mock usage marker. Measured row discarded.")
+            row["snapshot"] = snapshot
             save(path, row)
             print(f"{case['id']} {arm} {row['status']} {row['elapsed_ms']:.0f} ms", flush=True)
-    rows = [read(path) for path in sorted((dest / "rows").glob("*.json"))]
+    rows = list(checked_rows(dest / "rows", cases, snapshot, mode).values())
     summary = dict(mode=mode, suite=args.suite, **summarize(rows, cases))
     save(dest / "summary.json", summary)
     print(f"Saved {len(rows)}/{len(cases)*4} terminal replies to {dest}", flush=True)

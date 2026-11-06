@@ -56,7 +56,7 @@ for request in [
     print(turn.text)
 ```
 
-To include the Skill in the application, pass its UTF-8 contents to `StageModel(..., system_prefix=...)`. For an already loaded agent Skill, the host handles the instructions.
+To include the Skill in the application, pass its UTF-8 contents to `StageModel(..., system_prefix=...)`. For an already loaded agent Skill, the host handles the instructions. To save and restore a session, use `turn.state.to_dict()` and `State.from_dict(saved)`. Store the returned state even on a delivery fallback so an accepted correction can carry forward. To retry the same input, start with the original state.
 
 ## Run the HTTP middleware
 

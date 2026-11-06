@@ -1,6 +1,9 @@
+from pathlib import Path
+from tempfile import TemporaryDirectory
 import unittest
 
-from evaluation.run import HERE, is_loopback, measures, read, run_case, summarize, verify_freeze
+from evaluation.run import (HERE, VerifiedBackend, checked_rows, is_loopback, measures,
+                            read, run_case, save, summarize, verify_freeze)
 from evaluation.score import score
 from promptboundary.upstream import MockModel
 
@@ -73,6 +76,50 @@ class EvaluationTests(unittest.TestCase):
         self.assertFalse(summary["complete"])
         self.assertIsNone(summary["arms"]["C"]["mean"]["total_tokens"])
         self.assertIsNone(summary["arms"]["C"]["mean_paired_delta_vs_A"]["total_tokens"])
+
+    def test_rejects_stale_rows_or_score_drift(self):
+        case = self.by_id["p01"]
+        row = dict(run_case(case, "A", MockModel(), ""), snapshot="version2")
+        with TemporaryDirectory() as temp:
+            directory = Path(temp)
+            path = directory / "p01-A.json"
+            save(path, row)
+            self.assertEqual(len(checked_rows(directory, [case], "version2", "mock_wiring_only")), 1)
+            for change in ({"snapshot": "old"}, {"arm": "B"}, {"case": "other"},
+                           {"answer": "Saffron"}, {"score": {"task_pass": 1}}):
+                with self.subTest(change=change):
+                    save(path, dict(row, **change))
+                    with self.assertRaises(ValueError):
+                        checked_rows(directory, [case], "version2", "mock_wiring_only")
+            save(path, row)
+            with self.assertRaisesRegex(ValueError, "Fixture usage"):
+                checked_rows(directory, [case], "version2", "model")
+            save(directory / "duplicate.json", row)
+            with self.assertRaisesRegex(ValueError, "Unexpected row filename"):
+                checked_rows(directory, [case], "version2", "mock_wiring_only")
+        with self.assertRaisesRegex(ValueError, "duplicate"):
+            summarize([row, row], [case])
+
+    def test_measured_mode_rejects_fixture_signals(self):
+        class Stub:
+            model = "some-alias"
+            def __init__(self, response):
+                self.response = response
+                self.n = 0
+            def complete(self, messages, **params):
+                self.n += 1
+                return self.response
+
+        for response in ({"model": MockModel.model}, {"promptboundary_usage_source": "mock_estimate"}):
+            stub = Stub(response)
+            guard = VerifiedBackend(stub)
+            for _ in range(2):
+                with self.assertRaisesRegex(ValueError, "Fixture endpoint"):
+                    guard.complete([])
+            self.assertTrue(guard.fixture_detected)
+            self.assertEqual(stub.n, 1)
+        guard = VerifiedBackend(Stub({"model": "real-model"}))
+        self.assertEqual(guard.complete([]), {"model": "real-model"})
 
     def test_loopback_only(self):
         self.assertTrue(is_loopback("http://[::1]:8080/v1"))

@@ -31,3 +31,5 @@ llama-server -m qwen2.5-3b-instruct-q4_k_m.gguf --host 127.0.0.1 \
 ```
 
 Latency includes local HTTP and inference after model warm-up. The server may reuse a prompt prefix within its slot. Hardware, caching, and system load affect wall time. Each published count comes from one greedy completion per case and arm, with the controller's bounded internal retries. Freeze hashes prevent accidental changes to the two suites and grader; the public test material is unsuitable for a future blind test once used for tuning.
+
+Revision 2 requires a nonempty backend identity string for measured runs, and rejects the shipped mock's model ID or usage marker if returned by the endpoint. This catches an accidental fixture configuration. The backend identity is operator-supplied; use the actual file checksum and build. Each new row is bound to the run fingerprint. On resume the runner checks expected case/arm filenames and identities, and grades the delivered text again with the frozen scorer. Original v1 rows retain their historical schema and can be reproduced with their recorded source revision.

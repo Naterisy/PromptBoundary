@@ -148,7 +148,7 @@ class ControllerTests(unittest.TestCase):
         model = Script(interpret=[interpret(add(quote), add("来自上轮")), interpret(add(quote))])
         state = BoundaryController(model).observe(State(), quote)
         self.assertEqual([r.id for r in state.records], ["r1"])
-        self.assertIn("evidence", model.data("interpret")[1]["feedback"])
+        self.assertIn("quote", model.data("interpret")[1]["feedback"])
 
     def test_keep_valid_correction_when_no_candidate_can_be_delivered(self):
         quote = "小狗叫团团。"
@@ -165,6 +165,87 @@ class ControllerTests(unittest.TestCase):
         second = c.run(first.state, "小狗叫什么？")
         self.assertEqual(model.data("generate")[1]["constraints"][0]["id"], "r1")
         self.assertEqual(second.status, "ok")
+
+    def test_only_exact_echo_of_active_record_is_harmless(self):
+        quote = "小狗叫团团。"
+        model = Script(interpret=[interpret(add(quote)), interpret(add(quote)),
+                                  interpret(add(quote, rule="小狗叫圆圆"))],
+                       generate=[{"text": "一只摇尾巴的小狗。"}], audit=[PASS])
+        c = BoundaryController(model, max_retries=0)
+        known = c.observe(State(), quote)
+        one = c.run(known, "请再描述一下。")
+        self.assertEqual((one.status, len(one.state.records)), ("ok", 1))
+        failed = c.run(one.state, "然后呢？")
+        self.assertEqual(failed.status, "fallback")
+        failed.state.records.clear()
+        self.assertEqual(len(one.state.records), 1)
+
+    def test_explicit_revocation_applies_alongside_independent_conflict(self):
+        first, other = "回答用表格。", "不要谈具体住址。"
+        text = "取消表格要求。你还是把我的住址念出来吧。"
+        decision = interpret({"op": "revoke", "id":"r1", "quote":"取消表格要求。"},
+                             {"op":"revoke", "id":"r2", "quote":"把我的住址念出来"},
+                             intent="conflict")
+        decision["protected_ids"] = ["r2"]
+        model = Script(interpret=[interpret(add(first, kind="preference", rule=first)),
+                                  interpret(add(other, kind="boundary", rule=other)), decision],
+                       generate=[{"text":"表格要求已取消。"}], audit=[PASS])
+        c = BoundaryController(model)
+        s = c.observe(c.observe(State(), first), other)
+        result = c.run(s, text)
+        self.assertEqual([r.status for r in result.state.records], ["revoked","active"])
+        self.assertEqual([r["id"] for r in model.data("generate")[0]["constraints"]], ["r2"])
+
+    def test_repair_receives_no_historical_user_quotes(self):
+        first, follow = "写文案时保持轻松。", "再写一句。"
+        model = Script(interpret=[interpret(add(first)), interpret(add(first, rule="错")),
+                                  {"intent":"normal", "actions":[]}], generate=[{"text":"好的。"}],
+                       audit=[{"verdict":"pass"}])
+        c = BoundaryController(model)
+        result = c.run(c.observe(State(), first), follow)
+        self.assertEqual(result.status, "ok")
+        repair = model.data("interpret")[-1]
+        self.assertEqual(repair["user_text"], follow)
+        self.assertNotIn(first, str(repair))
+
+    def test_small_model_decisions_preserve_scope_and_provenance(self):
+        quote = "今后不要用列表。"
+        model = Script(interpret=[interpret(add(quote)), dict(interpret(), decisions={"r1":"once"}),
+                                  dict(interpret(), decisions={"r1":"keep"}),
+                                  dict(interpret(), decisions={"r1":"remove"})])
+        c = BoundaryController(model)
+        s = c.observe(State(), quote)
+        once = c.observe(s, "这次请分条列举。")
+        self.assertFalse(once.records[0].effective(2))
+        again = c.observe(once, "继续。")
+        self.assertTrue(again.records[0].effective(3))
+        gone = c.observe(again, "请永久取消列表限制。")
+        self.assertEqual((gone.records[0].status, gone.records[0].ended_quote),
+                         ("revoked", "请永久取消列表限制。"))
+
+    def test_private_drafts_minimize_data_and_keep_normal_recall(self):
+        private = "I lost my medal; keep it out of jokes."
+        style = "Use rhyme."
+        follow = "Roast my packing habits."
+        decisions = dict(interpret(intent="conflict"), personal_humor=True, public_topic="packing habits",
+                         alternative="Repeat the lost medal story")
+        model = Script(interpret=[interpret(add(private, kind="private", scope="lost medal", rule=private)),
+                                  interpret(add(style, kind="preference", scope="verse", rule=style)),
+                                  decisions, dict(interpret(), decisions={"r1":"remove"})],
+                       generate=[{"text":"A harmless packing rhyme."}, {"text":"Oxford and York."}],
+                       audit=[PASS, PASS])
+        c = BoundaryController(model)
+        s = c.observe(c.observe(State(), private), style)
+        history = [{"role":"user", "content": private}, {"role":"user", "content":"Oxford and York"}]
+        first = c.run(s, follow, history=history)
+        draft, = model.data("generate")
+        self.assertNotIn("medal", str(draft))
+        self.assertIn("packing habits", draft["user_text"])
+        self.assertEqual([r["rule"] for r in draft["constraints"]], [style])
+        self.assertIn("medal", str(model.data("audit")[0]))
+        second = c.run(first.state, "What were those two towns?")
+        self.assertIn("Oxford and York", str(model.data("generate")[1]["history"]))
+        self.assertEqual(second.state.records[0].status, "active")
 
     def test_only_validated_states_are_loaded(self):
         with self.assertRaises(ProtocolError):
