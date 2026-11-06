@@ -1,0 +1,91 @@
+# PromptBoundary
+
+[中文使用说明](README.zh-CN.md) · [Agent Skill](skills/promptboundary/SKILL.md) · [Evaluation](evaluation/)
+
+When someone says “Stop bringing that up when you tease me” and later says “Roast me again,” the assistant can still tell a joke. PromptBoundary helps it remember which subject the user excluded, recognize a genuine change of mind, and check what the final joke actually says.
+
+Use the **Skill** to guide an agent with access to its conversation. Use the **Python controller** when you own the model call and want an explicit correction record, a pre-answer decision, and a review before returning text. Both operate in the application context. The package runs on Python 3.10+ with the standard library.
+
+## Install and try it
+
+From a terminal with Python and Git:
+
+```sh
+git clone --branch v0.1.0 https://github.com/Naterisy/PromptBoundary.git
+cd PromptBoundary
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install .
+promptboundary demo
+```
+
+The demo runs a scripted mock locally with synthetic dialogue. To install the Skill for your Codex projects, copy its self-contained directory:
+
+```sh
+mkdir -p ~/.agents/skills
+cp -R skills/promptboundary ~/.agents/skills/
+```
+
+Start a new chat and invoke `$promptboundary`, or let the agent select it from its description. For a project-scoped installation use `.agents/skills/` in that project. The Skill works independently of the Python installation. [Codex Skill discovery](https://developers.openai.com/codex/skills/)
+
+## Use a local model
+
+Start a JSON-mode-capable Chat Completions server. For example, with llama.cpp and a GGUF model you have downloaded:
+
+```sh
+llama-server -m /path/to/instruct.gguf --host 127.0.0.1 --port 18764 --alias pb-qwen -c 8192 -np 1
+```
+
+The adapter sends the conversation and intermediate drafts to the endpoint you configure. Use a local endpoint when these should stay on the device. Keep one SDK state per conversation. Review its contents and apply your own retention and access policy before persisting it.
+
+## Python SDK
+
+```python
+from promptboundary import BoundaryController, OpenAICompatible, StageModel, State
+
+backend = OpenAICompatible("http://127.0.0.1:18764/v1", "pb-qwen")
+model = StageModel(backend, generation={"temperature": 0, "max_tokens": 512})
+controller = BoundaryController(model, max_retries=1)
+state = State()
+for request in [
+    "Please stop calling me chief. Suggest a lunch.",
+    "Give me another idea in the same casual tone.",
+]:
+    turn = controller.run(state, request)
+    state = turn.state
+    print(turn.text)
+```
+
+To include the Skill in the application, pass its UTF-8 contents to `StageModel(..., system_prefix=...)`. For an already loaded agent Skill, the host handles the instructions.
+
+## Run the HTTP middleware
+
+Start the proxy, then send the full transcript from a second terminal.
+
+```sh
+promptboundary serve --base-url http://127.0.0.1:18764/v1 --model pb-qwen --skill SKILL.md --port 8080
+```
+
+```sh
+curl -sS http://127.0.0.1:8080/v1/chat/completions \
+  -H 'Content-Type: application/json' \
+  -d '{"model":"pb-qwen","messages":[{"role":"user","content":"Please drop the titles. Just call me Lee."},{"role":"assistant","content":"Sure, Lee."},{"role":"user","content":"Greet me and suggest a podcast topic."}],"temperature":0,"max_tokens":384}'
+```
+
+The loopback proxy replays prior user turns on every request. It implements text-only, non-streaming Chat Completions with one choice. Use `GET /v1/models` to discover the model ID. Each model stage has its own `max_tokens` limit. The response aggregates token usage across replay, drafts, audits and retries when the provider reports it. Inspect the `X-PromptBoundary-Status` header or SDK `turn.status` for a fallback. For a network-free upstream, start `promptboundary serve --mock` and select `promptboundary-mock` in your request.
+
+## How the controller makes a decision
+
+1. An interpreter reads the new utterance, recent dialogue and effective records. It proposes scoped changes with an exact quote from the current user turn. The controller validates the action, record ID, lifetime and source quote before applying it.
+2. The generator sees the current request and the effective constraints. A single-turn exception suspends the corresponding record for that turn. A permanent revocation ends it.
+3. An auditor reads the proposed answer and checks both boundary violations and unnecessary refusals. A rejected answer gets specific revision feedback. The default permits one new draft. If all drafts fail review, the controller returns a fallback status.
+
+The SDK keeps a bounded window of 12 dialogue messages plus application instructions and its record ledger. The ledger can retain exact user quotations, including superseded entries. Give each conversation a separate state and discard it when appropriate. The HTTP example reconstructs state on each request, which adds model calls and can produce different interpretations. Use a single-user trusted machine for the unauthenticated loopback example.
+
+## Development
+
+```sh
+python -m unittest discover -s tests -v
+```
+
+Run the tests from the checkout. Local HTTP integration tests open an ephemeral loopback port. For the experimental protocol, fixed test inputs, scoring rules and individual model replies, see [evaluation](evaluation/). Code, Skill and synthetic fixtures are available under the [MIT license](LICENSE). Model weights are obtained separately under their publisher's terms.

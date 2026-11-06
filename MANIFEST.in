@@ -1,0 +1,6 @@
+include SKILL.md README.zh-CN.md
+recursive-include skills *.md
+recursive-include examples *.py
+recursive-include tests *.py
+recursive-include evaluation *.py *.md *.json *.jsonl *.csv
+global-exclude *.py[cod]
