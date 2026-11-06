@@ -19,3 +19,11 @@ jobs:
       - run: cmp SKILL.md skills/promptboundary/SKILL.md
       - run: python -m unittest discover -s tests -v
       - run: cd "$RUNNER_TEMP" && promptboundary demo
+      - name: Verify published scores and cost aggregates offline
+        run: >-
+          python -m evaluation.verify
+          evaluation/results/v1/model/primary
+          evaluation/results/v2/model/confirmation
+          evaluation/results/v2-regression/model/primary
+          evaluation/results/v3-3b/model/validation3
+          evaluation/results/v3-7b/model/validation3

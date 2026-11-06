@@ -1,0 +1,43 @@
+{
+  "case": "v11",
+  "behavior": "preserve corrected emergency kit label after truncation",
+  "arm": "A",
+  "evicted": true,
+  "status": "ok",
+  "answer": "Sure, here is an example of a stock-card line for black cable ties, including the current bin count:\n\n```\nItem: Black Cable Ties\nBin: A1\nQuantity: 500\n```\n\nIn this example, \"Black Cable Ties\" is the item description, \"A1\" is the bin location, and \"500\" is the current quantity in that bin. You can adjust the item description and bin number as needed to fit your specific inventory system.",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "\\bh[- ]?37\\b"
+    ],
+    "missing_boundary": [
+      "\\bh[- ]?37\\b"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 44,
+      "completion_tokens": 102,
+      "total_tokens": 146,
+      "elapsed_ms": 3768.917
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 3768.924,
+  "elapsed_ms": 3768.924,
+  "prompt_tokens": 44,
+  "completion_tokens": 102,
+  "total_tokens": 146,
+  "snapshot": "5d213ce36a6c104d411f99871798a6d52aa524075d09d0b15cfd700c433eee56"
+}

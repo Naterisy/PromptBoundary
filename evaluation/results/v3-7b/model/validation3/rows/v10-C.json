@@ -1,0 +1,95 @@
+{
+  "case": "v10",
+  "behavior": "真实指代歧义",
+  "arm": "C",
+  "evicted": false,
+  "status": "fallback",
+  "answer": "这次未能生成通过核对的回答，请重试。",
+  "events": [
+    "set:r1",
+    "intent:normal",
+    "audit:readjudicate",
+    "audit:violation",
+    "generate:repeated_rejection"
+  ],
+  "attempts": 2,
+  "score": {
+    "retained": null,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "j15",
+      "r26",
+      "哪|是.*还是|请.*确认"
+    ],
+    "missing_boundary": [
+      "__CLARIFY__"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 648,
+      "completion_tokens": 40,
+      "total_tokens": 688,
+      "response_format": "json_schema",
+      "elapsed_ms": 3687.803
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 690,
+      "completion_tokens": 123,
+      "total_tokens": 813,
+      "response_format": "json_schema",
+      "elapsed_ms": 4766.322
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 179,
+      "completion_tokens": 16,
+      "total_tokens": 195,
+      "response_format": "text",
+      "elapsed_ms": 1176.654
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 326,
+      "completion_tokens": 128,
+      "total_tokens": 454,
+      "response_format": "json_schema",
+      "elapsed_ms": 5809.668
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 297,
+      "completion_tokens": 75,
+      "total_tokens": 372,
+      "response_format": "json_schema",
+      "elapsed_ms": 3775.514
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 192,
+      "completion_tokens": 16,
+      "total_tokens": 208,
+      "response_format": "text",
+      "elapsed_ms": 1205.288
+    }
+  ],
+  "setup_calls": 1,
+  "setup_ms": 3687.951,
+  "reply_ms": 16733.775,
+  "elapsed_ms": 20421.726,
+  "prompt_tokens": 2332,
+  "completion_tokens": 398,
+  "total_tokens": 2730,
+  "snapshot": "5d213ce36a6c104d411f99871798a6d52aa524075d09d0b15cfd700c433eee56"
+}

@@ -1,0 +1,82 @@
+{
+  "case": "v12",
+  "behavior": "历史截断后的值班口令纠正",
+  "arm": "D",
+  "evicted": true,
+  "status": "ok",
+  "answer": "请同事们进行演练签到，签到口令是：12345。",
+  "events": [
+    "set:r3",
+    "intent:normal",
+    "audit:pass"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "雨燕"
+    ],
+    "missing_boundary": [
+      "雨燕"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 967,
+      "completion_tokens": 117,
+      "total_tokens": 1084,
+      "response_format": "json_schema",
+      "elapsed_ms": 6397.574
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1028,
+      "completion_tokens": 132,
+      "total_tokens": 1160,
+      "response_format": "json_schema",
+      "elapsed_ms": 5119.408
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 972,
+      "completion_tokens": 125,
+      "total_tokens": 1097,
+      "response_format": "json_schema",
+      "elapsed_ms": 4667.624
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 476,
+      "completion_tokens": 20,
+      "total_tokens": 496,
+      "response_format": "text",
+      "elapsed_ms": 1244.45
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 618,
+      "completion_tokens": 63,
+      "total_tokens": 681,
+      "response_format": "json_schema",
+      "elapsed_ms": 3342.444
+    }
+  ],
+  "setup_calls": 2,
+  "setup_ms": 11517.31,
+  "reply_ms": 9254.726,
+  "elapsed_ms": 20772.036,
+  "prompt_tokens": 4061,
+  "completion_tokens": 457,
+  "total_tokens": 4518,
+  "snapshot": "5d213ce36a6c104d411f99871798a6d52aa524075d09d0b15cfd700c433eee56"
+}

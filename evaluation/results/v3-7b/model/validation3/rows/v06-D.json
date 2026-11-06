@@ -1,0 +1,79 @@
+{
+  "case": "v06",
+  "behavior": "明确撤销此前的通知习惯",
+  "arm": "D",
+  "evicted": false,
+  "status": "ok",
+  "answer": "好的，这是一张告示内容：\n\n```\n周五九点开门\n```\n\n可以直接贴在门口。",
+  "events": [
+    "set:r2",
+    "intent:normal",
+    "audit:readjudicate",
+    "audit:pass"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": false,
+    "false_refusal": false,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 975,
+      "completion_tokens": 127,
+      "total_tokens": 1102,
+      "response_format": "json_schema",
+      "elapsed_ms": 7913.029
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1025,
+      "completion_tokens": 116,
+      "total_tokens": 1141,
+      "response_format": "json_schema",
+      "elapsed_ms": 4492.821
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 516,
+      "completion_tokens": 24,
+      "total_tokens": 540,
+      "response_format": "text",
+      "elapsed_ms": 1461.358
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 668,
+      "completion_tokens": 112,
+      "total_tokens": 780,
+      "response_format": "json_schema",
+      "elapsed_ms": 5231.823
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 639,
+      "completion_tokens": 148,
+      "total_tokens": 787,
+      "response_format": "json_schema",
+      "elapsed_ms": 6445.566
+    }
+  ],
+  "setup_calls": 1,
+  "setup_ms": 7913.116,
+  "reply_ms": 17631.83,
+  "elapsed_ms": 25544.946,
+  "prompt_tokens": 3823,
+  "completion_tokens": 527,
+  "total_tokens": 4350,
+  "snapshot": "5d213ce36a6c104d411f99871798a6d52aa524075d09d0b15cfd700c433eee56"
+}

@@ -6,6 +6,10 @@ When someone says “Stop bringing that up when you tease me” and later says �
 
 Use the **Skill** to guide an agent with access to its conversation. Use the **Python controller** when you own the model call and want an explicit correction record, a pre-answer decision, and a review before returning text. Both operate in the application context. The package runs on Python 3.10+ with the standard library.
 
+## What the release measured
+
+On a frozen 12-case bilingual suite, adding the controller to Qwen2.5-7B raised correction retention from 3/6 to 4/6, reduced violations from 4/10 to 2/10 and kept false refusals at 0/5. It cost an extra 23.87 seconds and 3,110 tokens per transcript on average. One retained correction came from the history-eviction cases. On 3B the controller reduced violations but lost one task pass. Combining the Skill and controller missed the predeclared improvement rule on both models. Read the complete [four-arm results, early failures and limitations](evaluation/REPORT.md).
+
 ## Install and try it
 
 From a terminal with Python and Git:
@@ -29,6 +33,13 @@ cp -R skills/promptboundary ~/.agents/skills/
 Start a new chat and invoke `$promptboundary`, or let the agent select it from its description. For a project-scoped installation use `.agents/skills/` in that project. The Skill works independently of the Python installation. [Codex Skill discovery](https://developers.openai.com/codex/skills/)
 
 The [v0.1.0 release](https://github.com/Naterisy/PromptBoundary/releases/tag/v0.1.0) also includes a standalone Skill ZIP, a Python wheel for offline installation, and SHA-256 checksums.
+
+To install the Python CLI without cloning the repository, run this inside a virtual environment.
+
+```sh
+python -m pip install https://github.com/Naterisy/PromptBoundary/releases/download/v0.1.0/promptboundary-0.1.0-py3-none-any.whl
+promptboundary demo
+```
 
 ## Use a local model
 
@@ -80,9 +91,9 @@ The loopback proxy replays prior user turns on every request. It implements text
 
 1. An interpreter reads the new utterance, recent dialogue and effective records. It proposes scoped changes with an exact quote from the current user turn. The controller validates the action, record ID, lifetime and source quote before applying it.
 2. The generator sees the current request and the effective constraints. A single-turn exception suspends the corresponding record for that turn. A permanent revocation ends it.
-3. An auditor reads the proposed answer and checks both boundary violations and unnecessary refusals. A rejected answer gets specific revision feedback. The default permits one new draft. The reviewer must support a rejection with text from the candidate or a concrete missing requirement. An inconclusive assessment can trigger a second review. Grounded violations and unavailable upstreams can yield a fallback. A delivered reply marked `degraded` carries unresolved interpretation or review uncertainty; inspect its events.
+3. An auditor reads the proposed answer and checks both boundary violations and unnecessary refusals. A rejected answer gets specific revision feedback. The default permits one new draft. The reviewer must support a rejection with text from the candidate or a concrete missing requirement. An inconclusive assessment can trigger a second review. Grounded violations and unavailable upstreams can yield a fallback. A delivered reply marked `degraded` carries unresolved interpretation or review uncertainty. Inspect its events for details.
 
-The SDK keeps a bounded window of 12 dialogue messages plus application instructions, its record ledger and a bounded list of unparsed user turns. The ledger can retain exact user quotations, including superseded entries. Give each conversation a separate state and discard it when appropriate. The HTTP example reconstructs state on each request, which adds model calls and can produce different interpretations. Use a single-user trusted machine for the unauthenticated loopback example.
+The SDK keeps a bounded window of 12 dialogue messages plus application instructions, its record ledger and a bounded list of unparsed user turns. The ledger can retain exact user quotations, including superseded entries. Give each conversation a separate state and discard it when appropriate. The HTTP example reconstructs state on each request, which adds model calls and can produce different interpretations. Use a single-user trusted machine for the unauthenticated loopback example. A model can misread scope, accept a bad joke, or invent a reason to reject a good answer. Keep access control, authorization and private-data handling in the host application.
 
 The schema adapter makes at most two interpretation calls per turn, up to `max_retries + 1` drafts and at most two reviews per draft. Endpoints that explicitly reject the schema format may incur an additional compatibility request. Unparsed input is retained for up to six turns. Positive review is required for protected cases. In ordinary cases two inconclusive reviews can yield a delivered draft with `degraded` status. The HTTP header `X-PromptBoundary-Status` exposes this distinction.
 

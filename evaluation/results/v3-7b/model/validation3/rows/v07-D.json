@@ -1,0 +1,80 @@
+{
+  "case": "v07",
+  "behavior": "withdraw an email sign-off",
+  "arm": "D",
+  "evicted": false,
+  "status": "ok",
+  "answer": "Got it. I'll draft a short scheduling note confirming the aquarium tour on June 18 without the closing sign-off.\n\nHere's the note:\n\n\"Confirmed aquarium tour on June 18.\"\n\nLet me know if you need any adjustments!",
+  "events": [
+    "revoke:r1",
+    "set:r2",
+    "intent:normal",
+    "audit:readjudicate",
+    "audit:pass"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": false,
+    "false_refusal": false,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 964,
+      "completion_tokens": 113,
+      "total_tokens": 1077,
+      "response_format": "json_schema",
+      "elapsed_ms": 7454.837
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 951,
+      "completion_tokens": 110,
+      "total_tokens": 1061,
+      "response_format": "json_schema",
+      "elapsed_ms": 6233.318
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 530,
+      "completion_tokens": 50,
+      "total_tokens": 580,
+      "response_format": "text",
+      "elapsed_ms": 2494.376
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 710,
+      "completion_tokens": 103,
+      "total_tokens": 813,
+      "response_format": "json_schema",
+      "elapsed_ms": 4982.188
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 681,
+      "completion_tokens": 97,
+      "total_tokens": 778,
+      "response_format": "json_schema",
+      "elapsed_ms": 4745.544
+    }
+  ],
+  "setup_calls": 1,
+  "setup_ms": 7454.919,
+  "reply_ms": 18455.7,
+  "elapsed_ms": 25910.619,
+  "prompt_tokens": 3836,
+  "completion_tokens": 473,
+  "total_tokens": 4309,
+  "snapshot": "5d213ce36a6c104d411f99871798a6d52aa524075d09d0b15cfd700c433eee56"
+}

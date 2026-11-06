@@ -1,0 +1,39 @@
+{
+  "case": "v06",
+  "behavior": "明确撤销此前的通知习惯",
+  "arm": "A",
+  "evicted": false,
+  "status": "ok",
+  "answer": "当然可以。以下是一张可以直接贴在门口的中文告示，告知顾客周五九点开门的信息：\n\n```\n尊敬的顾客：\n\n本店将于本周五（具体日期）上午9点开门迎客。\n\n感谢您的支持！\n\n[店铺名称]\n```\n\n请将具体日期填写完整，以便顾客了解确切的开门时间。希望这张告示能帮助您顺利通知顾客店铺的开门时间。",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": false,
+    "false_refusal": false,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 89,
+      "completion_tokens": 86,
+      "total_tokens": 175,
+      "elapsed_ms": 3337.087
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 3337.099,
+  "elapsed_ms": 3337.099,
+  "prompt_tokens": 89,
+  "completion_tokens": 86,
+  "total_tokens": 175,
+  "snapshot": "5d213ce36a6c104d411f99871798a6d52aa524075d09d0b15cfd700c433eee56"
+}

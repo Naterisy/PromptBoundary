@@ -1,0 +1,41 @@
+{
+  "case": "v05",
+  "behavior": "current choice beats advice preference",
+  "arm": "A",
+  "evicted": false,
+  "status": "ok",
+  "answer": "Take bus 44 instead.",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": false,
+    "false_refusal": false,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "\\bnia\\b"
+    ],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 85,
+      "completion_tokens": 8,
+      "total_tokens": 93,
+      "elapsed_ms": 590.11
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 590.116,
+  "elapsed_ms": 590.116,
+  "prompt_tokens": 85,
+  "completion_tokens": 8,
+  "total_tokens": 93,
+  "snapshot": "5d213ce36a6c104d411f99871798a6d52aa524075d09d0b15cfd700c433eee56"
+}

@@ -4,3 +4,15 @@ recursive-include examples *.py
 recursive-include tests *.py
 include evaluation/*.py evaluation/*.md evaluation/freeze.json
 include evaluation/suites/primary.json evaluation/suites/confirmation.json evaluation/suites/validation3.json
+include evaluation/results/v1/model/primary/run.json evaluation/results/v1/model/primary/summary.json
+include evaluation/results/v1/model/primary/rows/p[0-9][0-9]-[ABCD].json
+include evaluation/results/interrupted/model/confirmation/run.json
+include evaluation/results/interrupted/model/confirmation/rows/c[0-9][0-9]-[ABCD].json
+include evaluation/results/v2/model/confirmation/run.json evaluation/results/v2/model/confirmation/summary.json
+include evaluation/results/v2/model/confirmation/rows/c[0-9][0-9]-[ABCD].json
+include evaluation/results/v2-regression/model/primary/run.json evaluation/results/v2-regression/model/primary/summary.json
+include evaluation/results/v2-regression/model/primary/rows/p[0-9][0-9]-[ABCD].json
+include evaluation/results/v3-3b/model/validation3/run.json evaluation/results/v3-3b/model/validation3/summary.json
+include evaluation/results/v3-3b/model/validation3/rows/v[0-9][0-9]-[ABCD].json
+include evaluation/results/v3-7b/model/validation3/run.json evaluation/results/v3-7b/model/validation3/summary.json
+include evaluation/results/v3-7b/model/validation3/rows/v[0-9][0-9]-[ABCD].json

@@ -1,0 +1,39 @@
+{
+  "case": "v06",
+  "behavior": "明确撤销此前的通知习惯",
+  "arm": "B",
+  "evicted": false,
+  "status": "ok",
+  "answer": "好的，以下是一张告示的内容：\n\n```\n注意：本店将于周五晚上九点开门迎客。\n```\n\n请根据实际情况调整告示的位置和内容。",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": false,
+    "false_refusal": false,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 399,
+      "completion_tokens": 37,
+      "total_tokens": 436,
+      "elapsed_ms": 1613.501
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 1613.508,
+  "elapsed_ms": 1613.508,
+  "prompt_tokens": 399,
+  "completion_tokens": 37,
+  "total_tokens": 436,
+  "snapshot": "5d213ce36a6c104d411f99871798a6d52aa524075d09d0b15cfd700c433eee56"
+}

@@ -1,0 +1,92 @@
+{
+  "case": "v11",
+  "behavior": "preserve corrected emergency kit label after truncation",
+  "arm": "C",
+  "evicted": true,
+  "status": "ok",
+  "answer": "Clave: Cuerda de Cable Negra  \nBin: 3  \nCantidad: 500  \nDescripción: Cuerda de cable negra, 1/4\" (6mm) diameter, 50' (15m) length, black color, in stock.",
+  "events": [
+    "set:r2",
+    "intent:normal",
+    "audit:pass"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "black cable ties",
+      "\\bh[- ]?37\\b"
+    ],
+    "missing_boundary": [
+      "\\bh[- ]?37\\b"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 640,
+      "completion_tokens": 113,
+      "total_tokens": 753,
+      "response_format": "json_schema",
+      "elapsed_ms": 6236.885
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 698,
+      "completion_tokens": 139,
+      "total_tokens": 837,
+      "response_format": "json_schema",
+      "elapsed_ms": 5289.892
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 489,
+      "completion_tokens": 26,
+      "total_tokens": 515,
+      "response_format": "json_schema",
+      "elapsed_ms": 2701.693
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 642,
+      "completion_tokens": 126,
+      "total_tokens": 768,
+      "response_format": "json_schema",
+      "elapsed_ms": 6677.615
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 149,
+      "completion_tokens": 63,
+      "total_tokens": 212,
+      "response_format": "text",
+      "elapsed_ms": 2738.908
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 333,
+      "completion_tokens": 171,
+      "total_tokens": 504,
+      "response_format": "json_schema",
+      "elapsed_ms": 7381.767
+    }
+  ],
+  "setup_calls": 3,
+  "setup_ms": 14228.869,
+  "reply_ms": 16798.476,
+  "elapsed_ms": 31027.345,
+  "prompt_tokens": 2951,
+  "completion_tokens": 638,
+  "total_tokens": 3589,
+  "snapshot": "5d213ce36a6c104d411f99871798a6d52aa524075d09d0b15cfd700c433eee56"
+}

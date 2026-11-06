@@ -1,0 +1,128 @@
+{
+  "case": "v04",
+  "behavior": "明确边界与幽默替代",
+  "arm": "D",
+  "evicted": false,
+  "status": "ok",
+  "answer": "好的，我明白了。这次不会提及你广播站念错校名的事。下面试试拿你家冰箱关门时吱呀一声来开个玩笑吧。\n\n为什么你的冰箱关门时会发出吱呀声呢？是不是装得太满了，冰箱里的门都喘不过气了？",
+  "events": [
+    "interpret:retry",
+    "intent:normal",
+    "audit:readjudicate",
+    "audit:violation",
+    "audit:readjudicate",
+    "audit:pass"
+  ],
+  "attempts": 2,
+  "score": {
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [
+      "广播|播音|校名|读错|念错|报错|话筒|麦克风"
+    ],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 972,
+      "completion_tokens": 40,
+      "total_tokens": 1012,
+      "response_format": "json_schema",
+      "elapsed_ms": 3771.863
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1037,
+      "completion_tokens": 137,
+      "total_tokens": 1174,
+      "response_format": "json_schema",
+      "elapsed_ms": 5333.899
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1076,
+      "completion_tokens": 185,
+      "total_tokens": 1261,
+      "response_format": "json_schema",
+      "elapsed_ms": 7246.109
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 796,
+      "completion_tokens": 41,
+      "total_tokens": 837,
+      "response_format": "json_schema",
+      "elapsed_ms": 3139.822
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 546,
+      "completion_tokens": 53,
+      "total_tokens": 599,
+      "response_format": "text",
+      "elapsed_ms": 2600.344
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 700,
+      "completion_tokens": 107,
+      "total_tokens": 807,
+      "response_format": "json_schema",
+      "elapsed_ms": 5162.25
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 671,
+      "completion_tokens": 106,
+      "total_tokens": 777,
+      "response_format": "json_schema",
+      "elapsed_ms": 5017.762
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 574,
+      "completion_tokens": 61,
+      "total_tokens": 635,
+      "response_format": "text",
+      "elapsed_ms": 3026.543
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 707,
+      "completion_tokens": 82,
+      "total_tokens": 789,
+      "response_format": "json_schema",
+      "elapsed_ms": 4251.629
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 678,
+      "completion_tokens": 121,
+      "total_tokens": 799,
+      "response_format": "json_schema",
+      "elapsed_ms": 5594.171
+    }
+  ],
+  "setup_calls": 2,
+  "setup_ms": 9105.983,
+  "reply_ms": 36039.273,
+  "elapsed_ms": 45145.256,
+  "prompt_tokens": 7757,
+  "completion_tokens": 933,
+  "total_tokens": 8690,
+  "snapshot": "5d213ce36a6c104d411f99871798a6d52aa524075d09d0b15cfd700c433eee56"
+}

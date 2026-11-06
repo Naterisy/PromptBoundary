@@ -1,0 +1,39 @@
+{
+  "case": "v01",
+  "behavior": "correct a recurring invoice instruction",
+  "arm": "B",
+  "evicted": false,
+  "status": "ok",
+  "answer": "The final invoice note for account 680 is as follows: Payment method: WIRE. Account number: 680.",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": true,
+    "violation": false,
+    "false_refusal": null,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 424,
+      "completion_tokens": 29,
+      "total_tokens": 453,
+      "elapsed_ms": 2518.291
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 2518.3,
+  "elapsed_ms": 2518.3,
+  "prompt_tokens": 424,
+  "completion_tokens": 29,
+  "total_tokens": 453,
+  "snapshot": "5d213ce36a6c104d411f99871798a6d52aa524075d09d0b15cfd700c433eee56"
+}

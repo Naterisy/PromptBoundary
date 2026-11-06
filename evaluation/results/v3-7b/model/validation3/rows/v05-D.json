@@ -1,0 +1,91 @@
+{
+  "case": "v05",
+  "behavior": "current choice beats advice preference",
+  "arm": "D",
+  "evicted": false,
+  "status": "degraded",
+  "answer": "Take bus 44.",
+  "events": [
+    "interpret:retry",
+    "interpret:degraded",
+    "intent:normal",
+    "audit:pass",
+    "context:pending"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": false,
+    "false_refusal": false,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "\\bnia\\b"
+    ],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 967,
+      "completion_tokens": 112,
+      "total_tokens": 1079,
+      "response_format": "json_schema",
+      "elapsed_ms": 7413.365
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 782,
+      "completion_tokens": 40,
+      "total_tokens": 822,
+      "response_format": "json_schema",
+      "elapsed_ms": 3126.083
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1020,
+      "completion_tokens": 147,
+      "total_tokens": 1167,
+      "response_format": "json_schema",
+      "elapsed_ms": 7848.218
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 810,
+      "completion_tokens": 99,
+      "total_tokens": 909,
+      "response_format": "json_schema",
+      "elapsed_ms": 5333.204
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 445,
+      "completion_tokens": 7,
+      "total_tokens": 452,
+      "response_format": "text",
+      "elapsed_ms": 658.195
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 580,
+      "completion_tokens": 72,
+      "total_tokens": 652,
+      "response_format": "json_schema",
+      "elapsed_ms": 3494.48
+    }
+  ],
+  "setup_calls": 2,
+  "setup_ms": 10539.591,
+  "reply_ms": 17334.337,
+  "elapsed_ms": 27873.929,
+  "prompt_tokens": 4604,
+  "completion_tokens": 477,
+  "total_tokens": 5081,
+  "snapshot": "5d213ce36a6c104d411f99871798a6d52aa524075d09d0b15cfd700c433eee56"
+}
