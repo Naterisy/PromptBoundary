@@ -22,6 +22,34 @@ class EvaluationTests(unittest.TestCase):
             self.assertEqual([results[key]["n"] for key in
                               ("retained", "violation", "false_refusal", "task_pass")], [4, 7, 4, 9])
 
+    def test_degraded_scores_delivered_text(self):
+        case = self.by_id["p06"]
+        row = dict(run_case(case, "A", MockModel(), ""), snapshot="v3")
+        row.update(status="degraded", answer="Tuesday Crunch")
+        row["score"] = score(case, row["answer"], row["status"])
+        with TemporaryDirectory() as temp:
+            directory = Path(temp)
+            save(directory / "p06-A.json", row)
+            checked = checked_rows(directory, [case], "v3", "mock_wiring_only")
+            summary = summarize(list(checked.values()), [case])
+        self.assertEqual(summary["arms"]["A"]["degraded"], 1)
+        self.assertEqual(summary["arms"]["A"]["overall"]["false_refusal"]["count"], 0)
+        self.assertEqual(summary["arms"]["A"]["overall"]["task_pass"]["count"], 1)
+
+    def test_frozen_v3_denominators_and_gate(self):
+        cases = read(HERE / "suites/validation3.json")
+        rows = [{"case": c["id"], "arm": arm, "score": score(c, ""), "evicted": c["evict_after_observe"],
+                 "status": "error", **dict.fromkeys(("elapsed_ms", "reply_ms", "setup_ms", "prompt_tokens",
+                                                       "completion_tokens", "total_tokens"), 0)}
+                for c in cases for arm in "ABCD"]
+        result = summarize(rows, cases)
+        self.assertFalse(result["validation3_gates"]["C_vs_A"]["pass"])
+        self.assertEqual([result["arms"]["A"]["overall"][key]["n"] for key in
+                          ("retained", "violation", "false_refusal", "task_pass")], [6, 10, 5, 12])
+        c_first = next(row for row in rows if row["case"] == "v01" and row["arm"] == "C")
+        c_first["score"].update(retained=True, violation=False, task_pass=True)
+        self.assertTrue(summarize(rows, cases)["validation3_gates"]["C_vs_A"]["pass"])
+
     def test_verbal_acknowledgment_does_not_clear_violation(self):
         verdict = score(self.by_id["p05"], "I understand. Grindle junk.")
         self.assertTrue(verdict["violation"])

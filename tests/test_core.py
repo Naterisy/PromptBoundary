@@ -93,24 +93,38 @@ class ControllerTests(unittest.TestCase):
         self.assertEqual([r["id"] for r in model.data("audit")[0]["constraints"]], ["r1"])
 
     def test_unanchored_mutation_rolls_back_entire_batch(self):
-        model = Script(interpret=[interpret(add("我的狗"), add("用户没说过这段"))])
+        invalid = interpret(add("我的狗"), add("用户没说过这段"))
+        model = Script(interpret=[invalid, invalid], generate=[{"text":"团团真可爱。"}], audit=[PASS])
         before = State()
         result = BoundaryController(model).run(before, "我的狗")
-        self.assertEqual(result.status, "fallback")
+        self.assertEqual((result.status, result.text), ("degraded", "团团真可爱。"))
+        self.assertIn("interpret:degraded", result.events)
+        self.assertEqual(result.state.pending, [{"turn":1, "text":"我的狗"}])
+        self.assertFalse(result.state.records)
         self.assertEqual(before.to_dict(), State().to_dict())
-        self.assertEqual(result.state.to_dict(), before.to_dict())
-        self.assertFalse(model.data("generate"))
 
-    def test_observe_failure_is_explicit(self):
-        model = Script(interpret=[interpret({"op": "revoke", "id": "r1", "quote": "撤销"})])
+    def test_replay_protocol_failure_preserves_literal_input_through_window(self):
+        bad = interpret({"op":"revoke", "id":"r9", "quote":"撤销"})
+        model = Script(interpret=[bad, bad] + [interpret()] * 6)
+        c = BoundaryController(model)
+        s = c.observe(State(), "撤销")
+        self.assertEqual(s.pending, [{"turn":1, "text":"撤销"}])
+        s = State.from_dict(s.to_dict())
+        for _ in range(6):
+            s = c.observe(s, "继续。")
+        self.assertEqual(s.pending, [])
+        self.assertFalse(s.records)
+
+    def test_replay_outage_does_not_invent_a_success(self):
         with self.assertRaises(ProtocolError):
-            BoundaryController(model).observe(State(), "撤销")
+            BoundaryController(Script(interpret=[TimeoutError()])).observe(State(), "请继续。")
 
     def test_both_audit_failure_modes_return_only_accepted_text(self):
         model = Script(interpret=[interpret()], generate=[
             {"text": "没问题，还是用错名字"}, {"text": "我不能回答"}, {"text": "团团今天好吗？"}],
-            audit=[{"verdict": "violation", "reason": "用纠正后的名字"},
-                   {"verdict": "false_refusal", "reason": "用户只是问候宠物"}, PASS])
+            audit=[{"verdict": "violation", "reason": "用纠正后的名字", "evidence":"用错名字", "missing":"团团"},
+                   {"verdict": "violation", "reason": "用纠正后的名字", "evidence":"用错名字", "missing":"团团"},
+                   {"verdict": "false_refusal", "reason": "用户只是问候宠物", "evidence":"我不能回答"}, PASS])
         result = BoundaryController(model, max_retries=2).run(State(), "向团团问好")
         self.assertEqual((result.status, result.attempts, result.text), ("ok", 3, "团团今天好吗？"))
         requests = model.data("generate")
@@ -124,12 +138,13 @@ class ControllerTests(unittest.TestCase):
                        audit=[{"verdict": "sure"}, RuntimeError("failed")])
         s = State()
         result = BoundaryController(model).run(s, "hello")
-        self.assertEqual((result.status, result.attempts), ("fallback", 2))
+        self.assertEqual((result.status, result.attempts), ("fallback", 1))
         self.assertNotIn("sensitive", result.text)
         self.assertEqual(s.turn, 0)
         self.assertEqual(result.state.turn, 1)
         self.assertEqual(result.state.history, [{"role":"user", "content":"hello"}])
-        self.assertEqual(result.events.count("audit:error"), 2)
+        self.assertIn("audit:readjudicate", result.events)
+        self.assertIn("audit:unavailable", result.events)
 
     def test_no_lexical_repeat_filter_and_trusted_context_preserved(self):
         model = Script(interpret=[interpret(), interpret()],
@@ -154,7 +169,7 @@ class ControllerTests(unittest.TestCase):
         quote = "小狗叫团团。"
         model = Script(interpret=[interpret(add(quote)), interpret()],
                        generate=[{"text": "未通过的草稿"}, {"text":"团团"}],
-                       audit=[{"verdict":"violation", "reason":"纠正名字"}, PASS])
+                       audit=[{"verdict":"violation", "reason":"纠正名字", "missing":"小狗叫团团。"}] * 2 + [PASS])
         c = BoundaryController(model, max_retries=0)
         s = State()
         first = c.run(s, quote)
@@ -170,13 +185,14 @@ class ControllerTests(unittest.TestCase):
         quote = "小狗叫团团。"
         model = Script(interpret=[interpret(add(quote)), interpret(add(quote)),
                                   interpret(add(quote, rule="小狗叫圆圆"))],
-                       generate=[{"text": "一只摇尾巴的小狗。"}], audit=[PASS])
+                       generate=[{"text": "一只摇尾巴的小狗。"}, {"text":"继续摇尾巴。"}], audit=[PASS,PASS])
         c = BoundaryController(model, max_retries=0)
         known = c.observe(State(), quote)
         one = c.run(known, "请再描述一下。")
         self.assertEqual((one.status, len(one.state.records)), ("ok", 1))
         failed = c.run(one.state, "然后呢？")
-        self.assertEqual(failed.status, "fallback")
+        self.assertEqual(failed.status, "degraded")
+        self.assertEqual(failed.state.records[0].rule, "用户的小狗叫团团")
         failed.state.records.clear()
         self.assertEqual(len(one.state.records), 1)
 
@@ -246,6 +262,47 @@ class ControllerTests(unittest.TestCase):
         second = c.run(first.state, "What were those two towns?")
         self.assertIn("Oxford and York", str(model.data("generate")[1]["history"]))
         self.assertEqual(second.state.records[0].status, "active")
+
+    def test_second_review_keeps_same_ordinary_answer_after_unfounded_refusal(self):
+        model = Script(interpret=[interpret()], generate=[{"text":"Quack!"}],
+                       audit=[{"verdict":"false_refusal", "reason":"It refused", "evidence":"I cannot"},
+                              PASS])
+        r = BoundaryController(model).run(State(), "What does a duck say?")
+        self.assertEqual((r.text, r.attempts, r.status), ("Quack!", 1, "ok"))
+        self.assertIn("audit:readjudicate", r.events)
+        self.assertEqual([a["candidate"] for a in model.data("audit")], ["Quack!","Quack!"])
+
+    def test_inconclusive_reviews_degrade_only_unprotected_conversation(self):
+        malformed = {"verdict":"false_refusal", "reason":"fabricated", "missing":"does not exist"}
+        m = Script(interpret=[interpret(), interpret(add("保护此信息", kind="private")), interpret()],
+                   generate=[{"text":"OK"}, {"text":"forbidden draft"}], audit=[malformed] * 4)
+        c = BoundaryController(m, max_retries=0)
+        ordinary = c.run(State(), "Say OK")
+        self.assertEqual((ordinary.text, ordinary.status), ("OK", "degraded"))
+        self.assertIn("audit:inconclusive", ordinary.events)
+        protected = c.run(c.observe(State(), "保护此信息"), "go on")
+        self.assertEqual(protected.status, "fallback")
+        self.assertNotIn("forbidden draft", protected.text)
+
+    def test_grounded_rejection_cannot_be_released_on_identical_regeneration(self):
+        m = Script(interpret=[interpret()], generate=[{"text":"I refuse."}] * 2,
+                   audit=[{"verdict":"false_refusal", "reason":"refused ordinary greeting",
+                           "evidence":"I refuse."}])
+        result = BoundaryController(m).run(State(), "Say hello.")
+        self.assertEqual(result.status, "fallback")
+        self.assertIn("generate:repeated_rejection", result.events)
+
+    def test_private_uncertain_turn_drafts_from_current_request(self):
+        m = Script(interpret=[interpret(add("keep this secret", kind="private")), {}, {}],
+                   generate=[{"text":"four"}], audit=[PASS])
+        c = BoundaryController(m)
+        r = c.run(c.observe(State(), "keep this secret"), "What is two plus two?")
+        draft, = m.data("generate")
+        self.assertEqual(r.status, "degraded")
+        self.assertEqual(draft["user_text"], "What is two plus two?")
+        self.assertNotIn("secret", str(draft))
+        self.assertIn("secret", str(m.data("audit")))
+        self.assertTrue(r.state.records[0].effective(r.state.turn))
 
     def test_only_validated_states_are_loaded(self):
         with self.assertRaises(ProtocolError):

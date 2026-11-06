@@ -1,6 +1,7 @@
 """OpenAI-style Chat Completions transport and the controller's model adapter."""
 from __future__ import annotations
 
+import http.client
 import ipaddress
 import json
 import math
@@ -11,6 +12,34 @@ from urllib import error, parse, request
 
 class UpstreamError(RuntimeError):
     """A sanitized error suitable for display to a client."""
+    unavailable = True
+
+
+class UnsupportedSchema(UpstreamError):
+    """The endpoint explicitly rejects the json_schema response format."""
+
+
+def _rejects_schema(raw):
+    """Recognize a format capability error without surfacing any raw provider text."""
+    try:
+        envelope = json.loads(raw)
+    except (ValueError, UnicodeError):
+        return False
+    detail = envelope.get("error") if isinstance(envelope, dict) else None
+    if not isinstance(detail, dict):
+        return False
+    message = str(detail.get("message", "")).lower()
+    param = detail.get("param")
+    if (param in ("response_format", "response_format.type")
+            and detail.get("code") == "unsupported_value" and "json_schema" in message):
+        return True
+    # An invalid schema body (e.g. an unsupported keyword) is an implementation
+    # error. Only downgrade on rejection of the format itself.
+    clean = " ".join(message.translate(str.maketrans("", "", "'`\":")).split())
+    explicit = ("json_schema is not supported", "json_schema is unsupported", "json_schema not supported",
+                "does not support json_schema", "doesnt support json_schema",
+                "unsupported response_format json_schema", "unsupported response_format.type json_schema")
+    return any(phrase in clean for phrase in explicit)
 
 
 def _loopback(host):
@@ -63,27 +92,80 @@ class OpenAICompatible:
             with self._opener.open(req, timeout=self.timeout) as response:
                 raw = response.read(8 * 1024 * 1024 + 1)
                 usage_source = response.headers.get("X-PromptBoundary-Usage")
-            if len(raw) > 8 * 1024 * 1024:
-                raise UpstreamError("Upstream response exceeds 8 MiB.")
-            result = json.loads(raw)
-            if not isinstance(result, dict) or not result.get("choices"):
-                raise UpstreamError("Upstream returned an invalid chat completion.")
-            if usage_source == "mock_estimate":
-                result["promptboundary_usage_source"] = "mock_estimate"
-            return result
         except error.HTTPError as exc:
-            exc.close()
+            with exc:
+                fmt = params.get("response_format")
+                schema_request = isinstance(fmt, dict) and fmt.get("type") == "json_schema"
+                if schema_request and exc.code in (400, 422, 501) and _rejects_schema(exc.read(8192)):
+                    raise UnsupportedSchema("Endpoint does not support the json_schema format.") from None
             raise UpstreamError(f"Upstream returned HTTP {exc.code}.") from None
-        except (OSError, ValueError) as exc:
-            raise UpstreamError(f"Upstream transport or decoding failed ({type(exc).__name__}).") from None
+        except (OSError, http.client.HTTPException) as exc:
+            raise UpstreamError(f"Upstream transport failed ({type(exc).__name__}).") from None
+        if len(raw) > 8 * 1024 * 1024:
+            raise ValueError("Upstream response exceeds 8 MiB.")
+        try:
+            result = json.loads(raw)
+        except (ValueError, UnicodeError):
+            raise ValueError("Upstream returned invalid JSON.") from None
+        if not isinstance(result, dict) or not result.get("choices"):
+            raise ValueError("Upstream returned an invalid chat completion.")
+        if usage_source == "mock_estimate":
+            result["promptboundary_usage_source"] = "mock_estimate"
+        return result
 
 
 TOKEN_FIELDS = ("prompt_tokens", "completion_tokens", "total_tokens")
 GENERATION_CONTEXT = "PromptBoundary context for this turn\n"
 
 
+def _enum(*values):
+    return {"type": "string", "enum": list(values)}
+
+
+def _object_schema(properties):
+    return {"type": "object", "properties": properties,
+            "required": list(properties), "additionalProperties": False}
+
+
+def _stage_format(stage, data):
+    """Constrain structure at decode time. Core still checks provenance and evidence."""
+    string = {"type": "string"}
+    if stage == "audit":
+        ids = [r["id"] for r in data.get("constraints", []) if "id" in r]
+        fields = {"verdict": _enum("pass", "violation", "false_refusal"), "reason": string,
+                  "rule_id": _enum("", "current", "private_attack", *ids),
+                  "evidence": string, "missing": string}
+    elif stage == "interpret":
+        ids = [row["id"] for row in data.get("records", [])]
+        record = {"kind": _enum("preference", "boundary", "correction"),
+                  "scope": string, "rule": string, "lifetime": _enum("conversation", "turn"),
+                  "quote": string, "private": {"type": "boolean"}}
+        new = _object_schema({"op": _enum("set"), **record})
+        action = new
+        fields = {}
+        if ids:
+            target = _enum(*ids)
+            replace = _object_schema({"op": _enum("replace"), "id": target, **record})
+            edit = _object_schema({"op": _enum("except_once", "revoke"), "id": target, "quote": string})
+            action = {"anyOf": [new, replace, edit]}
+            fields["decisions"] = _object_schema({i: _enum("keep", "once", "remove") for i in ids})
+        fields.update({
+            "actions": {"type": "array", "items": action},
+            "intent": _enum("normal", "conflict", "ambiguous"),
+            "alternative": string,
+            "protected_ids": {"type": "array", "items": _enum(*ids, "private_attack")},
+            "personal_humor": {"type": "boolean"}, "public_topic": string,
+        })
+    else:
+        raise ValueError("Unknown structured model stage.")
+    return {"type": "json_schema", "json_schema": {"name": f"promptboundary_{stage}",
+            "strict": True, "schema": _object_schema(fields)}}
+
+
 def _usage(result):
     usage = result.get("usage") or {}
+    if not isinstance(usage, dict):
+        return dict.fromkeys(TOKEN_FIELDS), "unavailable"
     counts = {k: usage.get(k) for k in TOKEN_FIELDS}
     valid = all(type(v) is int and v >= 0 for v in counts.values())
     if not valid:
@@ -118,6 +200,7 @@ class StageModel:
         self.generation = dict(generation or {})
         self.system_prefix = system_prefix
         self.calls = []
+        self._supports_schema = True
 
     def __call__(self, stage, payload):
         instruction = payload["instructions"]
@@ -151,7 +234,16 @@ class StageModel:
         else:
             messages = [{"role": "system", "content": system},
                         {"role": "user", "content": json.dumps(data, ensure_ascii=False)}]
-            params["response_format"] = {"type": "json_object"}
+            params["response_format"] = _stage_format(stage, data) if self._supports_schema else {"type": "json_object"}
+        try:
+            return self._complete(stage, messages, params)
+        except UnsupportedSchema:
+            if params.get("response_format", {}).get("type") != "json_schema":
+                raise
+            self._supports_schema = False
+            return self._complete(stage, messages, dict(params, response_format={"type": "json_object"}))
+
+    def _complete(self, stage, messages, params):
         counts, source = dict.fromkeys(TOKEN_FIELDS), "unavailable"
         started = time.perf_counter()
         try:
@@ -171,6 +263,7 @@ class StageModel:
             return parsed
         finally:
             self.calls.append(dict(stage=stage, usage_source=source, **counts,
+                                   response_format=params.get("response_format", {}).get("type", "text"),
                                    elapsed_ms=round((time.perf_counter() - started) * 1000, 3)))
 
 
@@ -183,7 +276,8 @@ class MockModel:
     model = "promptboundary-mock"
     def complete(self, messages, **params):
         from .demo import mock_response
-        content = mock_response(messages, params.get("response_format") == {"type": "json_object"})
+        structured = params.get("response_format", {}).get("type") in ("json_object", "json_schema")
+        content = mock_response(messages, structured)
         # The mock has no tokenizer. Count UTF-8 bytes in groups of four for smoke accounting.
         def estimate(text):
             return (len(text.encode("utf-8")) + 3) // 4

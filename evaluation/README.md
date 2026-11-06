@@ -33,3 +33,14 @@ llama-server -m qwen2.5-3b-instruct-q4_k_m.gguf --host 127.0.0.1 \
 Latency includes local HTTP and inference after model warm-up. The server may reuse a prompt prefix within its slot. Hardware, caching, and system load affect wall time. Each published count comes from one greedy completion per case and arm, with the controller's bounded internal retries. Freeze hashes prevent accidental changes to the two suites and grader; the public test material is unsuitable for a future blind test once used for tuning.
 
 Revision 2 requires a nonempty backend identity string for measured runs, and rejects the shipped mock's model ID or usage marker if returned by the endpoint. This catches an accidental fixture configuration. The backend identity is operator-supplied; use the actual file checksum and build. Each new row is bound to the run fingerprint. On resume the runner checks expected case/arm filenames and identities, and grades the delivered text again with the frozen scorer. Original v1 rows retain their historical schema and can be reproduced with their recorded source revision.
+
+For the final two-model test, select `--suite validation3`. Use distinct output roots for the 3B and 7B models and provide each model's recorded identity. The 12-case suite, four arms, separate comparisons, and decision criteria are fixed in [the third protocol](PROTOCOL-v3.md). A complete measured summary contains `validation3_gates` with count differences and the decision for each comparison.
+
+The additional 7B run used the same llama.cpp build, context size, seed and one-slot configuration. Use the first Q4_K_M GGUF shard as the model path, put the second beside it, and replace the server port and alias with `18765` and `pb-qwen-7b`. Check the SHA-256 digest of each shard before serving it. [Pinned 7B model files](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct-GGUF/tree/bb5d59e06d9551d752d08b292a50eb208b07ab1f)
+
+| Shard | SHA-256 |
+|---|---|
+| 00001-of-00002 | `dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db` |
+| 00002-of-00002 | `539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a` |
+
+To recompute published scores, stored token sums, and paired costs without model access, run `python3 -m evaluation.verify evaluation/results/v1/model/primary` from the checkout and substitute any completed run directory. To reproduce the implementation that produced an old run, check out its commit listed in [the report](REPORT.md).

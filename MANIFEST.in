@@ -3,4 +3,4 @@ include skills/promptboundary/SKILL.md
 recursive-include examples *.py
 recursive-include tests *.py
 include evaluation/*.py evaluation/*.md evaluation/freeze.json
-include evaluation/suites/primary.json evaluation/suites/confirmation.json
+include evaluation/suites/primary.json evaluation/suites/confirmation.json evaluation/suites/validation3.json

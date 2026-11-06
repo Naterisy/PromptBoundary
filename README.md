@@ -32,7 +32,7 @@ The [v0.1.0 release](https://github.com/Naterisy/PromptBoundary/releases/tag/v0.
 
 ## Use a local model
 
-Start a JSON-mode-capable Chat Completions server. For example, with llama.cpp and a GGUF model you have downloaded:
+Start a Chat Completions server supporting structured responses. The adapter requests a JSON Schema for interpretation and review. An explicit rejection of schema support triggers a JSON-object compatibility path. Drafts use ordinary text completions. For example, with llama.cpp and a GGUF model you have downloaded:
 
 ```sh
 llama-server -m /path/to/instruct.gguf --host 127.0.0.1 --port 18764 --alias pb-qwen -c 8192 -np 1
@@ -80,9 +80,11 @@ The loopback proxy replays prior user turns on every request. It implements text
 
 1. An interpreter reads the new utterance, recent dialogue and effective records. It proposes scoped changes with an exact quote from the current user turn. The controller validates the action, record ID, lifetime and source quote before applying it.
 2. The generator sees the current request and the effective constraints. A single-turn exception suspends the corresponding record for that turn. A permanent revocation ends it.
-3. An auditor reads the proposed answer and checks both boundary violations and unnecessary refusals. A rejected answer gets specific revision feedback. The default permits one new draft. If all drafts fail review, the controller returns a fallback status.
+3. An auditor reads the proposed answer and checks both boundary violations and unnecessary refusals. A rejected answer gets specific revision feedback. The default permits one new draft. The reviewer must support a rejection with text from the candidate or a concrete missing requirement. An inconclusive assessment can trigger a second review. Grounded violations and unavailable upstreams can yield a fallback. A delivered reply marked `degraded` carries unresolved interpretation or review uncertainty; inspect its events.
 
-The SDK keeps a bounded window of 12 dialogue messages plus application instructions and its record ledger. The ledger can retain exact user quotations, including superseded entries. Give each conversation a separate state and discard it when appropriate. The HTTP example reconstructs state on each request, which adds model calls and can produce different interpretations. Use a single-user trusted machine for the unauthenticated loopback example.
+The SDK keeps a bounded window of 12 dialogue messages plus application instructions, its record ledger and a bounded list of unparsed user turns. The ledger can retain exact user quotations, including superseded entries. Give each conversation a separate state and discard it when appropriate. The HTTP example reconstructs state on each request, which adds model calls and can produce different interpretations. Use a single-user trusted machine for the unauthenticated loopback example.
+
+The schema adapter makes at most two interpretation calls per turn, up to `max_retries + 1` drafts and at most two reviews per draft. Endpoints that explicitly reject the schema format may incur an additional compatibility request. Unparsed input is retained for up to six turns. Positive review is required for protected cases. In ordinary cases two inconclusive reviews can yield a delivered draft with `degraded` status. The HTTP header `X-PromptBoundary-Status` exposes this distinction.
 
 ## Development
 

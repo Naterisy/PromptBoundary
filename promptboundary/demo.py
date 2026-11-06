@@ -26,15 +26,19 @@ def mock_response(messages, structured):
         existing = next((r for r in data["records"] if r["rule"] == RULE), None)
         actions = []
         if user == SET_RULE and not existing:
-            actions = [{"op": "set", "kind": "preference", "rule": RULE,
+            actions = [{"op": "set", "kind": "preference", "rule": RULE, "private": False,
                         "scope": "answer formatting", "lifetime": "conversation", "quote": user}]
         elif existing and user in (SKIP_ONCE, CLEAR_RULE):
             actions = [{"op": "except_once" if user == SKIP_ONCE else "revoke",
                         "id": existing["id"], "quote": user}]
-        result = {"intent": "normal", "actions": actions, "alternative": ""}
+        result = {"intent": "normal", "actions": actions, "alternative": "", "protected_ids": [],
+                  "personal_humor": False, "public_topic": ""}
+        if data["records"]:
+            result["decisions"] = {r["id"]: "keep" for r in data["records"]}
     else:
         bullets = any(r["rule"] == RULE for r in data["constraints"])
         valid = not bullets or data["candidate"].startswith("- ")
-        result = {"verdict": "pass" if valid else "violation",
-                  "reason": "" if valid else "Use a bullet point."}
+        result = {"verdict": "pass" if valid else "violation", "evidence": "",
+                  "rule_id": "" if valid else next(r["id"] for r in data["constraints"] if r["rule"] == RULE),
+                  "reason": "" if valid else "Use a bullet point.", "missing": "" if valid else RULE}
     return json.dumps(result, ensure_ascii=False)

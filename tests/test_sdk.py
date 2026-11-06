@@ -4,6 +4,7 @@ import io
 import json
 import threading
 import unittest
+from unittest.mock import patch
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib import error, request
 
@@ -61,7 +62,13 @@ class SDKTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             stage("audit", {"instructions": "audit protocol", "data": {"candidate": "private"}})
         self.assertEqual(provider.messages[0], msg("system", "frozen\n\naudit protocol"))
-        self.assertEqual(provider.params, {"temperature": 0.1, "response_format": {"type": "json_object"}})
+        self.assertEqual(provider.params["temperature"], 0.1)
+        fmt = provider.params["response_format"]
+        self.assertEqual(fmt["type"], "json_schema")
+        self.assertTrue(fmt["json_schema"]["strict"])
+        schema = fmt["json_schema"]["schema"]
+        self.assertEqual(set(schema["required"]), {"verdict", "reason", "rule_id", "evidence", "missing"})
+        self.assertFalse(schema["additionalProperties"])
         self.assertEqual(stage.calls[0]["total_tokens"], 9)
         self.assertEqual(stage.calls[0]["usage_source"], "provider")
         self.assertNotIn("private", str(stage.calls))
@@ -78,6 +85,72 @@ class SDKTests(unittest.TestCase):
             stage("interpret", {"instructions": "i", "data": {}})
         self.assertIsNone(stage.calls[0]["total_tokens"])
         self.assertEqual(stage.calls[0]["usage_source"], "unavailable")
+
+    def test_interpret_schema_only_allows_existing_targets(self):
+        class Recorder:
+            def complete(self, messages, **params):
+                self.schema = params["response_format"]["json_schema"]["schema"]
+                return completion_object("test", "{}")
+
+        provider = Recorder()
+        stage = StageModel(provider)
+        for ids in ([], ["r2", "r5"]):
+            data = {"records": [{"id": i} for i in ids]}
+            stage("interpret", {"instructions": "classify", "data": data})
+            props = provider.schema["properties"]
+            action = props["actions"]["items"]
+            if not ids:
+                self.assertNotIn("decisions", props)
+                self.assertEqual(action["properties"]["op"]["enum"], ["set"])
+                continue
+            self.assertEqual(props["decisions"]["required"], ids)
+            self.assertEqual(props["protected_ids"]["items"]["enum"], [*ids, "private_attack"])
+            new, replace, edit = action["anyOf"]
+            self.assertNotIn("id", new["properties"])
+            self.assertEqual(replace["properties"]["id"]["enum"], ids)
+            self.assertEqual(set(edit["required"]), {"op", "id", "quote"})
+            self.assertTrue(all(not obj["additionalProperties"] for obj in action["anyOf"]))
+
+    def test_explicit_unsupported_schema_falls_back_once_and_counts_each_attempt(self):
+        url = "http://127.0.0.1/v1"
+        backend = OpenAICompatible(url, "test")
+        stage = StageModel(backend)
+        payload = {"instructions": "review", "data": {}}
+        detail = {"error": {"message": "response_format of type 'json_schema' is not supported by this model.",
+                            "param": "response_format"}}
+        reject = error.HTTPError(url, 400, "", {}, io.BytesIO(json.dumps(detail).encode()))
+
+        def success():
+            value = completion_object("test", "{}", {"prompt_tokens": 5, "completion_tokens": 2, "total_tokens": 7})
+            response = io.BytesIO(json.dumps(value).encode())
+            response.headers = {}
+            return response
+
+        with patch.object(backend._opener, "open", side_effect=[reject, success(), success()]) as http:
+            self.assertEqual(stage("audit", payload), {})
+            self.assertEqual(stage("audit", payload), {})
+        formats = [json.loads(call.args[0].data)["response_format"]["type"] for call in http.call_args_list]
+        self.assertEqual(formats, ["json_schema", "json_object", "json_object"])
+        self.assertEqual([c["response_format"] for c in stage.calls], formats)
+        self.assertEqual([c["total_tokens"] for c in stage.calls], [None, 7, 7])
+        self.assertEqual([c["usage_source"] for c in stage.calls], ["unavailable", "provider", "provider"])
+
+    def test_other_upstream_errors_do_not_downgrade(self):
+        url = "http://127.0.0.1/v1"
+        for code, message in [(400, "json_schema: unsupported keyword bad_field (secret)"),
+                              (500, "json_schema is not supported (secret)"),
+                              (429, "rate limit (secret)")]:
+            backend = OpenAICompatible(url, "test")
+            stage = StageModel(backend)
+            raw = io.BytesIO(json.dumps({"error": {"message": message}}).encode())
+            err = error.HTTPError(url, code, "", {}, raw)
+            with self.subTest(code=code), patch.object(backend._opener, "open", side_effect=err):
+                with self.assertRaises(UpstreamError) as captured:
+                    stage("audit", {"instructions": "review", "data": {}})
+                self.assertTrue(captured.exception.unavailable)
+                self.assertNotIn("secret", str(captured.exception))
+                self.assertEqual(len(stage.calls), 1)
+                self.assertEqual(stage.calls[0]["response_format"], "json_schema")
 
     def test_generation_preserves_roles_and_literal_answer(self):
         class Recorder:
