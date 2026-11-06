@@ -261,7 +261,8 @@ class BoundaryController:
         # to disambiguate “that” without re-extracting old user turns as new evidence.
         summaries = [{k: v for k, v in r.items() if k != "quote"} for r in active]
         last_reply = next((m for m in reversed(state.history) if m["role"] == "assistant"), None)
-        referent = [last_reply] if last_reply else []
+        referent = [m for m in state.history
+                    if m["role"] in {"system", "developer"} or m is last_reply]
         data = {"turn": state.turn, "records": summaries,
                 "history": referent if summaries else state.history, "user_text": user_text}
         # Apply the proposed edits as one transaction. Retry a malformed proposal once
