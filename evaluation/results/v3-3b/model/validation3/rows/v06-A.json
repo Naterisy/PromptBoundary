@@ -1,0 +1,41 @@
+{
+  "case": "v06",
+  "behavior": "明确撤销此前的通知习惯",
+  "arm": "A",
+  "evicted": false,
+  "status": "ok",
+  "answer": "当然可以，以下是一张中文告示的示例，您可以直接贴在门口：\n\n---\n\n**本店郑重声明：**\n\n尊敬的顾客，您好！\n\n我们店将于每周五早上9点准时开门营业，欢迎您的光临！\n\n---\n\n请根据实际情况调整内容，确保信息准确无误。希望这能帮到您！",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": true,
+    "false_refusal": false,
+    "task_pass": false,
+    "forbidden_hits": [
+      "郑重声明"
+    ],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 89,
+      "completion_tokens": 71,
+      "total_tokens": 160,
+      "elapsed_ms": 1370.356
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 1370.365,
+  "elapsed_ms": 1370.365,
+  "prompt_tokens": 89,
+  "completion_tokens": 71,
+  "total_tokens": 160,
+  "snapshot": "66653348f65a2ad7ed4d9aab97d87635013c10249ce3a73d3028d07ea5f524a9"
+}

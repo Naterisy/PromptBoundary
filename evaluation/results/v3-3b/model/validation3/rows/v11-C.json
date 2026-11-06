@@ -1,0 +1,77 @@
+{
+  "case": "v11",
+  "behavior": "preserve corrected emergency kit label after truncation",
+  "arm": "C",
+  "evicted": true,
+  "status": "ok",
+  "answer": "Stock Card Line: Bin H-37 - Black Cable Ties",
+  "events": [
+    "intent:normal",
+    "audit:pass"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": true,
+    "violation": false,
+    "false_refusal": null,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 640,
+      "completion_tokens": 122,
+      "total_tokens": 762,
+      "response_format": "json_schema",
+      "elapsed_ms": 3212.249
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 635,
+      "completion_tokens": 131,
+      "total_tokens": 766,
+      "response_format": "json_schema",
+      "elapsed_ms": 3449.655
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 605,
+      "completion_tokens": 43,
+      "total_tokens": 648,
+      "response_format": "json_schema",
+      "elapsed_ms": 1029.672
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 149,
+      "completion_tokens": 15,
+      "total_tokens": 164,
+      "response_format": "text",
+      "elapsed_ms": 507.313
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 296,
+      "completion_tokens": 57,
+      "total_tokens": 353,
+      "response_format": "json_schema",
+      "elapsed_ms": 1552.855
+    }
+  ],
+  "setup_calls": 2,
+  "setup_ms": 6662.286,
+  "reply_ms": 3090.092,
+  "elapsed_ms": 9752.378,
+  "prompt_tokens": 2325,
+  "completion_tokens": 368,
+  "total_tokens": 2693,
+  "snapshot": "66653348f65a2ad7ed4d9aab97d87635013c10249ce3a73d3028d07ea5f524a9"
+}

@@ -1,0 +1,43 @@
+{
+  "case": "v12",
+  "behavior": "历史截断后的值班口令纠正",
+  "arm": "B",
+  "evicted": true,
+  "status": "ok",
+  "answer": "当然可以，以下是一条演练签到提醒，并附上了口令：\n\n---\n\n亲爱的同事们，\n\n为了确保我们的演练顺利进行，请大家在签到时使用口令“演练启动”来确认身份。演练将于下午2点开始，希望大家准时参加。\n\n谢谢！\n\n[你的名字]\n\n---\n\n请检查是否有需要调整的地方。",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "雨燕"
+    ],
+    "missing_boundary": [
+      "雨燕"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 358,
+      "completion_tokens": 69,
+      "total_tokens": 427,
+      "elapsed_ms": 1758.934
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 1758.944,
+  "elapsed_ms": 1758.944,
+  "prompt_tokens": 358,
+  "completion_tokens": 69,
+  "total_tokens": 427,
+  "snapshot": "66653348f65a2ad7ed4d9aab97d87635013c10249ce3a73d3028d07ea5f524a9"
+}

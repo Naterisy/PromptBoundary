@@ -1,0 +1,39 @@
+{
+  "case": "v05",
+  "behavior": "current choice beats advice preference",
+  "arm": "B",
+  "evicted": false,
+  "status": "ok",
+  "answer": "Send Nia the bus 44.",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": false,
+    "false_refusal": false,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 395,
+      "completion_tokens": 10,
+      "total_tokens": 405,
+      "elapsed_ms": 785.691
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 785.698,
+  "elapsed_ms": 785.698,
+  "prompt_tokens": 395,
+  "completion_tokens": 10,
+  "total_tokens": 405,
+  "snapshot": "66653348f65a2ad7ed4d9aab97d87635013c10249ce3a73d3028d07ea5f524a9"
+}

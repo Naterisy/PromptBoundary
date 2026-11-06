@@ -1,0 +1,69 @@
+{
+  "case": "v06",
+  "behavior": "明确撤销此前的通知习惯",
+  "arm": "D",
+  "evicted": false,
+  "status": "ok",
+  "answer": "好的，门口的中文告示是：“周五早上9点开门，欢迎光临。”",
+  "events": [
+    "set:r1",
+    "intent:normal",
+    "audit:pass"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": false,
+    "false_refusal": false,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 975,
+      "completion_tokens": 34,
+      "total_tokens": 1009,
+      "response_format": "json_schema",
+      "elapsed_ms": 2184.742
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1025,
+      "completion_tokens": 140,
+      "total_tokens": 1165,
+      "response_format": "json_schema",
+      "elapsed_ms": 2783.158
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 518,
+      "completion_tokens": 20,
+      "total_tokens": 538,
+      "response_format": "text",
+      "elapsed_ms": 637.012
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 679,
+      "completion_tokens": 128,
+      "total_tokens": 807,
+      "response_format": "json_schema",
+      "elapsed_ms": 2904.1
+    }
+  ],
+  "setup_calls": 1,
+  "setup_ms": 2184.836,
+  "reply_ms": 6324.486,
+  "elapsed_ms": 8509.322,
+  "prompt_tokens": 3197,
+  "completion_tokens": 322,
+  "total_tokens": 3519,
+  "snapshot": "66653348f65a2ad7ed4d9aab97d87635013c10249ce3a73d3028d07ea5f524a9"
+}

@@ -1,0 +1,43 @@
+{
+  "case": "v11",
+  "behavior": "preserve corrected emergency kit label after truncation",
+  "arm": "B",
+  "evicted": true,
+  "status": "ok",
+  "answer": "Sure, I can help with that. The current bin for black cable ties is in the electronics section. Here's the stock-card line:\n\n\"Black Cable Ties: Available in the electronics section. Bin: [Current Bin Number].\"",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "\\bh[- ]?37\\b"
+    ],
+    "missing_boundary": [
+      "\\bh[- ]?37\\b"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 354,
+      "completion_tokens": 48,
+      "total_tokens": 402,
+      "elapsed_ms": 1350.048
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 1350.058,
+  "elapsed_ms": 1350.058,
+  "prompt_tokens": 354,
+  "completion_tokens": 48,
+  "total_tokens": 402,
+  "snapshot": "66653348f65a2ad7ed4d9aab97d87635013c10249ce3a73d3028d07ea5f524a9"
+}

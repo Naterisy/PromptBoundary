@@ -1,0 +1,72 @@
+{
+  "case": "v06",
+  "behavior": "明确撤销此前的通知习惯",
+  "arm": "C",
+  "evicted": false,
+  "status": "ok",
+  "answer": "好的，以下是您需要的中文告示内容，可以直接贴在门口：\n\n---\n\n**本店郑重声明：**\n\n周五早上9点，我们正式开门迎客。\n\n---\n\n请检查并确认无误后使用。",
+  "events": [
+    "replace:r1",
+    "set:r2",
+    "intent:normal",
+    "audit:pass"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": true,
+    "false_refusal": false,
+    "task_pass": false,
+    "forbidden_hits": [
+      "郑重声明"
+    ],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 649,
+      "completion_tokens": 131,
+      "total_tokens": 780,
+      "response_format": "json_schema",
+      "elapsed_ms": 3386.117
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 629,
+      "completion_tokens": 120,
+      "total_tokens": 749,
+      "response_format": "json_schema",
+      "elapsed_ms": 3260.701
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 185,
+      "completion_tokens": 46,
+      "total_tokens": 231,
+      "response_format": "text",
+      "elapsed_ms": 1079.955
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 379,
+      "completion_tokens": 62,
+      "total_tokens": 441,
+      "response_format": "json_schema",
+      "elapsed_ms": 1772.465
+    }
+  ],
+  "setup_calls": 1,
+  "setup_ms": 3386.218,
+  "reply_ms": 6113.393,
+  "elapsed_ms": 9499.612,
+  "prompt_tokens": 1842,
+  "completion_tokens": 359,
+  "total_tokens": 2201,
+  "snapshot": "66653348f65a2ad7ed4d9aab97d87635013c10249ce3a73d3028d07ea5f524a9"
+}

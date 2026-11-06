@@ -1,0 +1,43 @@
+{
+  "case": "v11",
+  "behavior": "preserve corrected emergency kit label after truncation",
+  "arm": "A",
+  "evicted": true,
+  "status": "ok",
+  "answer": "Certainly! Below is an example of a stock-card line for black cable ties, including the current bin:\n\n**Stock Card Line: Black Cable Ties**\n\n- **Item Code:** BT-001\n- **Description:** Black Cable Ties\n- **Size:** 50mm x 20mm\n- **Quantity per Pack:** 100\n- **Unit Price:** $1.50\n- **Current Bin:** 50\n- **Total Value:** $75.00\n\nThis line includes the item code, description, size, quantity per pack, unit price, current bin count, and the total value of the current bin. Adjust the details as needed for your specific stock management system.",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "\\bh[- ]?37\\b"
+    ],
+    "missing_boundary": [
+      "\\bh[- ]?37\\b"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 44,
+      "completion_tokens": 152,
+      "total_tokens": 196,
+      "elapsed_ms": 2719.488
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 2719.496,
+  "elapsed_ms": 2719.496,
+  "prompt_tokens": 44,
+  "completion_tokens": 152,
+  "total_tokens": 196,
+  "snapshot": "66653348f65a2ad7ed4d9aab97d87635013c10249ce3a73d3028d07ea5f524a9"
+}

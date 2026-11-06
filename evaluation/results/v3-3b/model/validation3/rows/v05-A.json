@@ -1,0 +1,39 @@
+{
+  "case": "v05",
+  "behavior": "current choice beats advice preference",
+  "arm": "A",
+  "evicted": false,
+  "status": "ok",
+  "answer": "Nia, take bus 44.",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": false,
+    "false_refusal": false,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 85,
+      "completion_tokens": 10,
+      "total_tokens": 95,
+      "elapsed_ms": 316.324
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 316.334,
+  "elapsed_ms": 316.334,
+  "prompt_tokens": 85,
+  "completion_tokens": 10,
+  "total_tokens": 95,
+  "snapshot": "66653348f65a2ad7ed4d9aab97d87635013c10249ce3a73d3028d07ea5f524a9"
+}

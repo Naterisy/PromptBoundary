@@ -1,0 +1,81 @@
+{
+  "case": "v05",
+  "behavior": "current choice beats advice preference",
+  "arm": "D",
+  "evicted": false,
+  "status": "ok",
+  "answer": "Nia, please take bus 44 instead of the ferry.",
+  "events": [
+    "interpret:retry",
+    "set:r1",
+    "intent:conflict",
+    "audit:pass"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": true,
+    "false_refusal": false,
+    "task_pass": false,
+    "forbidden_hits": [
+      "\\bferr(?:y|ies)\\b"
+    ],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 967,
+      "completion_tokens": 34,
+      "total_tokens": 1001,
+      "response_format": "json_schema",
+      "elapsed_ms": 2175.451
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1020,
+      "completion_tokens": 133,
+      "total_tokens": 1153,
+      "response_format": "json_schema",
+      "elapsed_ms": 2650.172
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 810,
+      "completion_tokens": 94,
+      "total_tokens": 904,
+      "response_format": "json_schema",
+      "elapsed_ms": 2606.104
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 484,
+      "completion_tokens": 15,
+      "total_tokens": 499,
+      "response_format": "text",
+      "elapsed_ms": 499.502
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 662,
+      "completion_tokens": 192,
+      "total_tokens": 854,
+      "response_format": "json_schema",
+      "elapsed_ms": 4022.796
+    }
+  ],
+  "setup_calls": 1,
+  "setup_ms": 2175.559,
+  "reply_ms": 9778.92,
+  "elapsed_ms": 11954.479,
+  "prompt_tokens": 3943,
+  "completion_tokens": 468,
+  "total_tokens": 4411,
+  "snapshot": "66653348f65a2ad7ed4d9aab97d87635013c10249ce3a73d3028d07ea5f524a9"
+}

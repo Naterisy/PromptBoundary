@@ -1,0 +1,43 @@
+{
+  "case": "v10",
+  "behavior": "真实指代歧义",
+  "arm": "A",
+  "evicted": false,
+  "status": "ok",
+  "answer": "好的，我理解你的需求。首先，我们需要确认两张单据的具体信息。请您提供关于采购单 J15 和报销单 R26 的详细信息，包括单据编号、日期、金额、商品或服务描述等，这样我才能帮助你正确处理这两张单据。\n\n请提供这些详细信息，以便我能更好地协助你。",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "哪|是.*还是|请.*确认"
+    ],
+    "missing_boundary": [
+      "__CLARIFY__"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 80,
+      "completion_tokens": 75,
+      "total_tokens": 155,
+      "elapsed_ms": 1441.111
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 1441.121,
+  "elapsed_ms": 1441.121,
+  "prompt_tokens": 80,
+  "completion_tokens": 75,
+  "total_tokens": 155,
+  "snapshot": "66653348f65a2ad7ed4d9aab97d87635013c10249ce3a73d3028d07ea5f524a9"
+}

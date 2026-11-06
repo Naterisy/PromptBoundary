@@ -1,0 +1,79 @@
+{
+  "case": "v05",
+  "behavior": "current choice beats advice preference",
+  "arm": "C",
+  "evicted": false,
+  "status": "ok",
+  "answer": "Nia, take bus 44.",
+  "events": [
+    "replace:r1",
+    "set:r2",
+    "intent:normal",
+    "audit:pass"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": false,
+    "false_refusal": false,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 641,
+      "completion_tokens": 384,
+      "total_tokens": 1025,
+      "response_format": "json_schema",
+      "elapsed_ms": 7947.524
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 449,
+      "completion_tokens": 81,
+      "total_tokens": 530,
+      "response_format": "json_schema",
+      "elapsed_ms": 2258.736
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 621,
+      "completion_tokens": 126,
+      "total_tokens": 747,
+      "response_format": "json_schema",
+      "elapsed_ms": 3387.574
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 179,
+      "completion_tokens": 10,
+      "total_tokens": 189,
+      "response_format": "text",
+      "elapsed_ms": 456.176
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 331,
+      "completion_tokens": 132,
+      "total_tokens": 463,
+      "response_format": "json_schema",
+      "elapsed_ms": 2931.613
+    }
+  ],
+  "setup_calls": 2,
+  "setup_ms": 10206.431,
+  "reply_ms": 6775.666,
+  "elapsed_ms": 16982.097,
+  "prompt_tokens": 2221,
+  "completion_tokens": 733,
+  "total_tokens": 2954,
+  "snapshot": "66653348f65a2ad7ed4d9aab97d87635013c10249ce3a73d3028d07ea5f524a9"
+}

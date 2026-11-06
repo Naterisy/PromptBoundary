@@ -1,0 +1,90 @@
+{
+  "case": "v11",
+  "behavior": "preserve corrected emergency kit label after truncation",
+  "arm": "D",
+  "evicted": true,
+  "status": "ok",
+  "answer": "Sure, the stock-card line for black cable ties, including the current bin, would be:\n\n\"Black Cable Ties (Current Bin: [Current Bin Number])\"",
+  "events": [
+    "intent:normal",
+    "audit:pass"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "\\bh[- ]?37\\b"
+    ],
+    "missing_boundary": [
+      "\\bh[- ]?37\\b"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 966,
+      "completion_tokens": 34,
+      "total_tokens": 1000,
+      "response_format": "json_schema",
+      "elapsed_ms": 2169.457
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1024,
+      "completion_tokens": 187,
+      "total_tokens": 1211,
+      "response_format": "json_schema",
+      "elapsed_ms": 3515.031
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 815,
+      "completion_tokens": 75,
+      "total_tokens": 890,
+      "response_format": "json_schema",
+      "elapsed_ms": 2286.255
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 920,
+      "completion_tokens": 41,
+      "total_tokens": 961,
+      "response_format": "json_schema",
+      "elapsed_ms": 1782.963
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 468,
+      "completion_tokens": 35,
+      "total_tokens": 503,
+      "response_format": "text",
+      "elapsed_ms": 855.704
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 615,
+      "completion_tokens": 121,
+      "total_tokens": 736,
+      "response_format": "json_schema",
+      "elapsed_ms": 2682.537
+    }
+  ],
+  "setup_calls": 3,
+  "setup_ms": 7971.066,
+  "reply_ms": 5321.434,
+  "elapsed_ms": 13292.501,
+  "prompt_tokens": 4808,
+  "completion_tokens": 493,
+  "total_tokens": 5301,
+  "snapshot": "66653348f65a2ad7ed4d9aab97d87635013c10249ce3a73d3028d07ea5f524a9"
+}
