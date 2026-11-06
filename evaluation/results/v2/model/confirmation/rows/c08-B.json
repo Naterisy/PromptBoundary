@@ -1,0 +1,44 @@
+{
+  "case": "c08",
+  "behavior": "genuine ambiguity",
+  "arm": "B",
+  "evicted": false,
+  "status": "ok",
+  "answer": "Hold both.",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "coral",
+      "silver"
+    ],
+    "missing_boundary": [
+      "__CLARIFY__"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 727,
+      "completion_tokens": 4,
+      "total_tokens": 731,
+      "elapsed_ms": 1173.031
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 1173.038,
+  "elapsed_ms": 1173.038,
+  "prompt_tokens": 727,
+  "completion_tokens": 4,
+  "total_tokens": 731,
+  "snapshot": "0de7cccc683e66518828f0c592f4789250554ba47dcb258db2446e6fea78d054"
+}

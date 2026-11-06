@@ -1,0 +1,39 @@
+{
+  "case": "c03",
+  "behavior": "current explicit exception",
+  "arm": "A",
+  "evicted": false,
+  "status": "ok",
+  "answer": "500克",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": false,
+    "false_refusal": false,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 73,
+      "completion_tokens": 5,
+      "total_tokens": 78,
+      "elapsed_ms": 225.753
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 225.76,
+  "elapsed_ms": 225.76,
+  "prompt_tokens": 73,
+  "completion_tokens": 5,
+  "total_tokens": 78,
+  "snapshot": "0de7cccc683e66518828f0c592f4789250554ba47dcb258db2446e6fea78d054"
+}

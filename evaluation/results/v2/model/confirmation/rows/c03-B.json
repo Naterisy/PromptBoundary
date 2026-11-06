@@ -1,0 +1,41 @@
+{
+  "case": "c03",
+  "behavior": "current explicit exception",
+  "arm": "B",
+  "evicted": false,
+  "status": "ok",
+  "answer": "明白了。半千克是 **500 克**。",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": null,
+    "violation": true,
+    "false_refusal": false,
+    "task_pass": false,
+    "forbidden_hits": [
+      "千克|公斤|kg"
+    ],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 710,
+      "completion_tokens": 14,
+      "total_tokens": 724,
+      "elapsed_ms": 1340.455
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 1340.465,
+  "elapsed_ms": 1340.465,
+  "prompt_tokens": 710,
+  "completion_tokens": 14,
+  "total_tokens": 724,
+  "snapshot": "0de7cccc683e66518828f0c592f4789250554ba47dcb258db2446e6fea78d054"
+}

@@ -1,0 +1,59 @@
+{
+  "case": "c01",
+  "behavior": "corrected direction",
+  "arm": "C",
+  "evicted": false,
+  "status": "error",
+  "answer": "",
+  "events": [
+    "runtime:ProtocolError"
+  ],
+  "attempts": 0,
+  "score": {
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "right"
+    ],
+    "missing_boundary": [
+      "right"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 632,
+      "completion_tokens": 85,
+      "total_tokens": 717,
+      "elapsed_ms": 2438.304
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 609,
+      "completion_tokens": 82,
+      "total_tokens": 691,
+      "elapsed_ms": 2345.688
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 503,
+      "completion_tokens": 41,
+      "total_tokens": 544,
+      "elapsed_ms": 1466.324
+    }
+  ],
+  "setup_calls": 3,
+  "setup_ms": 6250.677,
+  "reply_ms": 0.008,
+  "elapsed_ms": 6250.685,
+  "prompt_tokens": 1744,
+  "completion_tokens": 208,
+  "total_tokens": 1952,
+  "snapshot": "14e513a0e90687a7a363a27715252d7fdc92f6cdbefe0cc4a5c270df9c767505"
+}

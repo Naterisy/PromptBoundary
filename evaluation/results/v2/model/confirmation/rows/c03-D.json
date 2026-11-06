@@ -1,0 +1,87 @@
+{
+  "case": "c03",
+  "behavior": "current explicit exception",
+  "arm": "D",
+  "evicted": false,
+  "status": "fallback",
+  "answer": "这次未能生成通过核对的回答，请重试。",
+  "events": [
+    "replace:r1",
+    "set:r2",
+    "intent:normal",
+    "audit:violation",
+    "audit:false_refusal"
+  ],
+  "attempts": 2,
+  "score": {
+    "retained": null,
+    "violation": true,
+    "false_refusal": true,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "(?:500|五百)\\s*克"
+    ],
+    "missing_boundary": [
+      "克"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1284,
+      "completion_tokens": 64,
+      "total_tokens": 1348,
+      "elapsed_ms": 3132.321
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1260,
+      "completion_tokens": 99,
+      "total_tokens": 1359,
+      "elapsed_ms": 2697.332
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 990,
+      "completion_tokens": 5,
+      "total_tokens": 995,
+      "elapsed_ms": 626.377
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 1059,
+      "completion_tokens": 60,
+      "total_tokens": 1119,
+      "elapsed_ms": 1678.272
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 1035,
+      "completion_tokens": 5,
+      "total_tokens": 1040,
+      "elapsed_ms": 675.867
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 1059,
+      "completion_tokens": 60,
+      "total_tokens": 1119,
+      "elapsed_ms": 1706.812
+    }
+  ],
+  "setup_calls": 1,
+  "setup_ms": 3132.41,
+  "reply_ms": 7385.007,
+  "elapsed_ms": 10517.416,
+  "prompt_tokens": 6687,
+  "completion_tokens": 293,
+  "total_tokens": 6980,
+  "snapshot": "0de7cccc683e66518828f0c592f4789250554ba47dcb258db2446e6fea78d054"
+}

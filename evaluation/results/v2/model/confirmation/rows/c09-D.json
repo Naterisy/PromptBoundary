@@ -1,0 +1,90 @@
+{
+  "case": "c09",
+  "behavior": "correction beyond visible window",
+  "arm": "D",
+  "evicted": true,
+  "status": "ok",
+  "answer": "Thursday",
+  "events": [
+    "set:r2",
+    "intent:normal",
+    "audit:violation",
+    "audit:pass"
+  ],
+  "attempts": 2,
+  "score": {
+    "retained": true,
+    "violation": false,
+    "false_refusal": null,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1282,
+      "completion_tokens": 20,
+      "total_tokens": 1302,
+      "elapsed_ms": 2310.884
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1329,
+      "completion_tokens": 92,
+      "total_tokens": 1421,
+      "elapsed_ms": 1787.928
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1241,
+      "completion_tokens": 71,
+      "total_tokens": 1312,
+      "elapsed_ms": 2200.336
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 980,
+      "completion_tokens": 2,
+      "total_tokens": 982,
+      "elapsed_ms": 580.953
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 1076,
+      "completion_tokens": 72,
+      "total_tokens": 1148,
+      "elapsed_ms": 1944.538
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 1037,
+      "completion_tokens": 2,
+      "total_tokens": 1039,
+      "elapsed_ms": 626.625
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 1076,
+      "completion_tokens": 69,
+      "total_tokens": 1145,
+      "elapsed_ms": 1898.237
+    }
+  ],
+  "setup_calls": 2,
+  "setup_ms": 4099.05,
+  "reply_ms": 7251.043,
+  "elapsed_ms": 11350.093,
+  "prompt_tokens": 8021,
+  "completion_tokens": 328,
+  "total_tokens": 8349,
+  "snapshot": "0de7cccc683e66518828f0c592f4789250554ba47dcb258db2446e6fea78d054"
+}

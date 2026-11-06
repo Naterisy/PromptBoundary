@@ -1,0 +1,39 @@
+{
+  "case": "c01",
+  "behavior": "corrected direction",
+  "arm": "B",
+  "evicted": false,
+  "status": "ok",
+  "answer": "Turn right at the statue.",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": true,
+    "violation": false,
+    "false_refusal": null,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 745,
+      "completion_tokens": 7,
+      "total_tokens": 752,
+      "elapsed_ms": 1286.454
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 1286.462,
+  "elapsed_ms": 1286.462,
+  "prompt_tokens": 745,
+  "completion_tokens": 7,
+  "total_tokens": 752,
+  "snapshot": "14e513a0e90687a7a363a27715252d7fdc92f6cdbefe0cc4a5c270df9c767505"
+}

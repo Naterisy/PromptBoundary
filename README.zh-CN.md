@@ -26,6 +26,8 @@ cp -R skills/promptboundary ~/.agents/skills/
 
 在新对话里使用 `$promptboundary`，或让 Agent 根据描述选择它。只想在某个项目中使用时，把目录复制到该项目的 `.agents/skills/`。Skill 可以脱离 Python 包独立安装。[Codex Skill 文档](https://developers.openai.com/codex/skills/)
 
+[v0.1.0 发布页](https://github.com/Naterisy/PromptBoundary/releases/tag/v0.1.0) 同时提供独立 Skill ZIP、可离线安装的 Python wheel 及 SHA-256 校验值。
+
 ## 接入真实本地模型
 
 启动支持 JSON 模式的 Chat Completions 服务。例如安装 llama.cpp 并自行下载 GGUF 模型后执行：

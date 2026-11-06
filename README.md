@@ -28,6 +28,8 @@ cp -R skills/promptboundary ~/.agents/skills/
 
 Start a new chat and invoke `$promptboundary`, or let the agent select it from its description. For a project-scoped installation use `.agents/skills/` in that project. The Skill works independently of the Python installation. [Codex Skill discovery](https://developers.openai.com/codex/skills/)
 
+The [v0.1.0 release](https://github.com/Naterisy/PromptBoundary/releases/tag/v0.1.0) also includes a standalone Skill ZIP, a Python wheel for offline installation, and SHA-256 checksums.
+
 ## Use a local model
 
 Start a JSON-mode-capable Chat Completions server. For example, with llama.cpp and a GGUF model you have downloaded:

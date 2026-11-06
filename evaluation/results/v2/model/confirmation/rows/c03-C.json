@@ -1,0 +1,85 @@
+{
+  "case": "c03",
+  "behavior": "current explicit exception",
+  "arm": "C",
+  "evicted": false,
+  "status": "ok",
+  "answer": "300克",
+  "events": [
+    "replace:r1",
+    "set:r2",
+    "intent:normal",
+    "audit:false_refusal",
+    "audit:pass"
+  ],
+  "attempts": 2,
+  "score": {
+    "retained": null,
+    "violation": false,
+    "false_refusal": false,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "(?:500|五百)\\s*克"
+    ],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 631,
+      "completion_tokens": 84,
+      "total_tokens": 715,
+      "elapsed_ms": 2426.523
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 607,
+      "completion_tokens": 84,
+      "total_tokens": 691,
+      "elapsed_ms": 2384.742
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 337,
+      "completion_tokens": 5,
+      "total_tokens": 342,
+      "elapsed_ms": 606.221
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 416,
+      "completion_tokens": 47,
+      "total_tokens": 463,
+      "elapsed_ms": 1461.008
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 373,
+      "completion_tokens": 5,
+      "total_tokens": 378,
+      "elapsed_ms": 655.32
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 416,
+      "completion_tokens": 72,
+      "total_tokens": 488,
+      "elapsed_ms": 1865.609
+    }
+  ],
+  "setup_calls": 1,
+  "setup_ms": 2426.622,
+  "reply_ms": 6973.227,
+  "elapsed_ms": 9399.849,
+  "prompt_tokens": 2780,
+  "completion_tokens": 297,
+  "total_tokens": 3077,
+  "snapshot": "0de7cccc683e66518828f0c592f4789250554ba47dcb258db2446e6fea78d054"
+}

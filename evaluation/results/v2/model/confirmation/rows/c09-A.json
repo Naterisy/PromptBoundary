@@ -1,0 +1,43 @@
+{
+  "case": "c09",
+  "behavior": "correction beyond visible window",
+  "arm": "A",
+  "evicted": true,
+  "status": "ok",
+  "answer": "Friday",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "thursday"
+    ],
+    "missing_boundary": [
+      "thursday"
+    ]
+  },
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 43,
+      "completion_tokens": 2,
+      "total_tokens": 45,
+      "elapsed_ms": 129.278
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 129.286,
+  "elapsed_ms": 129.286,
+  "prompt_tokens": 43,
+  "completion_tokens": 2,
+  "total_tokens": 45,
+  "snapshot": "0de7cccc683e66518828f0c592f4789250554ba47dcb258db2446e6fea78d054"
+}

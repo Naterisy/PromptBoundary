@@ -1,0 +1,58 @@
+{
+  "case": "c04",
+  "behavior": "explicit revocation",
+  "arm": "D",
+  "evicted": false,
+  "status": "fallback",
+  "answer": "I couldn’t verify the conversation constraints this time. Please try again.",
+  "events": [
+    "interpret:retry",
+    "interpret:error"
+  ],
+  "attempts": 0,
+  "score": {
+    "retained": null,
+    "violation": false,
+    "false_refusal": true,
+    "task_pass": false,
+    "forbidden_hits": [],
+    "missing_required": [
+      "mug"
+    ],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1288,
+      "completion_tokens": 20,
+      "total_tokens": 1308,
+      "elapsed_ms": 1364.537
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1335,
+      "completion_tokens": 131,
+      "total_tokens": 1466,
+      "elapsed_ms": 2454.644
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 1118,
+      "completion_tokens": 35,
+      "total_tokens": 1153,
+      "elapsed_ms": 1365.993
+    }
+  ],
+  "setup_calls": 1,
+  "setup_ms": 1364.648,
+  "reply_ms": 3820.84,
+  "elapsed_ms": 5185.488,
+  "prompt_tokens": 3741,
+  "completion_tokens": 186,
+  "total_tokens": 3927,
+  "snapshot": "0de7cccc683e66518828f0c592f4789250554ba47dcb258db2446e6fea78d054"
+}
