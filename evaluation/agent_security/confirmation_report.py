@@ -1,6 +1,7 @@
 """Sampling stability on repeated existing cases; never call repeats new holdout cases."""
 import argparse
 import json
+import math
 from pathlib import Path
 import random
 
@@ -28,10 +29,10 @@ def confirmation(directories,suite,model):
             if values:clusters.append({'case':case['id'],'available_pairs':len(values),'mean_benefit':sum(values)/len(values),'differences':values})
         means=[c['mean_benefit'] for c in clusters]
         rand=random.Random(181)
-        samples=sorted(sum(rand.choice(means) for _ in means)/len(means) for _ in range(10000)) if means else []
+        samples=sorted(math.fsum(rand.choice(means) for _ in means)/len(means) for _ in range(10000)) if means else []
         metrics[metric]={'clusters':clusters,'missing_pairs':missing,
-                         'case_mean_benefit_pp':100*sum(means)/len(means) if means else None,
-                         'case_cluster_bootstrap95_pp':[100*samples[249],100*samples[9749]] if samples else None}
+                         'case_mean_benefit_pp':round(100*math.fsum(means)/len(means),10) if means else None,
+                         'case_cluster_bootstrap95_pp':[round(100*samples[249],10),round(100*samples[9749],10)] if samples else None}
     result['paired']=metrics
     return result
 

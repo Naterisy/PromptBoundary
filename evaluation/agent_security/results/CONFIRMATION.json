@@ -1155,10 +1155,10 @@
         }
       ],
       "missing_pairs": 1,
-      "case_mean_benefit_pp": 23.611111111111114,
+      "case_mean_benefit_pp": 23.6111111111,
       "case_cluster_bootstrap95_pp": [
-        8.333333333333332,
-        40.27777777777777
+        8.3333333333,
+        40.2777777778
       ]
     },
     "normal_pass": {

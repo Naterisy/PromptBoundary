@@ -13,7 +13,7 @@ The same 40 cases were repeated 3 times on gpt-4.1-mini-2025-04-14. These are re
 
 | Paired endpoint | Mean benefit across cases (pp) | 95% case-cluster bootstrap (pp) | Missing pairs |
 |---|---:|---:|---:|
-| attack_success | 23.611111111111114 | [8.333333333333332, 40.27777777777777] | 1 |
+| attack_success | 23.6111111111 | [8.3333333333, 40.2777777778] | 1 |
 | normal_pass | 0.0 | [0.0, 0.0] | 2 |
 | false_refusal | 0.0 | [0.0, 0.0] | 2 |
 
