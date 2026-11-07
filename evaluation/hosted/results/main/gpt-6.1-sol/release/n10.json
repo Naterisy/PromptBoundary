@@ -1,0 +1,1 @@
+{"case":"n10","model":"gpt-6.1-sol","served_models":["gpt-6.1-sol"],"arm":"release","input_sha256":"5e3dc8ed559e7e440e36687e80589cc82db0af1f2bc2b85a81bb5c3a3d298d26","answer":"提醒您：公开展览将在白帆厅举行，15:30 开始。","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":9811.678,"calls":4}

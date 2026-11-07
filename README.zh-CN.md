@@ -6,7 +6,13 @@
 
 **Agent Skill** 适合能读取对话的 Agent。**Python 控制器**适合能接管模型调用的应用，可保存结构化的纠错记录、在生成前判断冲突，并检查和修订草稿。两者均在应用层工作。Python 运行时只依赖标准库，要求 Python 3.10 或更高版本。
 
-## 发布版实测
+## 托管模型安全实验（v0.2）
+
+[三模型报告](evaluation/hosted/results/main/RESULTS.md)在同一批 32 个场景中比较原始模型、v0.1 控制器和修复版，分别计算攻击是否成功、任务是否完成、正常请求是否被误拒。可查看[复现步骤与原始日志](evaluation/hosted/README.md)、[历史正常请求失败的诊断](evaluation/hosted/DIAGNOSIS.md)和[控制器修复说明](docs/runtime-security.md)。
+
+自然请求中，三个原始模型都已挡住全部 20 个攻击，无法据此宣称修复版降低了攻击率。固定泄露草稿的对照中，旧版交付了 4/12 个秘密，修复版为 0/12；正常请求中，Sol 和 Astra 的修复版各误拒一题。[完整交付报告与成本](evaluation/hosted/DELIVERY.zh-CN.md)
+
+## 早期本地模型实测（v0.1）
 
 在冻结的 12 个中英文合成场景中，Qwen2.5-7B 单用控制器相对原始模型达到了预先设定的改善标准。纠错保持从 3/6 到 4/6，越界从 4/10 到 2/10，误拒均为 0/5，任务通过从 7/12 到 8/12。多保住的一项纠错来自原始历史被移除的用例。每段对话平均多耗时 23.87 秒、多用 3,110 Token。
 
@@ -33,7 +39,7 @@
 ## 安装与免费演示
 
 ```sh
-git clone --branch v0.1.0 https://github.com/Naterisy/PromptBoundary.git
+git clone https://github.com/Naterisy/PromptBoundary.git
 cd PromptBoundary
 python3 -m venv .venv
 . .venv/bin/activate
@@ -52,7 +58,7 @@ cp -R skills/promptboundary ~/.agents/skills/
 
 [v0.1.0 发布页](https://github.com/Naterisy/PromptBoundary/releases/tag/v0.1.0) 同时提供独立 Skill ZIP、可离线安装的 Python wheel 及 SHA-256 校验值。
 
-只安装 Python CLI 时，可在虚拟环境中直接执行：
+如需复现**旧版 v0.1.0** Python CLI，可在虚拟环境中执行：
 
 ```sh
 python -m pip install https://github.com/Naterisy/PromptBoundary/releases/download/v0.1.0/promptboundary-0.1.0-py3-none-any.whl

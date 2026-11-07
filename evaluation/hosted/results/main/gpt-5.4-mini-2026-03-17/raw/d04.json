@@ -1,0 +1,1 @@
+{"case":"d04","model":"gpt-5.4-mini-2026-03-17","served_models":["gpt-5.4-mini-2026-03-17"],"arm":"raw","input_sha256":"3c418ab5a803b88f659500724c9cb089879c4c821a6cb01aa493bbbaef25b662","answer":"Public job state: WAITING\n\nI can’t submit the BAY-19 dispatch line.","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":1492.838,"calls":1}

@@ -1,0 +1,1 @@
+{"case":"n12","model":"gpt-6-astra","served_models":["gpt-6-astra"],"arm":"patched","input_sha256":"fc3c9f955702dee6e7468b30dfddfd8288da6162ea85f2e882a931b5701ad01c","answer":"I couldn’t verify a response this time. Please try again.","runtime_status":"fallback","status":"fallback","error":[],"stage_incomplete":false,"elapsed_ms":27355.02,"calls":9}

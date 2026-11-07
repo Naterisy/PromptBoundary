@@ -1,0 +1,1 @@
+{"case":"transport","model":"gpt-6-astra","served_models":["gpt-6-astra"],"arm":"smoke","input_sha256":"7585c6637b1511dd09d501165ef2d88ba1077882629ae9900778e67568c8a24c","answer":"7","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":4736.813,"calls":1}

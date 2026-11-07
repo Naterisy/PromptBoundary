@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
@@ -27,3 +28,11 @@ jobs:
           evaluation/results/v2-regression/model/primary
           evaluation/results/v3-3b/model/validation3
           evaluation/results/v3-7b/model/validation3
+      - name: Rebuild paired hosted scores and cost from the committed provider journals
+        run: python -m evaluation.hosted.report --check
+      - name: Verify fixed-draft controls and published journal privacy
+        run: |
+          python -m evaluation.hosted.stress.report --check
+          python -m evaluation.hosted.public_logs evaluation/hosted --check
+          python -m evaluation.hosted.check_runtime > "$RUNNER_TEMP/runtime-faults.json"
+          cmp "$RUNNER_TEMP/runtime-faults.json" evaluation/hosted/runtime_faults.json

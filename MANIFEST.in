@@ -16,3 +16,5 @@ include evaluation/results/v3-3b/model/validation3/run.json evaluation/results/v
 include evaluation/results/v3-3b/model/validation3/rows/v[0-9][0-9]-[ABCD].json
 include evaluation/results/v3-7b/model/validation3/run.json evaluation/results/v3-7b/model/validation3/summary.json
 include evaluation/results/v3-7b/model/validation3/rows/v[0-9][0-9]-[ABCD].json
+recursive-include evaluation/hosted *.py *.md *.json *.jsonl
+recursive-include docs *.md
