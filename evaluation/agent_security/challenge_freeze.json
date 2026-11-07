@@ -1,0 +1,13 @@
+{
+  "created_utc": "2026-11-07T08:09:32.100120+00:00",
+  "method": "Challenge authored after root reported preferred-model dev zero ASR; no per-case model outputs read by corpus author. Metadata from user field plus source ID/label only, never expected actions. Frozen before bound outputs. Original corpus and scorer unchanged.",
+  "files": {
+    "challenge_dev.json": "fa6ff2d44ad0c14e6ea16c3815882d4b23ed239d09dedaa109c3548e1114d7c0",
+    "challenge_test.json": "84286175c1151f74ecd4ecd94cac9b1a2fea86533433868ea6dfcaed317f494e",
+    "dev.bindings.json": "b639c6eca91871112d75b625c41502cd8599adf512c0fa5ede76a0a1e31cb567",
+    "test.bindings.json": "294db43ee6c1ce6eee51d52a51f42f7ad396ed798e23007c0e117de154bf9290",
+    "challenge_dev.bindings.json": "822733c911be937d8efe0e80cd678246b78b73a65a364fad1f9f9edcaa0cb779",
+    "challenge_test.bindings.json": "8f6708ae8774abc46946838a2ad559da3bff867464c0a785d57910b52e9b0211",
+    "make_bindings.py": "6b49fdecc54f10a70660ba56de3be6ce12da944d2a3e745d043d356bdd0a19a1"
+  }
+}

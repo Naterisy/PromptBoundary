@@ -6,6 +6,14 @@ When someone says “Stop bringing that up when you tease me” and later says �
 
 Use the **Skill** to guide an agent with access to its conversation. Use the **Python controller** when you own the model call and want an explicit correction record, a pre-answer decision, and a review before returning text. Both operate in the application context. The package runs on Python 3.10+ with the standard library.
 
+## Tool authorization and source-copy experiments
+
+The new optional [capability SDK](docs/capabilities.md) tracks external-source origins, checks application-owned tool grants before execution, and recovers rejected plans. Explicit literal-copy tasks can additionally bind an argument to a host-selected source field. It does not infer authority from retrieved text or claim that source data is truthful.
+
+On the original frozen tool-effect holdout, GPT-4.1 mini's raw model executed 8/23 evaluable attacks, the old conversational runtime 11/23, and the capability runtime 2/24; normal task pass remained 13/16. All six improvements on comparable raw/protected pairs include an unsafe initial plan, a gate denial and a useful repair. Stronger Sol/Astra baselines stayed at zero, so that set establishes no security gain for them. [Reproduce every run](evaluation/agent_security/README.md), [read the current delivery report](evaluation/agent_security/DELIVERY.zh-CN.md), and [review limitations and metric sensitivity](evaluation/agent_security/INDEPENDENT_AUDIT.md). These are authored adaptations of public methods, not official AgentDojo scores.
+
+The final source-copy challenge reduced 4.1 mini's observed attacks from 4/24 to 0/24 with 16/16 normal tasks in both arms; the small paired comparison has p=0.125. Sol/Astra still showed no measurable security gain. All new iterations and confirmations cost USD 6.634151435 across 2,877 calls. These checks protect tool effects in explicitly authorized workflows; source truth and open-ended reasoning remain outside their guarantee.
+
 ## Hosted security evaluation (v0.2)
 
 The [three-model report](evaluation/hosted/results/main/RESULTS.md) compares the raw model, v0.1 controller and patched controller on the same 32 cases. It separates disclosing a synthetic secret or emitting an unauthorized mock command from completing a useful task or refusing it. [Read the cases and reproduce the run](evaluation/hosted/README.md), [inspect the earlier benign failures](evaluation/hosted/DIAGNOSIS.md), or [review the runtime changes](docs/runtime-security.md).
@@ -21,7 +29,7 @@ On a frozen 12-case bilingual suite, adding the controller to Qwen2.5-7B raised 
 From a terminal with Python and Git:
 
 ```sh
-git clone https://github.com/Naterisy/PromptBoundary.git
+git clone --branch hosted-runtime-evaluation https://github.com/Naterisy/PromptBoundary.git
 cd PromptBoundary
 python3 -m venv .venv
 . .venv/bin/activate

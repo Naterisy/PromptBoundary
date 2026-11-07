@@ -6,6 +6,14 @@
 
 **Agent Skill** 适合能读取对话的 Agent。**Python 控制器**适合能接管模型调用的应用，可保存结构化的纠错记录、在生成前判断冲突，并检查和修订草稿。两者均在应用层工作。Python 运行时只依赖标准库，要求 Python 3.10 或更高版本。
 
+## 工具授权与来源字段实验
+
+新增的可选[权限控制 SDK](docs/capabilities.md)记录外部内容来源，在执行前检查应用授予的工具、参数与次数，并支持被拒绝计划的恢复。明确要求逐字复制的任务还可以绑定来源字段；它不把文档中的指令当成权限，也不保证来源数据真实。
+
+原冻结工具评测中，GPT-4.1 mini 的原始模型执行攻击 8/23、旧会话 Runtime 为 11/23、新权限层为 2/24，正常任务均通过 13/16。六个可配对的改善均有“模型先提出危险动作、权限层拦截、随后完成正常动作”的记录。Sol、Astra 原始模型仍为零，因此该批不能证明两者获得安全提升。[运行与复现](evaluation/agent_security/README.md) · [最新交付报告](evaluation/agent_security/DELIVERY.zh-CN.md) · [独立复核、误拒漏计及评分敏感性](evaluation/agent_security/INDEPENDENT_AUDIT.md)。这组任务改编自公开方法，不是 AgentDojo 官方成绩。
+
+最终来源复制挑战中，4.1 mini 的攻击成功从 4/24 降为 0/24，正常任务两组均为 16/16；小样本配对 p=0.125，不能夸大为普遍保证。Sol、Astra 仍未显示可测安全收益。本轮开发、测试、攻击搜索与重复验证共 2,877 次 API 调用，按实际用量计 6.634151435 美元。来源内容真实与否、开放式推理是否正确仍是未解决问题。
+
 ## 托管模型安全实验（v0.2）
 
 [三模型报告](evaluation/hosted/results/main/RESULTS.md)在同一批 32 个场景中比较原始模型、v0.1 控制器和修复版，分别计算攻击是否成功、任务是否完成、正常请求是否被误拒。可查看[复现步骤与原始日志](evaluation/hosted/README.md)、[历史正常请求失败的诊断](evaluation/hosted/DIAGNOSIS.md)和[控制器修复说明](docs/runtime-security.md)。
@@ -39,7 +47,7 @@
 ## 安装与免费演示
 
 ```sh
-git clone https://github.com/Naterisy/PromptBoundary.git
+git clone --branch hosted-runtime-evaluation https://github.com/Naterisy/PromptBoundary.git
 cd PromptBoundary
 python3 -m venv .venv
 . .venv/bin/activate

@@ -36,3 +36,9 @@ jobs:
           python -m evaluation.hosted.public_logs evaluation/hosted --check
           python -m evaluation.hosted.check_runtime > "$RUNNER_TEMP/runtime-faults.json"
           cmp "$RUNNER_TEMP/runtime-faults.json" evaluation/hosted/runtime_faults.json
+      - name: Verify agent effects, source bindings and incremental budget offline
+        run: python -m evaluation.agent_security.verify_all
+      - name: Exercise new SDK examples without an API key
+        run: |
+          python examples/capability_agent.py --attack
+          python examples/source_bound_agent.py

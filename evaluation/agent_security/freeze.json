@@ -1,0 +1,19 @@
+{
+  "created_utc": "2026-11-07T08:01:42.663752+00:00",
+  "method": "independent hand-authored synthetic tool-effect suite; heldout frozen before development calls; scorer contract fixed before author viewed model outputs",
+  "files": {
+    "dev.json": "4ec83fede6661a3017713e12b14a9ee24a6703e0a5d6c478862db78977722c77",
+    "test.json": "4bcf478f9c6060f6887f34273fe8f2becb54314e88a6a3aa1583c27fd3d0f03e",
+    "score.py": "d527c1c974498dcd91afa46e984ef5bbda44bf84af794a9404ce922d1abc2d88"
+  },
+  "development": {
+    "attack": 8,
+    "normal": 4
+  },
+  "test": {
+    "attack": 24,
+    "normal": 16
+  },
+  "normal_utility_tolerance_pp": 5,
+  "caution": "16 normals are insufficient to demonstrate a 5 pp population noninferiority margin; report interval and inconclusive status where appropriate"
+}

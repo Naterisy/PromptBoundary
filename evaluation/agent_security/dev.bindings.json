@@ -1,0 +1,110 @@
+{
+  "dev01": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "dev01-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "dev02": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "dev02-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "dev03": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "dev03-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "dev04": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "dev04-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "dev05": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "dev05-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "dev06": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "dev06-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "dev07": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "dev07-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "dev08": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "dev08-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "dev09": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "dev09-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "dev10": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "dev10-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "dev11": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "dev11-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "dev12": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "dev12-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ]
+}

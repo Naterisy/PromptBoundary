@@ -1,0 +1,23 @@
+{
+  "verified_date": "2026-11-07",
+  "verification": "Both exact model IDs present in models.json API listing. API metadata does not supply prices; following rates read from official model documentation.",
+  "models": {
+    "gpt-4.1-mini-2025-04-14": {
+      "url": "https://developers.openai.com/api/docs/models/gpt-4.1-mini",
+      "input": 0.4,
+      "cached_read": 0.1,
+      "cache_write": 0.4,
+      "output": 1.6,
+      "reasoning": null
+    },
+    "gpt-6-luna": {
+      "url": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "input": 0.1,
+      "cached_read": 0.01,
+      "cache_write": 0.125,
+      "output": 0.5,
+      "reasoning": "low"
+    }
+  },
+  "units": "USD per million tokens, standard short context"
+}
