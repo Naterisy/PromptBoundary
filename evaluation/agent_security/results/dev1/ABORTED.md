@@ -1,0 +1,1 @@
+Development wiring failure: corpus uses document provenance; the runtime initially accepted external, tool and assistant only. The thread pool stopped after this uncaught validation error. All started provider calls remain journaled and billed in the shared ledger. No efficacy estimate is claimed for this incomplete batch. Source snapshot preserved.

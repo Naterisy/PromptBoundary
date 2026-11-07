@@ -5,6 +5,8 @@ import http.client
 import ipaddress
 import json
 import math
+import re
+import unicodedata
 import time
 import uuid
 from urllib import error, parse, request
@@ -131,7 +133,8 @@ def _stage_format(stage, data):
     """Constrain structure at decode time. Core still checks provenance and evidence."""
     string = {"type": "string"}
     if stage == "audit":
-        ids = [r["id"] for r in data.get("constraints", []) if "id" in r]
+        ids = [r["id"] for r in (*data.get("constraints", []), *data.get("application_rules", []))
+               if "id" in r]
         fields = {"verdict": _enum("pass", "violation", "false_refusal"), "reason": string,
                   "rule_id": _enum("", "current", "private_attack", *ids),
                   "evidence": string, "missing": string}
@@ -195,17 +198,41 @@ class StageModel:
     and stage names are retained in calls. An unavailable usage value is None.
     """
 
-    def __init__(self, upstream, generation=None, system_prefix=""):
+    def __init__(self, upstream, generation=None, system_prefix="", *, protected_values=(),
+                 structured_max_tokens=None):
         self.upstream = upstream
         self.generation = dict(generation or {})
         self.system_prefix = system_prefix
         self.calls = []
         self._supports_schema = True
+        if isinstance(protected_values, (str, bytes)):
+            raise ValueError("protected_values must be a sequence of non-empty strings")
+        literals = tuple(protected_values)
+        if not all(isinstance(value, str) and value.strip() for value in literals):
+            raise ValueError("protected_values must contain non-empty strings")
+        literals = sorted({unicodedata.normalize("NFKC", s) for s in literals}, key=len, reverse=True)
+        self._secrets = re.compile("|".join(map(re.escape, literals)), re.IGNORECASE) if literals else None
+        if structured_max_tokens is not None and (type(structured_max_tokens) is not int or structured_max_tokens < 1):
+            raise ValueError("structured_max_tokens must be positive")
+        self.structured_max_tokens = structured_max_tokens
+
+    def _redact(self, value):
+        if isinstance(value, dict):
+            return {key: self._redact(v) for key, v in value.items()}
+        if isinstance(value, list):
+            return [self._redact(v) for v in value]
+        if isinstance(value, str):
+            normalized = unicodedata.normalize("NFKC", value)
+            if self._secrets.search(normalized):
+                return self._secrets.sub("[redacted]", normalized)
+        return value
 
     def __call__(self, stage, payload):
         instruction = payload["instructions"]
         data = payload["data"]
         system = "\n\n".join(s for s in (self.system_prefix, instruction) if s)
+        if self._secrets:
+            system, data = self._redact(system), self._redact(data)
         params = dict(self.generation)
         if stage == "generate":
             # Keep quoted history and derived user preferences below application
@@ -232,6 +259,17 @@ class StageModel:
             messages.append({"role": "user", "content": data["user_text"]})
             params.pop("response_format", None)
         else:
+            if self.structured_max_tokens is not None:
+                params["max_tokens"] = self.structured_max_tokens
+            trusted = [m for m in data.get("history", []) if m["role"] in {"system", "developer"}]
+            if trusted:
+                # Scope application policy to the end-user answer. Its requested answer format
+                # must not override the interpreter/auditor's internal JSON protocol.
+                authority = [{"id": f"app{i}", "role": m["role"], "rule": m["content"]}
+                             for i, m in enumerate(trusted, 1)]
+                system += ("\nApplication instructions for the end-user response, in message order. "
+                           "Evaluate these during this stage and return the stage's required JSON.\n"
+                           + json.dumps(authority, ensure_ascii=False))
             messages = [{"role": "system", "content": system},
                         {"role": "user", "content": json.dumps(data, ensure_ascii=False)}]
             params["response_format"] = _stage_format(stage, data) if self._supports_schema else {"type": "json_object"}
@@ -256,6 +294,8 @@ class StageModel:
             if stage == "generate":
                 if not isinstance(content, str) or not content.strip():
                     raise ValueError("Empty or non-text generation.")
+                if self._secrets and self._secrets.search(unicodedata.normalize("NFKC", content)):
+                    raise ValueError("Draft contains a host-protected literal")
                 return {"text": content}
             parsed = json.loads(content)
             if not isinstance(parsed, dict):

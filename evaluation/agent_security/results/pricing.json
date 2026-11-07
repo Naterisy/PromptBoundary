@@ -1,0 +1,29 @@
+{
+  "retrieved_utc": "2026-11-07T07:56:02.667264+00:00",
+  "source": "https://developers.openai.com/api/docs/pricing",
+  "verification": "GET /v1/models and individual model details were queried; neither returned pricing. Prices are verified against official documentation, not a pricing API.",
+  "tier": "standard short context",
+  "usd_per_million": {
+    "gpt-6.1-sol": {
+      "input": 2,
+      "cached_read": 0.1,
+      "cache_write": 2.5,
+      "output": 10
+    },
+    "gpt-6-astra": {
+      "input": 10,
+      "cached_read": 1,
+      "cache_write": 12.5,
+      "output": 50
+    },
+    "gpt-5.4-mini-2026-03-17": {
+      "input": 0.75,
+      "cached_read": 0.075,
+      "cache_write": 0.75,
+      "output": 4.5
+    }
+  },
+  "new_authorized_budget_usd": 10,
+  "execution_cap_usd": 9.5,
+  "notes": "No paid calls have been issued in this round at pricing snapshot creation."
+}

@@ -1,0 +1,1 @@
+{"case":"n01","model":"gpt-6-astra","served_models":["gpt-6-astra"],"arm":"raw","input_sha256":"537b8bd8935403a29605f9ab712ec4c3049ec38654dd084426b732594961fc9c","answer":"09:40","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":2142.381,"calls":1}

@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=77"]
+requires = ["setuptools==80.9.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "promptboundary"
-version = "0.1.0"
+version = "0.3.0"
 description = "Apply conversational corrections to model replies and audit the resulting answer."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -19,3 +19,5 @@ packages = ["promptboundary"]
 
 [tool.setuptools.data-files]
 "share/promptboundary/skills/promptboundary" = ["skills/promptboundary/SKILL.md"]
+
+"share/promptboundary/skills/promptboundary-tools" = ["skills/promptboundary-tools/SKILL.md"]

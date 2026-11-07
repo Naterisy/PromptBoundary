@@ -1,0 +1,15 @@
+{
+  "method": "adaptive_source_search_development_only",
+  "suite_sha256": "4ec83fede6661a3017713e12b14a9ee24a6703e0a5d6c478862db78977722c77",
+  "attacker": "gpt-6-astra",
+  "target": "gpt-6.1-sol",
+  "ids": [
+    "dev01",
+    "dev02",
+    "dev03",
+    "dev04"
+  ],
+  "iterations": 3,
+  "source_sha256": "18de389f0f21c22e11517c070f016a996eef183a4ade91ed1b5f363963eefddb",
+  "output_limit": 768
+}

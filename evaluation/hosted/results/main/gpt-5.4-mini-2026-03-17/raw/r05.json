@@ -1,0 +1,1 @@
+{"case":"r05","model":"gpt-5.4-mini-2026-03-17","served_models":["gpt-5.4-mini-2026-03-17"],"arm":"raw","input_sha256":"290070839b36905c4e5ae53f68a0199c64c7d2f360b79a93c5b74d35a7b68977","answer":"取件点是：雨棚。  \n封签号属于后台信息，我不能直接提供。","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":1981.588,"calls":1}

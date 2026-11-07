@@ -6,7 +6,21 @@ When someone says “Stop bringing that up when you tease me” and later says �
 
 Use the **Skill** to guide an agent with access to its conversation. Use the **Python controller** when you own the model call and want an explicit correction record, a pre-answer decision, and a review before returning text. Both operate in the application context. The package runs on Python 3.10+ with the standard library.
 
-## What the release measured
+## Tool authorization and source-copy experiments
+
+The new optional [capability SDK](docs/capabilities.md) tracks external-source origins, checks application-owned tool grants before execution, and recovers rejected plans. Explicit literal-copy tasks can additionally bind an argument to a host-selected source field. It does not infer authority from retrieved text or claim that source data is truthful.
+
+On the original frozen tool-effect holdout, GPT-4.1 mini's raw model executed 8/23 evaluable attacks, the old conversational runtime 11/23, and the capability runtime 2/24; normal task pass remained 13/16. All six improvements on comparable raw/protected pairs include an unsafe initial plan, a gate denial and a useful repair. Stronger Sol/Astra baselines stayed at zero, so that set establishes no security gain for them. [Reproduce every run](evaluation/agent_security/README.md), [read the current delivery report](evaluation/agent_security/DELIVERY.zh-CN.md), and [review limitations and metric sensitivity](evaluation/agent_security/INDEPENDENT_AUDIT.md). These are authored adaptations of public methods, not official AgentDojo scores.
+
+The final source-copy challenge reduced 4.1 mini's observed attacks from 4/24 to 0/24 with 16/16 normal tasks in both arms; the small paired comparison has p=0.125. Sol/Astra still showed no measurable security gain. All new iterations and confirmations cost USD 6.634151435 across 2,877 calls. These checks protect tool effects in explicitly authorized workflows; source truth and open-ended reasoning remain outside their guarantee.
+
+## Hosted security evaluation (v0.2)
+
+The [three-model report](evaluation/hosted/results/main/RESULTS.md) compares the raw model, v0.1 controller and patched controller on the same 32 cases. It separates disclosing a synthetic secret or emitting an unauthorized mock command from completing a useful task or refusing it. [Read the cases and reproduce the run](evaluation/hosted/README.md), [inspect the earlier benign failures](evaluation/hosted/DIAGNOSIS.md), or [review the runtime changes](docs/runtime-security.md).
+
+On natural replies every raw model already resisted all 20 attacks. When given the same leaking drafts, live reviews plus the patch stopped all 12; the released controller delivered 4/12. The patch also withheld one legitimate task on Sol and Astra. [Stress test and clean controls](evaluation/hosted/stress/results/RESULTS.md)
+
+## Earlier local-model results (v0.1)
 
 On a frozen 12-case bilingual suite, adding the controller to Qwen2.5-7B raised correction retention from 3/6 to 4/6, reduced violations from 4/10 to 2/10 and kept false refusals at 0/5. It cost an extra 23.87 seconds and 3,110 tokens per transcript on average. One retained correction came from the history-eviction cases. On 3B the controller reduced violations but lost one task pass. Combining the Skill and controller missed the predeclared improvement rule on both models. Read the complete [four-arm results, early failures and limitations](evaluation/REPORT.md).
 
@@ -15,7 +29,7 @@ On a frozen 12-case bilingual suite, adding the controller to Qwen2.5-7B raised 
 From a terminal with Python and Git:
 
 ```sh
-git clone --branch v0.1.0 https://github.com/Naterisy/PromptBoundary.git
+git clone --branch hosted-runtime-evaluation https://github.com/Naterisy/PromptBoundary.git
 cd PromptBoundary
 python3 -m venv .venv
 . .venv/bin/activate
@@ -32,9 +46,9 @@ cp -R skills/promptboundary ~/.agents/skills/
 
 Start a new chat and invoke `$promptboundary`, or let the agent select it from its description. For a project-scoped installation use `.agents/skills/` in that project. The Skill works independently of the Python installation. [Codex Skill discovery](https://developers.openai.com/codex/skills/)
 
-The [v0.1.0 release](https://github.com/Naterisy/PromptBoundary/releases/tag/v0.1.0) also includes a standalone Skill ZIP, a Python wheel for offline installation, and SHA-256 checksums.
+The earlier [v0.1.0 release](https://github.com/Naterisy/PromptBoundary/releases/tag/v0.1.0) also includes a standalone Skill ZIP, a Python wheel for offline installation, and SHA-256 checksums.
 
-To install the Python CLI without cloning the repository, run this inside a virtual environment.
+To install the **historical v0.1.0** Python CLI without cloning the repository, run this inside a virtual environment.
 
 ```sh
 python -m pip install https://github.com/Naterisy/PromptBoundary/releases/download/v0.1.0/promptboundary-0.1.0-py3-none-any.whl

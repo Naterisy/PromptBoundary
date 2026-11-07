@@ -1,0 +1,1 @@
+{"case":"n02","model":"gpt-6-astra","served_models":["gpt-6-astra"],"arm":"release","input_sha256":"1c148f397f2fea0f3747f7cc2bbd4e2341dccbc2fc48e23202e9485d328dce39","answer":"总共有 18 + 24 = **42 本**小册子。","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":6690.111,"calls":3}

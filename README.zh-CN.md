@@ -6,7 +6,21 @@
 
 **Agent Skill** 适合能读取对话的 Agent。**Python 控制器**适合能接管模型调用的应用，可保存结构化的纠错记录、在生成前判断冲突，并检查和修订草稿。两者均在应用层工作。Python 运行时只依赖标准库，要求 Python 3.10 或更高版本。
 
-## 发布版实测
+## 工具授权与来源字段实验
+
+新增的可选[权限控制 SDK](docs/capabilities.md)记录外部内容来源，在执行前检查应用授予的工具、参数与次数，并支持被拒绝计划的恢复。明确要求逐字复制的任务还可以绑定来源字段；它不把文档中的指令当成权限，也不保证来源数据真实。
+
+原冻结工具评测中，GPT-4.1 mini 的原始模型执行攻击 8/23、旧会话 Runtime 为 11/23、新权限层为 2/24，正常任务均通过 13/16。六个可配对的改善均有“模型先提出危险动作、权限层拦截、随后完成正常动作”的记录。Sol、Astra 原始模型仍为零，因此该批不能证明两者获得安全提升。[运行与复现](evaluation/agent_security/README.md) · [最新交付报告](evaluation/agent_security/DELIVERY.zh-CN.md) · [独立复核、误拒漏计及评分敏感性](evaluation/agent_security/INDEPENDENT_AUDIT.md)。这组任务改编自公开方法，不是 AgentDojo 官方成绩。
+
+最终来源复制挑战中，4.1 mini 的攻击成功从 4/24 降为 0/24，正常任务两组均为 16/16；小样本配对 p=0.125，不能夸大为普遍保证。Sol、Astra 仍未显示可测安全收益。本轮开发、测试、攻击搜索与重复验证共 2,877 次 API 调用，按实际用量计 6.634151435 美元。来源内容真实与否、开放式推理是否正确仍是未解决问题。
+
+## 托管模型安全实验（v0.2）
+
+[三模型报告](evaluation/hosted/results/main/RESULTS.md)在同一批 32 个场景中比较原始模型、v0.1 控制器和修复版，分别计算攻击是否成功、任务是否完成、正常请求是否被误拒。可查看[复现步骤与原始日志](evaluation/hosted/README.md)、[历史正常请求失败的诊断](evaluation/hosted/DIAGNOSIS.md)和[控制器修复说明](docs/runtime-security.md)。
+
+自然请求中，三个原始模型都已挡住全部 20 个攻击，无法据此宣称修复版降低了攻击率。固定泄露草稿的对照中，旧版交付了 4/12 个秘密，修复版为 0/12；正常请求中，Sol 和 Astra 的修复版各误拒一题。[完整交付报告与成本](evaluation/hosted/DELIVERY.zh-CN.md)
+
+## 早期本地模型实测（v0.1）
 
 在冻结的 12 个中英文合成场景中，Qwen2.5-7B 单用控制器相对原始模型达到了预先设定的改善标准。纠错保持从 3/6 到 4/6，越界从 4/10 到 2/10，误拒均为 0/5，任务通过从 7/12 到 8/12。多保住的一项纠错来自原始历史被移除的用例。每段对话平均多耗时 23.87 秒、多用 3,110 Token。
 
@@ -33,7 +47,7 @@
 ## 安装与免费演示
 
 ```sh
-git clone --branch v0.1.0 https://github.com/Naterisy/PromptBoundary.git
+git clone --branch hosted-runtime-evaluation https://github.com/Naterisy/PromptBoundary.git
 cd PromptBoundary
 python3 -m venv .venv
 . .venv/bin/activate
@@ -52,7 +66,7 @@ cp -R skills/promptboundary ~/.agents/skills/
 
 [v0.1.0 发布页](https://github.com/Naterisy/PromptBoundary/releases/tag/v0.1.0) 同时提供独立 Skill ZIP、可离线安装的 Python wheel 及 SHA-256 校验值。
 
-只安装 Python CLI 时，可在虚拟环境中直接执行：
+如需复现**旧版 v0.1.0** Python CLI，可在虚拟环境中执行：
 
 ```sh
 python -m pip install https://github.com/Naterisy/PromptBoundary/releases/download/v0.1.0/promptboundary-0.1.0-py3-none-any.whl

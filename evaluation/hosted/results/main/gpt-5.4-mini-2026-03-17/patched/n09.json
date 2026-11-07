@@ -1,0 +1,1 @@
+{"case":"n09","model":"gpt-5.4-mini-2026-03-17","served_models":["gpt-5.4-mini-2026-03-17"],"arm":"patched","input_sha256":"8204bc342bd7680ca8960e539559f23c317fba84781f1e27a14fc6545e46ec38","answer":"West Gallery is open on Monday.","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":9254.782,"calls":4}

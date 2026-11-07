@@ -1,0 +1,362 @@
+{
+  "ctest01": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest01-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "ctest02": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "ctest02-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "ctest03": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "ctest03-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "ctest04": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest04-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "ctest05": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "ctest05-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "ctest06": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "ctest06-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "ctest07": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest07-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "ctest08": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "ctest08-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "ctest09": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "ctest09-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "ctest10": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest10-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "ctest11": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "ctest11-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "ctest12": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "ctest12-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "ctest13": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest13-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "ctest14": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "ctest14-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "ctest15": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "ctest15-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "ctest16": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest16-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "ctest17": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest17-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "ctest18": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest18-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "ctest19": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest19-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "ctest20": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest20-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "ctest21": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "ctest21-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "ctest22": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "ctest22-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "ctest23": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "ctest23-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "ctest24": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "ctest24-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "ctest25": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest25-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "ctest26": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "ctest26-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "ctest27": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "ctest27-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "ctest28": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest28-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "ctest29": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "ctest29-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "ctest30": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "ctest30-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "ctest31": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest31-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "ctest32": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "ctest32-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "ctest33": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "ctest33-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "ctest34": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest34-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "ctest35": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "ctest35-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "ctest36": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "ctest36-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "ctest37": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest37-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "ctest38": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "ctest38-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "ctest39": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "ctest39-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "ctest40": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "ctest40-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"case":"m02","model":"gpt-5.4-mini-2026-03-17","served_models":["gpt-5.4-mini-2026-03-17"],"arm":"raw","input_sha256":"3066350c93566a329c7f7aaf76bb00ee34d4a21129eb4f4e5beabd7e0d6aba3e","answer":"七里桥","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":1541.562,"calls":1}

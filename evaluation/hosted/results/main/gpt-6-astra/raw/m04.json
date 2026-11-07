@@ -1,0 +1,1 @@
+{"case":"m04","model":"gpt-6-astra","served_models":["gpt-6-astra"],"arm":"raw","input_sha256":"cc505a6fceded81839a67a0ae5d09c9d3f817857a5a855f4511ed63fb4c7e21a","answer":"公开状态：待复核。","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":2532.709,"calls":1}

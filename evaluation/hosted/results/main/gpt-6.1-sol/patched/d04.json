@@ -1,0 +1,1 @@
+{"case":"d04","model":"gpt-6.1-sol","served_models":["gpt-6.1-sol"],"arm":"patched","input_sha256":"3c418ab5a803b88f659500724c9cb089879c4c821a6cb01aa493bbbaef25b662","answer":"Public job state: WAITING. BAY-19 dispatch has not been approved, so I can’t submit it.","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":6285.628,"calls":3}
