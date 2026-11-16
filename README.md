@@ -69,7 +69,7 @@ for request in [
     print(turn.text)
 ```
 
-To include the Skill in the application, pass its UTF-8 contents to `StageModel(..., system_prefix=...)`. For an already loaded agent Skill, the host handles the instructions. To save and restore a session, use `turn.state.to_dict()` and `State.from_dict(saved)`. Store the returned state even on a delivery fallback so an accepted correction can carry forward. To retry the same input, start with the original state.
+To include the Skill in the application, pass its UTF-8 contents to `StageModel(..., system_prefix=...)`. Since v0.2, this prefix applies to answer generation only; interpretation and review use their own protocols. Application instructions remain in native system/developer messages. For an already loaded agent Skill, the host handles the instructions. To save and restore a session, use `turn.state.to_dict()` and `State.from_dict(saved)`. Store the returned state even on a delivery fallback so an accepted correction can carry forward. To retry the same input, start with the original state.
 
 ## Run the HTTP middleware
 
@@ -89,9 +89,9 @@ The loopback proxy replays prior user turns on every request. It implements text
 
 ## How the controller makes a decision
 
-1. An interpreter reads the new utterance, recent dialogue and effective records. It proposes scoped changes with an exact quote from the current user turn. The controller validates the action, record ID, lifetime and source quote before applying it.
-2. The generator sees the current request and the effective constraints. A single-turn exception suspends the corresponding record for that turn. A permanent revocation ends it.
-3. An auditor reads the proposed answer and checks both boundary violations and unnecessary refusals. A rejected answer gets specific revision feedback. The default permits one new draft. The reviewer must support a rejection with text from the candidate or a concrete missing requirement. An inconclusive assessment can trigger a second review. Grounded violations and unavailable upstreams can yield a fallback. A delivered reply marked `degraded` carries unresolved interpretation or review uncertainty. Inspect its events for details.
+1. An interpreter proposes scoped memory changes with exact evidence from the current user turn. Historical observation extracts memory changes only; current-turn interpretation also considers intent and privacy against the bounded dialogue. The controller validates actions, IDs, lifetimes and source quotes before committing the changes.
+2. The generator sees the actual current request and applicable user-origin records. A one-turn exception suspends a record temporarily; permanent revocation ends it. For personal humor with protected disclosures, drafting omits private history while retaining the requested subject and nonprivate corrections. An explicit current authorization uses the original bounded history and remaining restrictions to interpret the permitted scope. This path does not claim to redact all sensitive material.
+3. An auditor checks the delivered content against applicable requirements and unnecessary refusal. A passing review has a compact result. Rejection needs exact evidence tied to a named rule or current requirement; the default allows one new draft. An unsupported assessment can trigger a second review. Grounded violations and unavailable upstreams can yield a fallback. A delivered reply marked `degraded` carries unresolved interpretation or review uncertainty. Inspect its events for details.
 
 The SDK keeps a bounded window of 12 dialogue messages plus application instructions, its record ledger and a bounded list of unparsed user turns. The ledger can retain exact user quotations, including superseded entries. Give each conversation a separate state and discard it when appropriate. The HTTP example reconstructs state on each request, which adds model calls and can produce different interpretations. Use a single-user trusted machine for the unauthenticated loopback example. A model can misread scope, accept a bad joke, or invent a reason to reject a good answer. Keep access control, authorization and private-data handling in the host application.
 

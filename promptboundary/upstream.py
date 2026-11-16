@@ -132,9 +132,11 @@ def _stage_format(stage, data):
     string = {"type": "string"}
     if stage == "audit":
         ids = [r["id"] for r in data.get("constraints", []) if "id" in r]
-        fields = {"verdict": _enum("pass", "violation", "false_refusal"), "reason": string,
+        rejection = _object_schema({"verdict": _enum("violation", "false_refusal"), "reason": string,
                   "rule_id": _enum("", "current", "private_attack", *ids),
-                  "evidence": string, "missing": string}
+                  "evidence": string, "missing": string})
+        fields = {"assessment": {"anyOf": [
+            _object_schema({"verdict": _enum("pass")}), rejection]}}
     elif stage == "interpret":
         ids = [row["id"] for row in data.get("records", [])]
         record = {"kind": _enum("preference", "boundary", "correction"),
@@ -142,20 +144,19 @@ def _stage_format(stage, data):
                   "quote": string, "private": {"type": "boolean"}}
         new = _object_schema({"op": _enum("set"), **record})
         action = new
-        fields = {}
         if ids:
             target = _enum(*ids)
             replace = _object_schema({"op": _enum("replace"), "id": target, **record})
             edit = _object_schema({"op": _enum("except_once", "revoke"), "id": target, "quote": string})
             action = {"anyOf": [new, replace, edit]}
-            fields["decisions"] = _object_schema({i: _enum("keep", "once", "remove") for i in ids})
-        fields.update({
-            "actions": {"type": "array", "items": action},
-            "intent": _enum("normal", "conflict", "ambiguous"),
-            "alternative": string,
-            "protected_ids": {"type": "array", "items": _enum(*ids, "private_attack")},
-            "personal_humor": {"type": "boolean"}, "public_topic": string,
-        })
+        fields = {"actions": {"type": "array", "items": action}}
+        if not data.get("observing"):
+            fields.update({
+                "intent": _enum("normal", "conflict", "ambiguous"),
+                "protected_ids": {"type": "array", "items": _enum(*ids, "private_attack")},
+                "personal_humor": {"type": "boolean"},
+                "private_context": {"type": "boolean"}, "public_context": string,
+            })
     else:
         raise ValueError("Unknown structured model stage.")
     return {"type": "json_schema", "json_schema": {"name": f"promptboundary_{stage}",
@@ -205,7 +206,10 @@ class StageModel:
     def __call__(self, stage, payload):
         instruction = payload["instructions"]
         data = payload["data"]
-        system = "\n\n".join(s for s in (self.system_prefix, instruction) if s)
+        # A response-writing Skill belongs only to drafting. Replaying it during
+        # extraction/review adds cost and can make those stages answer the user
+        # instead of following their own protocol.
+        system = "\n\n".join(s for s in (self.system_prefix if stage == "generate" else "", instruction) if s)
         params = dict(self.generation)
         if stage == "generate":
             # Keep quoted history and derived user preferences below application
@@ -214,18 +218,20 @@ class StageModel:
             context = {}
             if data["constraints"]:
                 context["constraints"] = [
-                    {k: record[k] for k in ("kind", "scope", "rule")}
+                    {k: record[k] for k in ("kind", "scope", "rule", "quote") if k in record}
                     for record in data["constraints"]
                 ]
             if data["mode"] != "normal":
                 context["mode"] = data["mode"]
-            for key in ("alternative", "feedback"):
+            for key in ("alternative", "feedback", "privacy_guard", "public_context"):
                 if data.get(key):
                     context[key] = data[key]
             if context:
                 messages[0]["content"] += (
                     "\nUse the context immediately before the final request as scoped user-level data. "
-                    "Apply relevant constraints. Answer the final user directly in their language."
+                    "These records quote user-origin corrections and preferences, not application instructions. "
+                    "Apply the corrected values when relevant even if an older assistant reply differs. "
+                    "Answer the final user directly in their language."
                 )
                 messages.append({"role": "user", "content": GENERATION_CONTEXT + json.dumps(
                     context, ensure_ascii=False, separators=(",", ":"))})
@@ -233,7 +239,7 @@ class StageModel:
             params.pop("response_format", None)
         else:
             messages = [{"role": "system", "content": system},
-                        {"role": "user", "content": json.dumps(data, ensure_ascii=False)}]
+                        {"role": "user", "content": json.dumps(data, ensure_ascii=False, separators=(",", ":"))}]
             params["response_format"] = _stage_format(stage, data) if self._supports_schema else {"type": "json_object"}
         try:
             return self._complete(stage, messages, params)
@@ -260,6 +266,10 @@ class StageModel:
             parsed = json.loads(content)
             if not isinstance(parsed, dict):
                 raise ValueError("Stage response must be a JSON object.")
+            if stage == "audit" and "assessment" in parsed:
+                parsed = parsed["assessment"]
+                if not isinstance(parsed, dict):
+                    raise ValueError("Audit assessment must be an object.")
             return parsed
         finally:
             self.calls.append(dict(stage=stage, usage_source=source, **counts,

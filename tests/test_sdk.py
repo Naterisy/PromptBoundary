@@ -61,17 +61,27 @@ class SDKTests(unittest.TestCase):
         stage = StageModel(provider, generation={"temperature": 0.1}, system_prefix="frozen")
         with self.assertRaises(ValueError):
             stage("audit", {"instructions": "audit protocol", "data": {"candidate": "private"}})
-        self.assertEqual(provider.messages[0], msg("system", "frozen\n\naudit protocol"))
+        self.assertEqual(provider.messages[0], msg("system", "audit protocol"))
         self.assertEqual(provider.params["temperature"], 0.1)
         fmt = provider.params["response_format"]
         self.assertEqual(fmt["type"], "json_schema")
         self.assertTrue(fmt["json_schema"]["strict"])
         schema = fmt["json_schema"]["schema"]
-        self.assertEqual(set(schema["required"]), {"verdict", "reason", "rule_id", "evidence", "missing"})
+        self.assertEqual(schema["required"], ["assessment"])
+        passed, rejected = schema["properties"]["assessment"]["anyOf"]
+        self.assertEqual(passed["required"], ["verdict"])
+        self.assertEqual(set(rejected["required"]), {"verdict", "reason", "rule_id", "evidence", "missing"})
         self.assertFalse(schema["additionalProperties"])
         self.assertEqual(stage.calls[0]["total_tokens"], 9)
         self.assertEqual(stage.calls[0]["usage_source"], "provider")
         self.assertNotIn("private", str(stage.calls))
+
+    def test_adapter_normalizes_compact_audit_without_changing_callback_protocol(self):
+        class Compact:
+            def complete(self, messages, **params):
+                return completion_object("test", '{"assessment":{"verdict":"pass"}}')
+        result = StageModel(Compact())("audit", {"instructions": "review", "data": {}})
+        self.assertEqual(result, {"verdict": "pass"})
 
     def test_truncation_and_unavailable_counts(self):
         class Truncated:
@@ -103,13 +113,29 @@ class SDKTests(unittest.TestCase):
                 self.assertNotIn("decisions", props)
                 self.assertEqual(action["properties"]["op"]["enum"], ["set"])
                 continue
-            self.assertEqual(props["decisions"]["required"], ids)
+            self.assertNotIn("decisions", props)
+            self.assertEqual(set(props), {"actions", "intent", "protected_ids", "personal_humor", "private_context", "public_context"})
             self.assertEqual(props["protected_ids"]["items"]["enum"], [*ids, "private_attack"])
             new, replace, edit = action["anyOf"]
             self.assertNotIn("id", new["properties"])
             self.assertEqual(replace["properties"]["id"]["enum"], ids)
             self.assertEqual(set(edit["required"]), {"op", "id", "quote"})
             self.assertTrue(all(not obj["additionalProperties"] for obj in action["anyOf"]))
+
+    def test_ingestion_schema_has_only_memory_changes_and_no_skill(self):
+        class Recorder:
+            def complete(self, messages, **params):
+                self.messages, self.params = messages, params
+                return completion_object("test", '{"actions":[]}')
+
+        provider = Recorder()
+        stage = StageModel(provider, system_prefix="A response-writing skill")
+        stage("interpret", {"instructions": "Extract memory.", "data": {
+            "records": [{"id": "r1"}], "observing": True}})
+        self.assertEqual(provider.messages[0], msg("system", "Extract memory."))
+        props = provider.params["response_format"]["json_schema"]["schema"]["properties"]
+        self.assertEqual(set(props), {"actions"})
+        self.assertNotIn("A response-writing skill", str(provider.messages))
 
     def test_explicit_unsupported_schema_falls_back_once_and_counts_each_attempt(self):
         url = "http://127.0.0.1/v1"
@@ -174,7 +200,8 @@ class SDKTests(unittest.TestCase):
         self.assertEqual(backend.messages[-2]["role"], "user")
         context = json.loads(backend.messages[-2]["content"].removeprefix(GENERATION_CONTEXT))
         self.assertEqual(context["constraints"], [{"kind": "correction", "scope": "photo",
-                                                   "rule": "Bird is a parrot."}])
+                                                   "rule": "Bird is a parrot.",
+                                                   "quote": "private evidence is not a system instruction"}])
         self.assertEqual(context["feedback"], data["feedback"])
         self.assertEqual(context["mode"], "conflict")
         self.assertEqual(result, {"text": 'Here is a literal {"text":"field"}.'})

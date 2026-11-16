@@ -212,7 +212,7 @@ class ControllerTests(unittest.TestCase):
         self.assertEqual([r.status for r in result.state.records], ["revoked","active"])
         self.assertEqual([r["id"] for r in model.data("generate")[0]["constraints"]], ["r2"])
 
-    def test_repair_receives_no_historical_user_quotes(self):
+    def test_current_planning_repair_retains_historical_context(self):
         first, follow = "写文案时保持轻松。", "再写一句。"
         model = Script(interpret=[interpret(add(first)), interpret(add(first, rule="错")),
                                   {"intent":"normal", "actions":[]}], generate=[{"text":"好的。"}],
@@ -222,7 +222,8 @@ class ControllerTests(unittest.TestCase):
         self.assertEqual(result.status, "ok")
         repair = model.data("interpret")[-1]
         self.assertEqual(repair["user_text"], follow)
-        self.assertNotIn(first, str(repair))
+        self.assertIn(first, str(repair["history"]))
+        self.assertEqual(repair["user_text"], follow)
 
     def test_small_model_decisions_preserve_scope_and_provenance(self):
         quote = "今后不要用列表。"
@@ -303,6 +304,165 @@ class ControllerTests(unittest.TestCase):
         self.assertNotIn("secret", str(draft))
         self.assertIn("secret", str(m.data("audit")))
         self.assertTrue(r.state.records[0].effective(r.state.turn))
+
+    def test_memory_ingestion_has_no_required_response_plan(self):
+        text = "The catalogue label is M-62, not M-26."
+        m = Script(interpret=[{"actions": [add(text, scope="catalogue label", rule="Label is M-62.")]}])
+        state = BoundaryController(m).observe(State(), text)
+        self.assertEqual(state.records[0].rule, "Label is M-62.")
+        self.assertTrue(m.data("interpret")[0]["observing"])
+        self.assertEqual(state.pending, [])
+
+    def test_private_humor_preserves_exact_task_format_and_public_correction(self):
+        private = "Do not joke about the personal story I told you."
+        correction = "The workshop robot is named Tavi."
+        current = "Give Tavi three playful nicknames for its squeaky wheels."
+        m = Script(interpret=[interpret(add(private, kind="boundary", private=True, rule=private)),
+                              interpret(add(correction, rule=correction, scope="robot name")),
+                              dict(interpret(), personal_humor=True)],
+                   generate=[{"text": "Tavi: Squeakster, Wheel Singer, Tiny Trolley."}], audit=[PASS])
+        c = BoundaryController(m)
+        result = c.run(c.observe(c.observe(State(), private), correction), current)
+        draft, = m.data("generate")
+        self.assertEqual(draft["user_text"], current)
+        self.assertEqual([r["rule"] for r in draft["constraints"]], [correction])
+        self.assertNotIn(private, str(draft))
+        self.assertTrue(draft["privacy_guard"])
+        self.assertEqual(result.status, "ok")
+
+    def test_private_revision_preserves_task_and_sanitizes_feedback(self):
+        private = "I lost my medal; keep it out of jokes."
+        current = "Write two short jokes about my overpacked suitcase."
+        m = Script(interpret=[interpret(add(private, kind="private", rule=private)),
+                              dict(interpret(intent="conflict"), personal_humor=True)],
+                   generate=[{"text": "A joke about your medal."}, {"text": "Two suitcase jokes."}],
+                   audit=[{"verdict": "violation", "rule_id": "private_attack", "evidence": "medal",
+                           "reason": "Do not mention the lost medal."}, PASS])
+        c = BoundaryController(m)
+        r = c.run(c.observe(State(), private), current)
+        retry = m.data("generate")[1]
+        self.assertEqual(retry["user_text"], current)
+        self.assertNotIn("medal", str(retry))
+        self.assertTrue(retry["feedback"])
+        self.assertEqual(r.status, "ok")
+
+    def test_named_rule_cannot_borrow_evidence_from_another_requirement(self):
+        text = "Use prose for recipes."
+        m = Script(interpret=[interpret(add(text, kind="preference", scope="recipes", rule=text)), interpret()],
+                   generate=[{"text": "Hello!"}],
+                   audit=[{"verdict": "violation", "rule_id": "r1", "reason": "Wrong recipe format",
+                           "missing": "Say hello", "evidence": "Hello!"}, PASS])
+        c = BoundaryController(m)
+        r = c.run(c.observe(State(), text), "Say hello")
+        self.assertEqual((r.text, r.attempts), ("Hello!", 1))
+        self.assertIn("audit:readjudicate", r.events)
+
+    def test_false_refusal_needs_actual_refusal_evidence(self):
+        m = Script(interpret=[interpret()], generate=[{"text": "Hello!"}],
+                   audit=[{"verdict": "false_refusal", "reason": "Refusal claimed",
+                           "missing": "Say hello", "evidence": "I cannot"}, PASS])
+        r = BoundaryController(m).run(State(), "Say hello")
+        self.assertEqual((r.text, r.attempts), ("Hello!", 1))
+        self.assertIn("audit:readjudicate", r.events)
+
+    def test_private_context_without_record_keeps_only_grounded_public_subject(self):
+        secret = "I failed a personal exam and still feel awful about it."
+        topic = "my squeaky shopping cart"
+        history = [{"role": "user", "content": secret}, {"role": "assistant", "content": "Understood."},
+                   {"role": "user", "content": "Please roast " + topic}]
+        m = Script(interpret=[dict(interpret(), personal_humor=True, private_context=True,
+                                   public_context=topic)], generate=[{"text": "That cart sings off key."}], audit=[PASS])
+        r = BoundaryController(m).run(State(), "Another one, two lines this time.", history=history)
+        self.assertIn(secret, str(m.data("interpret")[0]))
+        draft, = m.data("generate")
+        self.assertNotIn(secret, str(draft))
+        self.assertEqual(draft["public_context"], topic)
+        self.assertEqual(draft["user_text"], "Another one, two lines this time.")
+        self.assertEqual(r.status, "ok")
+
+    def test_ingestion_can_resolve_prior_user_referent(self):
+        old = "There was an embarrassing incident at my presentation."
+        new = "Do not use that in jokes."
+        m = Script(interpret=[{"actions": [add(new, kind="boundary", private=True,
+                         scope="presentation incident", rule="Do not joke about the presentation incident.")]}])
+        BoundaryController(m).observe(State(), new, history=[{"role": "user", "content": old},
+                                                            {"role": "assistant", "content": "Understood."}])
+        self.assertIn(old, str(m.data("interpret")[0]["history"]))
+
+    def test_public_context_cannot_reintroduce_known_private_record(self):
+        secret = "My lost medal is private; do not joke about it."
+        m = Script(interpret=[interpret(add(secret, kind="boundary", private=True, rule=secret)),
+                              dict(interpret(), personal_humor=True, private_context=True,
+                                   public_context="My lost medal")],
+                   generate=[{"text": "A harmless joke."}], audit=[PASS])
+        c = BoundaryController(m)
+        c.run(c.observe(State(), secret), "Another harmless joke.")
+        draft, = m.data("generate")
+        self.assertEqual(draft["public_context"], "")
+        self.assertNotIn("medal", str(draft))
+
+    def test_context_only_privacy_requires_a_conclusive_review(self):
+        invalid = {"verdict": "false_refusal", "reason": "Unfounded", "evidence": "absent"}
+        m = Script(interpret=[dict(interpret(), private_context=True)],
+                   generate=[{"text": "Candidate."}], audit=[invalid, invalid])
+        r = BoundaryController(m, max_retries=0).run(State(), "Use care with my disclosure.")
+        self.assertEqual(r.status, "fallback")
+        self.assertNotIn("Candidate.", r.text)
+
+    def test_scoped_release_is_preserved_alongside_another_private_boundary(self):
+        released = "Keep my lost medal out of jokes."
+        protected = "Keep my medical diagnosis out of jokes."
+        current = "For this joke only, you may use my lost medal. Keep the diagnosis private."
+        m = Script(interpret=[interpret(add(released, private=True, kind="boundary", scope="lost medal", rule=released)),
+                              interpret(add(protected, private=True, kind="boundary", scope="medical diagnosis", rule=protected)),
+                              dict(interpret({"op": "except_once", "id": "r1", "quote": "you may use my lost medal"}),
+                                   personal_humor=True, private_context=True),
+                              dict(interpret(), personal_humor=True, private_context=True)],
+                   generate=[{"text": "A medal joke."}, {"text": "A harmless joke."}], audit=[PASS, PASS])
+        c = BoundaryController(m)
+        r = c.run(c.observe(c.observe(State(), released), protected), current)
+        first = m.data("generate")[0]
+        self.assertIn(released, str(first["history"]))
+        self.assertEqual([r["rule"] for r in first["constraints"]], [protected])
+        self.assertNotIn("authorized_context", first)
+        c.run(r.state, "Another joke.")
+        later = m.data("generate")[1]
+        self.assertNotIn("authorized_context", later)
+        self.assertNotIn("medal", str(later))
+
+    def test_unchanged_record_echo_is_noop_even_with_a_source_fragment(self):
+        text = "Correction: the parcel belongs in bay Z-48."
+        record = add(text, scope="parcel bay", rule="Use bay Z-48.")
+        echoed = dict(record, op="replace", id="r1", quote="bay Z-48")
+        m = Script(interpret=[interpret(record), interpret(echoed)],
+                   generate=[{"text": "Z-48"}], audit=[PASS])
+        c = BoundaryController(m)
+        r = c.run(c.observe(State(), text), "What bay?")
+        self.assertEqual((r.status, len(r.state.records)), ("ok", 1))
+        self.assertIn("ignored:known_record", r.events)
+        self.assertEqual(r.state.records[0].quote, text)
+
+    def test_generic_callback_can_return_the_requested_nested_assessment(self):
+        m = Script(interpret=[interpret()], generate=[{"text": "Hello."}],
+                   audit=[{"assessment": {"verdict": "pass"}}])
+        r = BoundaryController(m).run(State(), "Say hello.")
+        self.assertEqual((r.text, r.status), ("Hello.", "ok"))
+
+    def test_old_revocation_does_not_reintroduce_later_protected_source(self):
+        private = "Keep the lost medal private."
+        revoke = "You may use the medal story from now on."
+        again = "Actually keep that medal story private again."
+        m = Script(interpret=[interpret(add(private, private=True, kind="boundary", rule=private)),
+                              interpret({"op": "revoke", "id": "r1", "quote": revoke}),
+                              interpret(add(again, private=True, kind="boundary", rule=private)),
+                              dict(interpret(), personal_humor=True, private_context=True)],
+                   generate=[{"text": "A harmless joke."}], audit=[PASS])
+        c = BoundaryController(m)
+        state = State()
+        for text in (private, revoke, again):
+            state = c.observe(state, text)
+        c.run(state, "Another joke.")
+        self.assertNotIn("medal", str(m.data("generate")[0]))
 
     def test_only_validated_states_are_loaded(self):
         with self.assertRaises(ProtocolError):

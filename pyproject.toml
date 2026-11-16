@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "promptboundary"
-version = "0.1.0"
+version = "0.2.0"
 description = "Apply conversational corrections to model replies and audit the resulting answer."
 readme = "README.md"
 requires-python = ">=3.10"
