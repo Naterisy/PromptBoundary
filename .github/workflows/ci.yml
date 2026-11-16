@@ -42,3 +42,15 @@ jobs:
         run: |
           python examples/capability_agent.py --attack
           python examples/source_bound_agent.py
+      - name: Verify frozen nonliteral transforms and semantic review outcomes
+        run: python -m evaluation.flow_security.verify_all
+      - name: Build and exercise the self-contained Skill offline
+        run: |
+          python scripts/package_skill.py --destination "$RUNNER_TEMP/pb-skills"
+          python -I "$RUNNER_TEMP/pb-skills/promptboundary-tools/scripts/guard.py" self-test
+          python examples/quarantined_agent.py
+      - name: Verify the shipped Skill archive
+        run: |
+          (cd releases && sha256sum --check promptboundary-tools.zip.sha256)
+          python -m zipfile -e releases/promptboundary-tools.zip "$RUNNER_TEMP/pb-shipped"
+          python -I "$RUNNER_TEMP/pb-shipped/promptboundary-tools/scripts/guard.py" self-test

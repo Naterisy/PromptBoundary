@@ -7,6 +7,7 @@ from statistics import median
 import json
 
 from ..experiment import MODELS, OUTPUT_LIMIT, RATES, RELEASE, ROOT, fingerprint
+from ..archive import verified_snapshot_path
 from ..report import count, digest_messages, fraction, journal, nearest_rank, pricing, read, require
 from .run import HERE, digest
 
@@ -54,7 +55,7 @@ def build(directory, inventory):
             manifest["legacy_git_sha"] == RELEASE and manifest["output_limit"] == OUTPUT_LIMIT
             and manifest["rates"] == {k:list(v) for k,v in RATES.items()}, "Experiment configuration changed")
     for file, h in manifest["sources"].items():
-        require(fingerprint(ROOT/file) == h, f"Stress source changed: {file}")
+        verified_snapshot_path(file, h)
     expected = {f"{m}/{a}/{c['id']}{ext}" for m in MODELS for a in ARMS for c in cases
                 for ext in (".json", ".drafts.json", ".jsonl")}
     observed = {p.relative_to(directory).as_posix() for p in directory.glob("*/*/*.json*")}

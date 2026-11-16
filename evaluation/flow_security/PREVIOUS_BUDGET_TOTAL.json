@@ -1,0 +1,16 @@
+{
+  "reservations": 2877,
+  "journal_requests": 2877,
+  "known_usd": "6.634151435",
+  "unknown_reserved_usd": "0",
+  "maximum_exposure_usd": "6.634151435",
+  "hard_cap_usd": "9.50",
+  "tokens": {
+    "input": 1841445,
+    "output": 278942
+  },
+  "journal_states": {
+    "known": 2877
+  },
+  "unstarted_reservations": []
+}

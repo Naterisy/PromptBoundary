@@ -1,0 +1,1 @@
+{"case":"fdev04","model":"gpt-5.4-mini-2026-03-17","arm":"minimized","status":"parse_error","error":"Extra data: line 1 column 133 (char 132)","reply":"","input_sha256":"c1b199a5be7fda5fa799a4ae4ef2b3b41e2764e9944adbb980ee94774ec4dccb","plans":[],"executed_actions":[],"sandbox_state":{"outbox":[],"files":{},"records":{}},"feedback":[],"audit":[],"calls":1,"elapsed_ms":2329.9}

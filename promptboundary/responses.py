@@ -10,12 +10,22 @@ from .upstream import OpenAICompatible, UpstreamError
 
 
 def chat_result(response):
-    """Extract assistant text or explicit refusal, ignoring non-message reasoning items."""
+    """Extract final assistant text/refusal; intermediate commentary is not an answer."""
     parts, refusals = [], []
+    seen_finals = set()
     if not isinstance(response, dict) or not isinstance(response.get("output"), list):
         raise UpstreamError("Malformed Responses API result.")
     for item in response["output"]:
-        if item.get("type") == "message" and item.get("role") == "assistant":
+        if (item.get("type") == "message" and item.get("role") == "assistant"
+                and item.get("phase") in (None, "final_answer")):
+            # Some providers duplicate an entire final message with a new ID.
+            # Coalesce only byte-identical final payloads. Differing final text
+            # stays visible, so structured callers reject ambiguous JSON.
+            if item.get("phase") == "final_answer":
+                signature = json.dumps(item["content"], ensure_ascii=False, sort_keys=True)
+                if signature in seen_finals:
+                    continue
+                seen_finals.add(signature)
             for part in item["content"]:
                 if part.get("type") == "output_text":
                     parts.append(part["text"])
@@ -51,7 +61,9 @@ class OpenAIResponses(OpenAICompatible):
         if unsupported:
             raise ValueError(f"Unsupported Responses options: {sorted(unsupported)}")
         body = {"model": self.model, "input": messages, "store": False, "service_tier": "default",
-                "reasoning": {"effort": self.effort}, "max_output_tokens": params.get("max_tokens", 1024)}
+                "max_output_tokens": params.get("max_tokens", 1024)}
+        if self.effort is not None:
+            body["reasoning"] = {"effort": self.effort}
         for name in ("temperature", "top_p"):
             if name in params:
                 body[name] = params[name]

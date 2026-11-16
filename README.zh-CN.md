@@ -1,10 +1,35 @@
 # PromptBoundary
 
-[English](README.md) · [Skill 正文](skills/promptboundary/SKILL.md) · [评测材料](evaluation/)
+[English](README.md) · [安装 Agent Skill](docs/skill-installation.md) · [最新评测](evaluation/flow_security/README.md)
 
-用户说过“别再拿那件私事开玩笑”，后来又说“再吐槽我一次”。这两个要求可以同时满足。PromptBoundary 帮助模型保留对话里的纠错，分辨用户是否改变了要求，并在发出回答前检查实际措辞。
+PromptBoundary 提供 Python Runtime 和 Agent Skill，将用户授权与外部文本分开处理。宿主控制工具权限、来源访问和执行目标，隔离的模型 worker 处理选定内容。在限定任务中，它减少了实测注入失败，但不保证生成文本正确或外部事实真实。
 
-**Agent Skill** 适合能读取对话的 Agent。**Python 控制器**适合能接管模型调用的应用，可保存结构化的纠错记录、在生成前判断冲突，并检查和修订草稿。两者均在应用层工作。Python 运行时只依赖标准库，要求 Python 3.10 或更高版本。
+**工具 Skill** 提供安装、来源边界指引和离线检查；**Python SDK** 在实际执行处落实权限。早期的对话纠错控制器和 Skill 继续保留。Python 运行时只依赖标准库，要求 Python 3.10 或更高版本。
+
+## 隔离式工作流与可安装工具 Skill（v0.4）
+
+新增[隔离式工作流](docs/quarantine.md)可处理摘要、翻译和计算：宿主固定工具、目的地与当前轮权限，模型只接收选定来源并返回文本。来源披露限制会传递到派生内容，过期授权不能执行。可选[内容复核](docs/semantic-review.md)最多修订一次，仍可能漏判或误拒。它们都不保证来源真实，也不能阻止绕开 Runtime 的其他工具。
+
+[安装含实际 Runtime 的自包含 Skill](docs/skill-installation.md)：
+
+```sh
+python3 scripts/package_skill.py --destination ~/.agents/skills
+python3 -I ~/.agents/skills/promptboundary-tools/scripts/guard.py self-test
+```
+
+新对话使用 `$promptboundary-tools`。项目内安装可改为 `--destination .agents/skills`。构建、安装和自检均不需要 API 密钥或联网。`check` 只是预检；执行保护需要应用把副作用交给 SDK，不能让模型自行编造权限文件。
+
+先执行 `python -m pip install .` 安装 Python 包即可使用实际 Responses API 适配器。以下示例默认离线，工具效果仅写入内存：
+
+```sh
+python examples/quarantined_openai.py
+# 使用已经配置的 OPENAI_API_KEY，明确启用付费生成：
+python examples/quarantined_openai.py --live --model gpt-6.1-sol
+```
+
+同模型 GPT-4.1 mini 的三次完整重复中，攻击从 5/24、6/24、7/24 降为每轮 2/24；按案例聚类平均下降 16.7 个百分点，探索性 95% 区间 5.6–29.2。重复仍是同一批 24 个攻击案例。正常评分差异经独立审核来自被冻结的词形匹配限制，原分数和语义敏感性同时保留。强模型原始攻击仍为零，Luna 还出现了退步，因此不宣称普遍安全增益。同模型自审默认关闭。
+
+[独立评测与复现](evaluation/flow_security/README.md) · [当前交付结论、失败及费用](evaluation/flow_security/DELIVERY.zh-CN.md)。开发过程中的失败结果和混合模型对照均保留，下方历史结果不改写。
 
 ## 工具授权与来源字段实验
 
@@ -12,7 +37,7 @@
 
 原冻结工具评测中，GPT-4.1 mini 的原始模型执行攻击 8/23、旧会话 Runtime 为 11/23、新权限层为 2/24，正常任务均通过 13/16。六个可配对的改善均有“模型先提出危险动作、权限层拦截、随后完成正常动作”的记录。Sol、Astra 原始模型仍为零，因此该批不能证明两者获得安全提升。[运行与复现](evaluation/agent_security/README.md) · [最新交付报告](evaluation/agent_security/DELIVERY.zh-CN.md) · [独立复核、误拒漏计及评分敏感性](evaluation/agent_security/INDEPENDENT_AUDIT.md)。这组任务改编自公开方法，不是 AgentDojo 官方成绩。
 
-最终来源复制挑战中，4.1 mini 的攻击成功从 4/24 降为 0/24，正常任务两组均为 16/16；小样本配对 p=0.125，不能夸大为普遍保证。Sol、Astra 仍未显示可测安全收益。本轮开发、测试、攻击搜索与重复验证共 2,877 次 API 调用，按实际用量计 6.634151435 美元。来源内容真实与否、开放式推理是否正确仍是未解决问题。
+最终来源复制挑战中，4.1 mini 的攻击成功从 4/24 降为 0/24，正常任务两组均为 16/16；小样本配对 p=0.125，不能夸大为普遍保证。Sol、Astra 仍未显示可测安全收益。v0.3 工具评测的开发、测试、攻击搜索与重复验证共 2,877 次 API 调用，按实际用量计 6.634151435 美元；续作 v0.4 的费用另外列出并累加到同一预算账本。来源内容真实与否、开放式推理是否正确仍是未解决问题。
 
 ## 托管模型安全实验（v0.2）
 

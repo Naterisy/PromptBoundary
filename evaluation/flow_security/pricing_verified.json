@@ -1,0 +1,14 @@
+{
+  "verified_date": "2026-11-16",
+  "basis": "Official OpenAI pages opened and checked; /v1/models confirms IDs, not prices.",
+  "unit": "USD per million tokens, standard short-context processing",
+  "sources": ["https://developers.openai.com/api/docs/pricing", "https://developers.openai.com/api/docs/models/gpt-5.4-mini", "https://developers.openai.com/api/docs/models/gpt-4.1-mini", "https://developers.openai.com/api/docs/models/gpt-6-luna"],
+  "input_cached_read_cache_write_output": {
+    "gpt-6.1-sol": [2, 0.1, 2.5, 10],
+    "gpt-6-astra": [10, 1, 12.5, 50],
+    "gpt-5.4-mini-2026-03-17": [0.75, 0.075, 0.75, 4.5],
+    "gpt-4.1-mini-2025-04-14": [0.4, 0.1, 0.4, 1.6],
+    "gpt-6-luna": [0.1, 0.01, 0.125, 0.5]
+  },
+  "legacy_cache_write_note": "No separate write tier advertised for mini legacy models; conservatively use ordinary input rate. No such cache-write usage observed."
+}

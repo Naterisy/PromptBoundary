@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "promptboundary"
-version = "0.3.0"
-description = "Apply conversational corrections to model replies and audit the resulting answer."
+version = "0.4.0"
+description = "Host-controlled tool capabilities, quarantined text transformations, and conversational corrections."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
@@ -21,3 +21,5 @@ packages = ["promptboundary"]
 "share/promptboundary/skills/promptboundary" = ["skills/promptboundary/SKILL.md"]
 
 "share/promptboundary/skills/promptboundary-tools" = ["skills/promptboundary-tools/SKILL.md"]
+"share/promptboundary/skills/promptboundary-tools/scripts" = ["skills/promptboundary-tools/scripts/guard.py"]
+"share/promptboundary/skills/promptboundary-tools/references" = ["skills/promptboundary-tools/references/checker.md", "skills/promptboundary-tools/references/integration.md"]

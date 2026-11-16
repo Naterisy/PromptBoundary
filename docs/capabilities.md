@@ -56,14 +56,22 @@ Source labels are supplied by the host; they do not cryptographically authentica
 
 ## Companion Skill
 
-A separate optional Skill guides source handling and repair:
+A separate optional Skill guides source handling and repair. Build a self-contained
+copy from a reviewed checkout; the builder copies the actual runtime and requires
+no package download or API key:
 
 ```sh
-mkdir -p ~/.agents/skills
-cp -R skills/promptboundary-tools ~/.agents/skills/
+python3 scripts/package_skill.py --destination "${CODEX_HOME:-$HOME/.codex}/skills"
+python3 -I "${CODEX_HOME:-$HOME/.codex}/skills/promptboundary-tools/scripts/guard.py" self-test
 ```
 
-Invoke `$promptboundary-tools` in a new chat, or let the host select it. It can operate without the Python package as advisory guidance, but cannot enforce tool permissions on its own. It depends on whether the host loads it and exposes the relevant context and provenance. The earlier `promptboundary` Skill is unchanged, preserving historical evaluation artifacts.
+Invoke `$promptboundary-tools` in a new chat, or let the host select it. See the
+[installation guide](skill-installation.md) for the portable ZIP, other host paths,
+integrity checks and upgrades. The checker is only a preview; enforcement still
+requires the application to call the SDK for every side effect. It depends on
+whether the host loads the Skill and exposes the relevant context and provenance.
+The earlier `promptboundary` Skill is unchanged, preserving historical evaluation
+artifacts.
 
 ## Bind a literal-copy task to its original source field
 

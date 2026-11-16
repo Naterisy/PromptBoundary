@@ -1,4 +1,4 @@
-"""Remove opaque provider continuation state from a shareable copy of synthetic journals.
+"""Remove opaque provider continuation and account metadata from a shareable copy of synthetic journals.
 
 This tool deliberately leaves delivered text, audit JSON, API IDs and token usage
 intact. It is not a privacy filter for arbitrary user conversations.
@@ -11,6 +11,15 @@ from pathlib import Path
 
 def redact(record):
     changed = False
+    response = record.get("response", {})
+    # Not needed to reproduce synthetic behavior or usage-priced costs. These
+    # fields may disclose account/program metadata even when no secret is logged.
+    for field in ("metadata", "user", "safety_identifier", "prompt_cache_key", "access_programs", "organization"):
+        if response.get(field):
+            value = response.pop(field)
+            raw = json.dumps(value, ensure_ascii=False, separators=(",", ":")).encode()
+            response[field + "_redacted"] = {"sha256": hashlib.sha256(raw).hexdigest(), "bytes": len(raw)}
+            changed = True
     for part in record.get("response", {}).get("output", []):
         if part.get("type") != "reasoning":
             continue

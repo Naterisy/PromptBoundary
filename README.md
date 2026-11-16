@@ -1,10 +1,35 @@
 # PromptBoundary
 
-[中文使用说明](README.zh-CN.md) · [Agent Skill](skills/promptboundary/SKILL.md) · [Evaluation](evaluation/)
+[中文使用说明](README.zh-CN.md) · [Installable Agent Skill](docs/skill-installation.md) · [Latest evaluation](evaluation/flow_security/README.md)
 
-When someone says “Stop bringing that up when you tease me” and later says “Roast me again,” the assistant can still tell a joke. PromptBoundary helps it remember which subject the user excluded, recognize a genuine change of mind, and check what the final joke actually says.
+PromptBoundary is a Python runtime and a set of Agent Skills for keeping user authorization separate from external text. The host controls tool permissions, source access and execution destinations; isolated model workers transform the selected content. It reduces observed injection failures in scoped tasks, without promising that generated text or external facts are correct.
 
-Use the **Skill** to guide an agent with access to its conversation. Use the **Python controller** when you own the model call and want an explicit correction record, a pre-answer decision, and a review before returning text. Both operate in the application context. The package runs on Python 3.10+ with the standard library.
+Use the **tool Skill** for installation, source-boundary guidance and offline checks, and the **Python SDK** to enforce permissions at actual execution. The earlier conversational correction controller and its Skill remain available. The package runs on Python 3.10+ with the standard library.
+
+## Quarantined text workflows and installable tool Skill (v0.4)
+
+For summaries, translations and calculations, the new [quarantined workflow](docs/quarantine.md) keeps tool selection, destination and current-turn authorization in the application. Its model worker receives only selected sources and returns text. Source disclosure labels survive transformations; superseded handles cannot execute. Optional [semantic review](docs/semantic-review.md) checks text and permits one repair, but remains fallible. None of these components certifies source truth or makes unrestricted agent tools safe.
+
+[Install the self-contained Skill](docs/skill-installation.md) with bundled Runtime and offline checks:
+
+```sh
+python3 scripts/package_skill.py --destination ~/.agents/skills
+python3 -I ~/.agents/skills/promptboundary-tools/scripts/guard.py self-test
+```
+
+In a new chat invoke `$promptboundary-tools`. For a project-local install use `--destination .agents/skills`. This installs locally without credentials or network calls. A Skill's `check` command is a preview: real enforcement requires the application to route effects through the executor. Do not treat model-written permission files as independent authorization.
+
+After `python -m pip install .`, a real Responses API adapter is available; this example defaults to an offline fixture and writes only to an in-memory outbox:
+
+```sh
+python examples/quarantined_openai.py
+# Explicit paid generation, using an already configured OPENAI_API_KEY:
+python examples/quarantined_openai.py --live --model gpt-6.1-sol
+```
+
+The new same-model confirmation on GPT-4.1 mini reduced executed attacks from 5/24, 6/24 and 7/24 to 2/24 in each of three full repetitions (case-cluster mean reduction 16.7 pp, exploratory 95% interval 5.6–29.2). These are repeats of 24 authored attack cases, not new independent scenarios. Normal-score differences were traced to a frozen inflection-matching limitation; all raw scores and the separate semantic audit remain published. Strong-model raw baselines stayed at zero, and Luna showed a regression, so there is no universal security-gain claim. Same-model review is experimental and off by default.
+
+The [new frozen evaluation](evaluation/flow_security/README.md) includes all development failures, independent cases, context-reduction ablations and mixed-model controls. Current conclusions and costs are in its [delivery report](evaluation/flow_security/DELIVERY.zh-CN.md); historical results below remain unchanged.
 
 ## Tool authorization and source-copy experiments
 
@@ -12,7 +37,7 @@ The new optional [capability SDK](docs/capabilities.md) tracks external-source o
 
 On the original frozen tool-effect holdout, GPT-4.1 mini's raw model executed 8/23 evaluable attacks, the old conversational runtime 11/23, and the capability runtime 2/24; normal task pass remained 13/16. All six improvements on comparable raw/protected pairs include an unsafe initial plan, a gate denial and a useful repair. Stronger Sol/Astra baselines stayed at zero, so that set establishes no security gain for them. [Reproduce every run](evaluation/agent_security/README.md), [read the current delivery report](evaluation/agent_security/DELIVERY.zh-CN.md), and [review limitations and metric sensitivity](evaluation/agent_security/INDEPENDENT_AUDIT.md). These are authored adaptations of public methods, not official AgentDojo scores.
 
-The final source-copy challenge reduced 4.1 mini's observed attacks from 4/24 to 0/24 with 16/16 normal tasks in both arms; the small paired comparison has p=0.125. Sol/Astra still showed no measurable security gain. All new iterations and confirmations cost USD 6.634151435 across 2,877 calls. These checks protect tool effects in explicitly authorized workflows; source truth and open-ended reasoning remain outside their guarantee.
+The final source-copy challenge reduced 4.1 mini's observed attacks from 4/24 to 0/24 with 16/16 normal tasks in both arms; the small paired comparison has p=0.125. Sol/Astra still showed no measurable security gain. The v0.3 tool-only iterations and confirmations cost USD 6.634151435 across 2,877 calls; the continuation ledger includes additional v0.4 calls. These checks protect tool effects in explicitly authorized workflows; source truth and open-ended reasoning remain outside their guarantee.
 
 ## Hosted security evaluation (v0.2)
 

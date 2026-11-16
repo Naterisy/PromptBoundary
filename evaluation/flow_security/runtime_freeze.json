@@ -1,0 +1,43 @@
+{
+  "frozen_before_holdout_outputs": true,
+  "utc": "2026-11-16T11:30:40.140546+00:00",
+  "sha256": {
+    "promptboundary/__init__.py": "f812ceebfb39d7dc9c5973a103dc3365e07ccc782a69e48106f7368a5c7e95ec",
+    "promptboundary/capabilities.py": "09c18d0747d7ba8a6f16414554a271565579f86a2824ffff32c1507f609d793c",
+    "promptboundary/cli.py": "1ddeb44f651fa5e4b9df9fcd009eb778445663ea8e5315c647da18f786b1275d",
+    "promptboundary/core.py": "2d4f9b7d8a7297a94ec557ca7a6cebabb97e690188de49872b21a0e8eba689aa",
+    "promptboundary/demo.py": "b80998343c98737c36a50be05da77aba3cf8184872187834494995f358bcb541",
+    "promptboundary/materialize.py": "e8b5648988fdbb1c78fb4eaa120c05efef18eb8ec3f69c52fba3ceb49d0a2b16",
+    "promptboundary/middleware.py": "aea4599a12bf3d6d453d31c3e054e709273029ffac0792f90bf322d1487354d6",
+    "promptboundary/quarantine.py": "f273ed1e7bba49544889a896aff3387f2a8b00b324c43ed4fc3b8e864df45dd9",
+    "promptboundary/responses.py": "caddcf41d32b3ed482f964f2ee179627dfa1f2866cac36ee1d088dea996fa337",
+    "promptboundary/reviewed_worker.py": "ab443497ad86dd11faebc20280c70da47f72382c74f19f8a8b69729557a4b74a",
+    "promptboundary/skill_cli.py": "aa5785e95628974703e0373287280157df6c8c1083268885c00f4c54893e2a10",
+    "promptboundary/source_binding.py": "1676679dff2772e34053f76430f6e2ae8bdd827e3fc5ef4cd6f188b6b0342029",
+    "promptboundary/transforms.py": "52bf8e8725a899ffba598b3f76eb6ead96bb96953217e5a0ad1c2f17c7a6fe2e",
+    "promptboundary/upstream.py": "b2133375f54673e3c8674ccf743d50fe547d0582ccd3411f251be04fd127e8f8",
+    "evaluation/flow_security/run.py": "1a588bf11665696199d33b2ced911bb4d1d99ac38d42f618f221ffc29791cdc5",
+    "evaluation/flow_security/score.py": "a6d5e1b5eb25c1a1d1f15b8909b3e576309780d37a31c674911b09069fc6fc8b",
+    "evaluation/flow_security/PROTOCOL_ADDENDUM.md": "532d3bad72741686eb7ea0e60251e9c77c05df354d341ec17ccfaadb91520618",
+    "evaluation/flow_security/AUDIT_PLAN.md": "8517576c73717a8fd6d8e8caccc2881ecef54fcb258d09af0d3a2a9e712c1f60"
+  },
+  "budget_before_holdout_usd": "6.813767935",
+  "planned_primary_models": [
+    "gpt-6.1-sol",
+    "gpt-6-astra",
+    "gpt-5.4-mini-2026-03-17",
+    "gpt-4.1-mini-2025-04-14",
+    "gpt-6-luna"
+  ],
+  "planned_primary_arms": [
+    "raw",
+    "capability",
+    "minimized",
+    "flow",
+    "reviewed"
+  ],
+  "separate_hybrid_control": {
+    "generator": "gpt-4.1-mini-2025-04-14",
+    "reviewer": "gpt-5.4-mini-2026-03-17"
+  }
+}

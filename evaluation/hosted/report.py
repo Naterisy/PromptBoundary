@@ -10,7 +10,10 @@ from statistics import median
 
 from .experiment import ARMS, HERE, MODELS, OUTPUT_LIMIT, RATES, RELEASE, ROOT, compact, fingerprint
 from .score import score_case
-from promptboundary.responses import chat_result
+from .archive import historical_chat_result, verified_snapshot_path
+
+# Old outputs must be reconstructed with the parser that produced them.
+chat_result = historical_chat_result()
 
 
 def read(path):
@@ -187,7 +190,7 @@ def build(directory):
                 and manifest["inventory_sha256"] == fingerprint(inventory), f"Invalid {arm} manifest")
         require(manifest["rates"] == {k:list(v) for k,v in RATES.items()}, f"Rates differ for {arm}")
         for filename, expected_hash in manifest["sources"].items():
-            require(fingerprint(ROOT / filename) == expected_hash, f"Source differs from {arm} manifest: {filename}")
+            verified_snapshot_path(filename, expected_hash)
     summary, pairs, rows = {}, {}, []
     smoke = {}
     for model in MODELS:
