@@ -1,0 +1,109 @@
+{
+  "case": "v01",
+  "behavior": "correct a recurring invoice instruction",
+  "arm": "C",
+  "evicted": false,
+  "status": "degraded",
+  "answer": "The final invoice note for account 680 should include the account number and the payment method WIRE.",
+  "events": [
+    "interpret:retry",
+    "replace:r1",
+    "set:r2",
+    "intent:normal",
+    "audit:readjudicate",
+    "audit:pass",
+    "context:pending"
+  ],
+  "attempts": 1,
+  "score": {
+    "retained": true,
+    "violation": false,
+    "false_refusal": null,
+    "task_pass": true,
+    "forbidden_hits": [],
+    "missing_required": [],
+    "missing_boundary": []
+  },
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 308,
+      "completion_tokens": 44,
+      "total_tokens": 352,
+      "response_format": "json_schema",
+      "elapsed_ms": 1445.374
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 381,
+      "completion_tokens": 43,
+      "total_tokens": 424,
+      "response_format": "json_schema",
+      "elapsed_ms": 1071.865
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 413,
+      "completion_tokens": 74,
+      "total_tokens": 487,
+      "response_format": "json_schema",
+      "elapsed_ms": 2077.448
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 564,
+      "completion_tokens": 110,
+      "total_tokens": 674,
+      "response_format": "json_schema",
+      "elapsed_ms": 3115.019
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 550,
+      "completion_tokens": 114,
+      "total_tokens": 664,
+      "response_format": "json_schema",
+      "elapsed_ms": 3085.635
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 279,
+      "completion_tokens": 23,
+      "total_tokens": 302,
+      "response_format": "text",
+      "elapsed_ms": 994.041
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 379,
+      "completion_tokens": 384,
+      "total_tokens": 763,
+      "response_format": "json_schema",
+      "elapsed_ms": 8624.691
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 426,
+      "completion_tokens": 309,
+      "total_tokens": 735,
+      "response_format": "json_schema",
+      "elapsed_ms": 6920.833
+    }
+  ],
+  "setup_calls": 3,
+  "setup_ms": 4595.137,
+  "reply_ms": 22740.73,
+  "elapsed_ms": 27335.867,
+  "prompt_tokens": 3300,
+  "completion_tokens": 1101,
+  "total_tokens": 4401,
+  "snapshot": "f67e79872456692260c46587005e26a91bbdac8bc34c02f26dcf078fd6953ff5"
+}

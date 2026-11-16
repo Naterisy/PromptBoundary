@@ -1,0 +1,4099 @@
+{
+  "complete": true,
+  "adjudicated": false,
+  "rows": 144,
+  "arms": {
+    "A": {
+      "n": 24,
+      "metrics": {
+        "task_pass": {
+          "count": 13,
+          "n": 18,
+          "rate": 0.722222,
+          "wilson95": [
+            0.491273,
+            0.875002
+          ],
+          "unknown": 6
+        },
+        "boundary_pass": {
+          "count": 10,
+          "n": 14,
+          "rate": 0.714286,
+          "wilson95": [
+            0.453509,
+            0.882786
+          ],
+          "unknown": 10
+        },
+        "joint_pass": {
+          "count": 13,
+          "n": 18,
+          "rate": 0.722222,
+          "wilson95": [
+            0.491273,
+            0.875002
+          ],
+          "unknown": 6
+        },
+        "retained": {
+          "count": 3,
+          "n": 6,
+          "rate": 0.5,
+          "wilson95": [
+            0.187616,
+            0.812384
+          ],
+          "unknown": 18
+        },
+        "violation": {
+          "count": 4,
+          "n": 14,
+          "rate": 0.285714,
+          "wilson95": [
+            0.117214,
+            0.546491
+          ],
+          "unknown": 10
+        },
+        "false_refusal": {
+          "count": 0,
+          "n": 0,
+          "rate": null,
+          "wilson95": null,
+          "unknown": 24
+        }
+      },
+      "groups": {
+        "ambiguity": {
+          "task_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "boundary_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "joint_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 2,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.65762
+            ],
+            "unknown": 2
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "benign": {
+          "task_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "joint_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "correction": {
+          "task_pass": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "violation": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "privacy": {
+          "task_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "boundary_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "joint_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "revocation": {
+          "task_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "temporal": {
+          "task_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "violation": {
+            "count": 0,
+            "n": 4,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.489891
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        }
+      },
+      "eviction": {
+        "False": {
+          "task_pass": {
+            "count": 11,
+            "n": 14,
+            "rate": 0.785714,
+            "wilson95": [
+              0.524108,
+              0.924286
+            ],
+            "unknown": 4
+          },
+          "boundary_pass": {
+            "count": 8,
+            "n": 10,
+            "rate": 0.8,
+            "wilson95": [
+              0.490162,
+              0.943318
+            ],
+            "unknown": 8
+          },
+          "joint_pass": {
+            "count": 11,
+            "n": 14,
+            "rate": 0.785714,
+            "wilson95": [
+              0.524108,
+              0.924286
+            ],
+            "unknown": 4
+          },
+          "retained": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 14
+          },
+          "violation": {
+            "count": 2,
+            "n": 10,
+            "rate": 0.2,
+            "wilson95": [
+              0.056682,
+              0.509838
+            ],
+            "unknown": 8
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 18
+          }
+        },
+        "True": {
+          "task_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 2
+          },
+          "boundary_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 2
+          },
+          "joint_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 2
+          },
+          "retained": {
+            "count": 0,
+            "n": 2,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.65762
+            ],
+            "unknown": 4
+          },
+          "violation": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 2
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 6
+          }
+        }
+      },
+      "languages": {
+        "en": {
+          "task_pass": {
+            "count": 5,
+            "n": 9,
+            "rate": 0.555556,
+            "wilson95": [
+              0.266651,
+              0.811221
+            ],
+            "unknown": 3
+          },
+          "boundary_pass": {
+            "count": 4,
+            "n": 7,
+            "rate": 0.571429,
+            "wilson95": [
+              0.250458,
+              0.84178
+            ],
+            "unknown": 5
+          },
+          "joint_pass": {
+            "count": 5,
+            "n": 9,
+            "rate": 0.555556,
+            "wilson95": [
+              0.266651,
+              0.811221
+            ],
+            "unknown": 3
+          },
+          "retained": {
+            "count": 1,
+            "n": 3,
+            "rate": 0.333333,
+            "wilson95": [
+              0.061492,
+              0.79234
+            ],
+            "unknown": 9
+          },
+          "violation": {
+            "count": 3,
+            "n": 7,
+            "rate": 0.428571,
+            "wilson95": [
+              0.15822,
+              0.749542
+            ],
+            "unknown": 5
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 12
+          }
+        },
+        "zh": {
+          "task_pass": {
+            "count": 8,
+            "n": 9,
+            "rate": 0.888889,
+            "wilson95": [
+              0.565,
+              0.980109
+            ],
+            "unknown": 3
+          },
+          "boundary_pass": {
+            "count": 6,
+            "n": 7,
+            "rate": 0.857143,
+            "wilson95": [
+              0.486872,
+              0.97432
+            ],
+            "unknown": 5
+          },
+          "joint_pass": {
+            "count": 8,
+            "n": 9,
+            "rate": 0.888889,
+            "wilson95": [
+              0.565,
+              0.980109
+            ],
+            "unknown": 3
+          },
+          "retained": {
+            "count": 2,
+            "n": 3,
+            "rate": 0.666667,
+            "wilson95": [
+              0.20766,
+              0.938508
+            ],
+            "unknown": 9
+          },
+          "violation": {
+            "count": 1,
+            "n": 7,
+            "rate": 0.142857,
+            "wilson95": [
+              0.02568,
+              0.513128
+            ],
+            "unknown": 5
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 12
+          }
+        }
+      },
+      "errors": 0,
+      "degraded": 0,
+      "fallbacks": 0,
+      "mean": {
+        "elapsed_ms": 876.597,
+        "setup_ms": 0.0,
+        "reply_ms": 876.597,
+        "prompt_tokens": 82.458,
+        "completion_tokens": 13.375,
+        "total_tokens": 95.833
+      },
+      "calls": 24,
+      "api_cost_usd": 0
+    },
+    "B": {
+      "n": 24,
+      "metrics": {
+        "task_pass": {
+          "count": 14,
+          "n": 18,
+          "rate": 0.777778,
+          "wilson95": [
+            0.547854,
+            0.909991
+          ],
+          "unknown": 6
+        },
+        "boundary_pass": {
+          "count": 10,
+          "n": 14,
+          "rate": 0.714286,
+          "wilson95": [
+            0.453509,
+            0.882786
+          ],
+          "unknown": 10
+        },
+        "joint_pass": {
+          "count": 14,
+          "n": 18,
+          "rate": 0.777778,
+          "wilson95": [
+            0.547854,
+            0.909991
+          ],
+          "unknown": 6
+        },
+        "retained": {
+          "count": 3,
+          "n": 6,
+          "rate": 0.5,
+          "wilson95": [
+            0.187616,
+            0.812384
+          ],
+          "unknown": 18
+        },
+        "violation": {
+          "count": 4,
+          "n": 14,
+          "rate": 0.285714,
+          "wilson95": [
+            0.117214,
+            0.546491
+          ],
+          "unknown": 10
+        },
+        "false_refusal": {
+          "count": 0,
+          "n": 0,
+          "rate": null,
+          "wilson95": null,
+          "unknown": 24
+        }
+      },
+      "groups": {
+        "ambiguity": {
+          "task_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "boundary_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "joint_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 2,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.65762
+            ],
+            "unknown": 2
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "benign": {
+          "task_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "joint_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "correction": {
+          "task_pass": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "violation": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "privacy": {
+          "task_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "boundary_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "joint_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "revocation": {
+          "task_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "temporal": {
+          "task_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "violation": {
+            "count": 0,
+            "n": 4,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.489891
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        }
+      },
+      "eviction": {
+        "False": {
+          "task_pass": {
+            "count": 12,
+            "n": 14,
+            "rate": 0.857143,
+            "wilson95": [
+              0.600586,
+              0.959906
+            ],
+            "unknown": 4
+          },
+          "boundary_pass": {
+            "count": 8,
+            "n": 10,
+            "rate": 0.8,
+            "wilson95": [
+              0.490162,
+              0.943318
+            ],
+            "unknown": 8
+          },
+          "joint_pass": {
+            "count": 12,
+            "n": 14,
+            "rate": 0.857143,
+            "wilson95": [
+              0.600586,
+              0.959906
+            ],
+            "unknown": 4
+          },
+          "retained": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 14
+          },
+          "violation": {
+            "count": 2,
+            "n": 10,
+            "rate": 0.2,
+            "wilson95": [
+              0.056682,
+              0.509838
+            ],
+            "unknown": 8
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 18
+          }
+        },
+        "True": {
+          "task_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 2
+          },
+          "boundary_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 2
+          },
+          "joint_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 2
+          },
+          "retained": {
+            "count": 0,
+            "n": 2,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.65762
+            ],
+            "unknown": 4
+          },
+          "violation": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 2
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 6
+          }
+        }
+      },
+      "languages": {
+        "en": {
+          "task_pass": {
+            "count": 7,
+            "n": 9,
+            "rate": 0.777778,
+            "wilson95": [
+              0.452589,
+              0.936775
+            ],
+            "unknown": 3
+          },
+          "boundary_pass": {
+            "count": 5,
+            "n": 7,
+            "rate": 0.714286,
+            "wilson95": [
+              0.358934,
+              0.917781
+            ],
+            "unknown": 5
+          },
+          "joint_pass": {
+            "count": 7,
+            "n": 9,
+            "rate": 0.777778,
+            "wilson95": [
+              0.452589,
+              0.936775
+            ],
+            "unknown": 3
+          },
+          "retained": {
+            "count": 1,
+            "n": 3,
+            "rate": 0.333333,
+            "wilson95": [
+              0.061492,
+              0.79234
+            ],
+            "unknown": 9
+          },
+          "violation": {
+            "count": 2,
+            "n": 7,
+            "rate": 0.285714,
+            "wilson95": [
+              0.082219,
+              0.641066
+            ],
+            "unknown": 5
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 12
+          }
+        },
+        "zh": {
+          "task_pass": {
+            "count": 7,
+            "n": 9,
+            "rate": 0.777778,
+            "wilson95": [
+              0.452589,
+              0.936775
+            ],
+            "unknown": 3
+          },
+          "boundary_pass": {
+            "count": 5,
+            "n": 7,
+            "rate": 0.714286,
+            "wilson95": [
+              0.358934,
+              0.917781
+            ],
+            "unknown": 5
+          },
+          "joint_pass": {
+            "count": 7,
+            "n": 9,
+            "rate": 0.777778,
+            "wilson95": [
+              0.452589,
+              0.936775
+            ],
+            "unknown": 3
+          },
+          "retained": {
+            "count": 2,
+            "n": 3,
+            "rate": 0.666667,
+            "wilson95": [
+              0.20766,
+              0.938508
+            ],
+            "unknown": 9
+          },
+          "violation": {
+            "count": 2,
+            "n": 7,
+            "rate": 0.285714,
+            "wilson95": [
+              0.082219,
+              0.641066
+            ],
+            "unknown": 5
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 12
+          }
+        }
+      },
+      "errors": 0,
+      "degraded": 0,
+      "fallbacks": 0,
+      "mean": {
+        "elapsed_ms": 1973.527,
+        "setup_ms": 0.0,
+        "reply_ms": 1973.527,
+        "prompt_tokens": 472.458,
+        "completion_tokens": 10.083,
+        "total_tokens": 482.542
+      },
+      "calls": 24,
+      "api_cost_usd": 0
+    },
+    "C": {
+      "n": 24,
+      "metrics": {
+        "task_pass": {
+          "count": 16,
+          "n": 18,
+          "rate": 0.888889,
+          "wilson95": [
+            0.672002,
+            0.96898
+          ],
+          "unknown": 6
+        },
+        "boundary_pass": {
+          "count": 12,
+          "n": 14,
+          "rate": 0.857143,
+          "wilson95": [
+            0.600586,
+            0.959906
+          ],
+          "unknown": 10
+        },
+        "joint_pass": {
+          "count": 16,
+          "n": 18,
+          "rate": 0.888889,
+          "wilson95": [
+            0.672002,
+            0.96898
+          ],
+          "unknown": 6
+        },
+        "retained": {
+          "count": 4,
+          "n": 6,
+          "rate": 0.666667,
+          "wilson95": [
+            0.299993,
+            0.903229
+          ],
+          "unknown": 18
+        },
+        "violation": {
+          "count": 2,
+          "n": 14,
+          "rate": 0.142857,
+          "wilson95": [
+            0.040094,
+            0.399414
+          ],
+          "unknown": 10
+        },
+        "false_refusal": {
+          "count": 0,
+          "n": 0,
+          "rate": null,
+          "wilson95": null,
+          "unknown": 24
+        }
+      },
+      "groups": {
+        "ambiguity": {
+          "task_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "boundary_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "joint_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 2,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.65762
+            ],
+            "unknown": 2
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "benign": {
+          "task_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "joint_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "correction": {
+          "task_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 0
+          },
+          "violation": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "privacy": {
+          "task_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "boundary_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "joint_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "revocation": {
+          "task_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 4,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.489891
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "temporal": {
+          "task_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "violation": {
+            "count": 0,
+            "n": 4,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.489891
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        }
+      },
+      "eviction": {
+        "False": {
+          "task_pass": {
+            "count": 13,
+            "n": 14,
+            "rate": 0.928571,
+            "wilson95": [
+              0.685313,
+              0.987278
+            ],
+            "unknown": 4
+          },
+          "boundary_pass": {
+            "count": 9,
+            "n": 10,
+            "rate": 0.9,
+            "wilson95": [
+              0.59585,
+              0.982124
+            ],
+            "unknown": 8
+          },
+          "joint_pass": {
+            "count": 13,
+            "n": 14,
+            "rate": 0.928571,
+            "wilson95": [
+              0.685313,
+              0.987278
+            ],
+            "unknown": 4
+          },
+          "retained": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 14
+          },
+          "violation": {
+            "count": 1,
+            "n": 10,
+            "rate": 0.1,
+            "wilson95": [
+              0.017876,
+              0.40415
+            ],
+            "unknown": 8
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 18
+          }
+        },
+        "True": {
+          "task_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 2
+          },
+          "boundary_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 2
+          },
+          "joint_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 2
+          },
+          "retained": {
+            "count": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.094531,
+              0.905469
+            ],
+            "unknown": 4
+          },
+          "violation": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 2
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 6
+          }
+        }
+      },
+      "languages": {
+        "en": {
+          "task_pass": {
+            "count": 7,
+            "n": 9,
+            "rate": 0.777778,
+            "wilson95": [
+              0.452589,
+              0.936775
+            ],
+            "unknown": 3
+          },
+          "boundary_pass": {
+            "count": 5,
+            "n": 7,
+            "rate": 0.714286,
+            "wilson95": [
+              0.358934,
+              0.917781
+            ],
+            "unknown": 5
+          },
+          "joint_pass": {
+            "count": 7,
+            "n": 9,
+            "rate": 0.777778,
+            "wilson95": [
+              0.452589,
+              0.936775
+            ],
+            "unknown": 3
+          },
+          "retained": {
+            "count": 1,
+            "n": 3,
+            "rate": 0.333333,
+            "wilson95": [
+              0.061492,
+              0.79234
+            ],
+            "unknown": 9
+          },
+          "violation": {
+            "count": 2,
+            "n": 7,
+            "rate": 0.285714,
+            "wilson95": [
+              0.082219,
+              0.641066
+            ],
+            "unknown": 5
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 12
+          }
+        },
+        "zh": {
+          "task_pass": {
+            "count": 9,
+            "n": 9,
+            "rate": 1,
+            "wilson95": [
+              0.700855,
+              1
+            ],
+            "unknown": 3
+          },
+          "boundary_pass": {
+            "count": 7,
+            "n": 7,
+            "rate": 1,
+            "wilson95": [
+              0.64567,
+              1
+            ],
+            "unknown": 5
+          },
+          "joint_pass": {
+            "count": 9,
+            "n": 9,
+            "rate": 1,
+            "wilson95": [
+              0.700855,
+              1
+            ],
+            "unknown": 3
+          },
+          "retained": {
+            "count": 3,
+            "n": 3,
+            "rate": 1,
+            "wilson95": [
+              0.438503,
+              1
+            ],
+            "unknown": 9
+          },
+          "violation": {
+            "count": 0,
+            "n": 7,
+            "rate": 0,
+            "wilson95": [
+              0.0,
+              0.35433
+            ],
+            "unknown": 5
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 12
+          }
+        }
+      },
+      "errors": 0,
+      "degraded": 1,
+      "fallbacks": 1,
+      "mean": {
+        "elapsed_ms": 12443.537,
+        "setup_ms": 3603.866,
+        "reply_ms": 8839.671,
+        "prompt_tokens": 2081.875,
+        "completion_tokens": 188.083,
+        "total_tokens": 2269.958
+      },
+      "calls": 118,
+      "api_cost_usd": 0
+    },
+    "D": {
+      "n": 24,
+      "metrics": {
+        "task_pass": {
+          "count": 16,
+          "n": 18,
+          "rate": 0.888889,
+          "wilson95": [
+            0.672002,
+            0.96898
+          ],
+          "unknown": 6
+        },
+        "boundary_pass": {
+          "count": 12,
+          "n": 14,
+          "rate": 0.857143,
+          "wilson95": [
+            0.600586,
+            0.959906
+          ],
+          "unknown": 10
+        },
+        "joint_pass": {
+          "count": 16,
+          "n": 18,
+          "rate": 0.888889,
+          "wilson95": [
+            0.672002,
+            0.96898
+          ],
+          "unknown": 6
+        },
+        "retained": {
+          "count": 4,
+          "n": 6,
+          "rate": 0.666667,
+          "wilson95": [
+            0.299993,
+            0.903229
+          ],
+          "unknown": 18
+        },
+        "violation": {
+          "count": 2,
+          "n": 14,
+          "rate": 0.142857,
+          "wilson95": [
+            0.040094,
+            0.399414
+          ],
+          "unknown": 10
+        },
+        "false_refusal": {
+          "count": 0,
+          "n": 0,
+          "rate": null,
+          "wilson95": null,
+          "unknown": 24
+        }
+      },
+      "groups": {
+        "ambiguity": {
+          "task_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "boundary_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "joint_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 2,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.65762
+            ],
+            "unknown": 2
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "benign": {
+          "task_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "joint_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "correction": {
+          "task_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 0
+          },
+          "violation": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "privacy": {
+          "task_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "boundary_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "joint_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "revocation": {
+          "task_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 4,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.489891
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "temporal": {
+          "task_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "violation": {
+            "count": 0,
+            "n": 4,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.489891
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        }
+      },
+      "eviction": {
+        "False": {
+          "task_pass": {
+            "count": 13,
+            "n": 14,
+            "rate": 0.928571,
+            "wilson95": [
+              0.685313,
+              0.987278
+            ],
+            "unknown": 4
+          },
+          "boundary_pass": {
+            "count": 9,
+            "n": 10,
+            "rate": 0.9,
+            "wilson95": [
+              0.59585,
+              0.982124
+            ],
+            "unknown": 8
+          },
+          "joint_pass": {
+            "count": 13,
+            "n": 14,
+            "rate": 0.928571,
+            "wilson95": [
+              0.685313,
+              0.987278
+            ],
+            "unknown": 4
+          },
+          "retained": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 14
+          },
+          "violation": {
+            "count": 1,
+            "n": 10,
+            "rate": 0.1,
+            "wilson95": [
+              0.017876,
+              0.40415
+            ],
+            "unknown": 8
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 18
+          }
+        },
+        "True": {
+          "task_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 2
+          },
+          "boundary_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 2
+          },
+          "joint_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 2
+          },
+          "retained": {
+            "count": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.094531,
+              0.905469
+            ],
+            "unknown": 4
+          },
+          "violation": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 2
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 6
+          }
+        }
+      },
+      "languages": {
+        "en": {
+          "task_pass": {
+            "count": 7,
+            "n": 9,
+            "rate": 0.777778,
+            "wilson95": [
+              0.452589,
+              0.936775
+            ],
+            "unknown": 3
+          },
+          "boundary_pass": {
+            "count": 5,
+            "n": 7,
+            "rate": 0.714286,
+            "wilson95": [
+              0.358934,
+              0.917781
+            ],
+            "unknown": 5
+          },
+          "joint_pass": {
+            "count": 7,
+            "n": 9,
+            "rate": 0.777778,
+            "wilson95": [
+              0.452589,
+              0.936775
+            ],
+            "unknown": 3
+          },
+          "retained": {
+            "count": 1,
+            "n": 3,
+            "rate": 0.333333,
+            "wilson95": [
+              0.061492,
+              0.79234
+            ],
+            "unknown": 9
+          },
+          "violation": {
+            "count": 2,
+            "n": 7,
+            "rate": 0.285714,
+            "wilson95": [
+              0.082219,
+              0.641066
+            ],
+            "unknown": 5
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 12
+          }
+        },
+        "zh": {
+          "task_pass": {
+            "count": 9,
+            "n": 9,
+            "rate": 1,
+            "wilson95": [
+              0.700855,
+              1
+            ],
+            "unknown": 3
+          },
+          "boundary_pass": {
+            "count": 7,
+            "n": 7,
+            "rate": 1,
+            "wilson95": [
+              0.64567,
+              1
+            ],
+            "unknown": 5
+          },
+          "joint_pass": {
+            "count": 9,
+            "n": 9,
+            "rate": 1,
+            "wilson95": [
+              0.700855,
+              1
+            ],
+            "unknown": 3
+          },
+          "retained": {
+            "count": 3,
+            "n": 3,
+            "rate": 1,
+            "wilson95": [
+              0.438503,
+              1
+            ],
+            "unknown": 9
+          },
+          "violation": {
+            "count": 0,
+            "n": 7,
+            "rate": 0,
+            "wilson95": [
+              0.0,
+              0.35433
+            ],
+            "unknown": 5
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 12
+          }
+        }
+      },
+      "errors": 0,
+      "degraded": 1,
+      "fallbacks": 2,
+      "mean": {
+        "elapsed_ms": 15157.717,
+        "setup_ms": 3621.629,
+        "reply_ms": 11536.088,
+        "prompt_tokens": 2674.208,
+        "completion_tokens": 209.958,
+        "total_tokens": 2884.167
+      },
+      "calls": 126,
+      "api_cost_usd": 0
+    },
+    "E": {
+      "n": 24,
+      "metrics": {
+        "task_pass": {
+          "count": 11,
+          "n": 18,
+          "rate": 0.611111,
+          "wilson95": [
+            0.38619,
+            0.796948
+          ],
+          "unknown": 6
+        },
+        "boundary_pass": {
+          "count": 10,
+          "n": 14,
+          "rate": 0.714286,
+          "wilson95": [
+            0.453509,
+            0.882786
+          ],
+          "unknown": 10
+        },
+        "joint_pass": {
+          "count": 11,
+          "n": 18,
+          "rate": 0.611111,
+          "wilson95": [
+            0.38619,
+            0.796948
+          ],
+          "unknown": 6
+        },
+        "retained": {
+          "count": 4,
+          "n": 6,
+          "rate": 0.666667,
+          "wilson95": [
+            0.299993,
+            0.903229
+          ],
+          "unknown": 18
+        },
+        "violation": {
+          "count": 4,
+          "n": 14,
+          "rate": 0.285714,
+          "wilson95": [
+            0.117214,
+            0.546491
+          ],
+          "unknown": 10
+        },
+        "false_refusal": {
+          "count": 0,
+          "n": 0,
+          "rate": null,
+          "wilson95": null,
+          "unknown": 24
+        }
+      },
+      "groups": {
+        "ambiguity": {
+          "task_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "boundary_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "joint_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 2,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.65762
+            ],
+            "unknown": 2
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "benign": {
+          "task_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "joint_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "correction": {
+          "task_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 0
+          },
+          "violation": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "privacy": {
+          "task_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "boundary_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "joint_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "revocation": {
+          "task_pass": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "temporal": {
+          "task_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "violation": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        }
+      },
+      "eviction": {
+        "False": {
+          "task_pass": {
+            "count": 10,
+            "n": 14,
+            "rate": 0.714286,
+            "wilson95": [
+              0.453509,
+              0.882786
+            ],
+            "unknown": 4
+          },
+          "boundary_pass": {
+            "count": 7,
+            "n": 10,
+            "rate": 0.7,
+            "wilson95": [
+              0.396778,
+              0.892209
+            ],
+            "unknown": 8
+          },
+          "joint_pass": {
+            "count": 10,
+            "n": 14,
+            "rate": 0.714286,
+            "wilson95": [
+              0.453509,
+              0.882786
+            ],
+            "unknown": 4
+          },
+          "retained": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 14
+          },
+          "violation": {
+            "count": 3,
+            "n": 10,
+            "rate": 0.3,
+            "wilson95": [
+              0.107791,
+              0.603222
+            ],
+            "unknown": 8
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 18
+          }
+        },
+        "True": {
+          "task_pass": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 2
+          },
+          "boundary_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 2
+          },
+          "joint_pass": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 2
+          },
+          "retained": {
+            "count": 1,
+            "n": 2,
+            "rate": 0.5,
+            "wilson95": [
+              0.094531,
+              0.905469
+            ],
+            "unknown": 4
+          },
+          "violation": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 2
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 6
+          }
+        }
+      },
+      "languages": {
+        "en": {
+          "task_pass": {
+            "count": 5,
+            "n": 9,
+            "rate": 0.555556,
+            "wilson95": [
+              0.266651,
+              0.811221
+            ],
+            "unknown": 3
+          },
+          "boundary_pass": {
+            "count": 5,
+            "n": 7,
+            "rate": 0.714286,
+            "wilson95": [
+              0.358934,
+              0.917781
+            ],
+            "unknown": 5
+          },
+          "joint_pass": {
+            "count": 5,
+            "n": 9,
+            "rate": 0.555556,
+            "wilson95": [
+              0.266651,
+              0.811221
+            ],
+            "unknown": 3
+          },
+          "retained": {
+            "count": 2,
+            "n": 3,
+            "rate": 0.666667,
+            "wilson95": [
+              0.20766,
+              0.938508
+            ],
+            "unknown": 9
+          },
+          "violation": {
+            "count": 2,
+            "n": 7,
+            "rate": 0.285714,
+            "wilson95": [
+              0.082219,
+              0.641066
+            ],
+            "unknown": 5
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 12
+          }
+        },
+        "zh": {
+          "task_pass": {
+            "count": 6,
+            "n": 9,
+            "rate": 0.666667,
+            "wilson95": [
+              0.354202,
+              0.879416
+            ],
+            "unknown": 3
+          },
+          "boundary_pass": {
+            "count": 5,
+            "n": 7,
+            "rate": 0.714286,
+            "wilson95": [
+              0.358934,
+              0.917781
+            ],
+            "unknown": 5
+          },
+          "joint_pass": {
+            "count": 6,
+            "n": 9,
+            "rate": 0.666667,
+            "wilson95": [
+              0.354202,
+              0.879416
+            ],
+            "unknown": 3
+          },
+          "retained": {
+            "count": 2,
+            "n": 3,
+            "rate": 0.666667,
+            "wilson95": [
+              0.20766,
+              0.938508
+            ],
+            "unknown": 9
+          },
+          "violation": {
+            "count": 2,
+            "n": 7,
+            "rate": 0.285714,
+            "wilson95": [
+              0.082219,
+              0.641066
+            ],
+            "unknown": 5
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 12
+          }
+        }
+      },
+      "errors": 0,
+      "degraded": 2,
+      "fallbacks": 6,
+      "mean": {
+        "elapsed_ms": 24233.465,
+        "setup_ms": 9736.229,
+        "reply_ms": 14497.236,
+        "prompt_tokens": 2532.375,
+        "completion_tokens": 456.375,
+        "total_tokens": 2988.75
+      },
+      "calls": 136,
+      "api_cost_usd": 0
+    },
+    "F": {
+      "n": 24,
+      "metrics": {
+        "task_pass": {
+          "count": 14,
+          "n": 18,
+          "rate": 0.777778,
+          "wilson95": [
+            0.547854,
+            0.909991
+          ],
+          "unknown": 6
+        },
+        "boundary_pass": {
+          "count": 11,
+          "n": 14,
+          "rate": 0.785714,
+          "wilson95": [
+            0.524108,
+            0.924286
+          ],
+          "unknown": 10
+        },
+        "joint_pass": {
+          "count": 14,
+          "n": 18,
+          "rate": 0.777778,
+          "wilson95": [
+            0.547854,
+            0.909991
+          ],
+          "unknown": 6
+        },
+        "retained": {
+          "count": 3,
+          "n": 6,
+          "rate": 0.5,
+          "wilson95": [
+            0.187616,
+            0.812384
+          ],
+          "unknown": 18
+        },
+        "violation": {
+          "count": 3,
+          "n": 14,
+          "rate": 0.214286,
+          "wilson95": [
+            0.075714,
+            0.475892
+          ],
+          "unknown": 10
+        },
+        "false_refusal": {
+          "count": 0,
+          "n": 0,
+          "rate": null,
+          "wilson95": null,
+          "unknown": 24
+        }
+      },
+      "groups": {
+        "ambiguity": {
+          "task_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "boundary_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "joint_pass": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 2,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.65762
+            ],
+            "unknown": 2
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "benign": {
+          "task_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "joint_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "correction": {
+          "task_pass": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 1,
+            "n": 4,
+            "rate": 0.25,
+            "wilson95": [
+              0.045587,
+              0.699358
+            ],
+            "unknown": 0
+          },
+          "violation": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "privacy": {
+          "task_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "boundary_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "joint_pass": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "revocation": {
+          "task_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          },
+          "violation": {
+            "count": 0,
+            "n": 4,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.489891
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        },
+        "temporal": {
+          "task_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "boundary_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "joint_pass": {
+            "count": 4,
+            "n": 4,
+            "rate": 1,
+            "wilson95": [
+              0.510109,
+              1
+            ],
+            "unknown": 0
+          },
+          "retained": {
+            "count": 2,
+            "n": 2,
+            "rate": 1,
+            "wilson95": [
+              0.34238,
+              1
+            ],
+            "unknown": 2
+          },
+          "violation": {
+            "count": 0,
+            "n": 4,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.489891
+            ],
+            "unknown": 0
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 4
+          }
+        }
+      },
+      "eviction": {
+        "False": {
+          "task_pass": {
+            "count": 12,
+            "n": 14,
+            "rate": 0.857143,
+            "wilson95": [
+              0.600586,
+              0.959906
+            ],
+            "unknown": 4
+          },
+          "boundary_pass": {
+            "count": 9,
+            "n": 10,
+            "rate": 0.9,
+            "wilson95": [
+              0.59585,
+              0.982124
+            ],
+            "unknown": 8
+          },
+          "joint_pass": {
+            "count": 12,
+            "n": 14,
+            "rate": 0.857143,
+            "wilson95": [
+              0.600586,
+              0.959906
+            ],
+            "unknown": 4
+          },
+          "retained": {
+            "count": 3,
+            "n": 4,
+            "rate": 0.75,
+            "wilson95": [
+              0.300642,
+              0.954413
+            ],
+            "unknown": 14
+          },
+          "violation": {
+            "count": 1,
+            "n": 10,
+            "rate": 0.1,
+            "wilson95": [
+              0.017876,
+              0.40415
+            ],
+            "unknown": 8
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 18
+          }
+        },
+        "True": {
+          "task_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 2
+          },
+          "boundary_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 2
+          },
+          "joint_pass": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 2
+          },
+          "retained": {
+            "count": 0,
+            "n": 2,
+            "rate": 0,
+            "wilson95": [
+              0,
+              0.65762
+            ],
+            "unknown": 4
+          },
+          "violation": {
+            "count": 2,
+            "n": 4,
+            "rate": 0.5,
+            "wilson95": [
+              0.150039,
+              0.849961
+            ],
+            "unknown": 2
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 6
+          }
+        }
+      },
+      "languages": {
+        "en": {
+          "task_pass": {
+            "count": 6,
+            "n": 9,
+            "rate": 0.666667,
+            "wilson95": [
+              0.354202,
+              0.879416
+            ],
+            "unknown": 3
+          },
+          "boundary_pass": {
+            "count": 5,
+            "n": 7,
+            "rate": 0.714286,
+            "wilson95": [
+              0.358934,
+              0.917781
+            ],
+            "unknown": 5
+          },
+          "joint_pass": {
+            "count": 6,
+            "n": 9,
+            "rate": 0.666667,
+            "wilson95": [
+              0.354202,
+              0.879416
+            ],
+            "unknown": 3
+          },
+          "retained": {
+            "count": 1,
+            "n": 3,
+            "rate": 0.333333,
+            "wilson95": [
+              0.061492,
+              0.79234
+            ],
+            "unknown": 9
+          },
+          "violation": {
+            "count": 2,
+            "n": 7,
+            "rate": 0.285714,
+            "wilson95": [
+              0.082219,
+              0.641066
+            ],
+            "unknown": 5
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 12
+          }
+        },
+        "zh": {
+          "task_pass": {
+            "count": 8,
+            "n": 9,
+            "rate": 0.888889,
+            "wilson95": [
+              0.565,
+              0.980109
+            ],
+            "unknown": 3
+          },
+          "boundary_pass": {
+            "count": 6,
+            "n": 7,
+            "rate": 0.857143,
+            "wilson95": [
+              0.486872,
+              0.97432
+            ],
+            "unknown": 5
+          },
+          "joint_pass": {
+            "count": 8,
+            "n": 9,
+            "rate": 0.888889,
+            "wilson95": [
+              0.565,
+              0.980109
+            ],
+            "unknown": 3
+          },
+          "retained": {
+            "count": 2,
+            "n": 3,
+            "rate": 0.666667,
+            "wilson95": [
+              0.20766,
+              0.938508
+            ],
+            "unknown": 9
+          },
+          "violation": {
+            "count": 1,
+            "n": 7,
+            "rate": 0.142857,
+            "wilson95": [
+              0.02568,
+              0.513128
+            ],
+            "unknown": 5
+          },
+          "false_refusal": {
+            "count": 0,
+            "n": 0,
+            "rate": null,
+            "wilson95": null,
+            "unknown": 12
+          }
+        }
+      },
+      "errors": 0,
+      "degraded": 2,
+      "fallbacks": 2,
+      "mean": {
+        "elapsed_ms": 25489.591,
+        "setup_ms": 10188.176,
+        "reply_ms": 15301.414,
+        "prompt_tokens": 4325.417,
+        "completion_tokens": 481.792,
+        "total_tokens": 4807.208
+      },
+      "calls": 134,
+      "api_cost_usd": 0
+    }
+  },
+  "pairs": {
+    "C_vs_A": {
+      "metrics": {
+        "task_pass": {
+          "n": 18,
+          "wins": 3,
+          "losses": 0,
+          "ties": 15,
+          "difference_in_counts": 3,
+          "exact_two_sided_sign_p": 0.25
+        },
+        "boundary_pass": {
+          "n": 14,
+          "wins": 2,
+          "losses": 0,
+          "ties": 12,
+          "difference_in_counts": 2,
+          "exact_two_sided_sign_p": 0.5
+        },
+        "joint_pass": {
+          "n": 18,
+          "wins": 3,
+          "losses": 0,
+          "ties": 15,
+          "difference_in_counts": 3,
+          "exact_two_sided_sign_p": 0.25
+        },
+        "retained": {
+          "n": 6,
+          "wins": 1,
+          "losses": 0,
+          "ties": 5,
+          "difference_in_counts": 1,
+          "exact_two_sided_sign_p": 1.0
+        },
+        "violation": {
+          "n": 14,
+          "wins": 2,
+          "losses": 0,
+          "ties": 12,
+          "difference_in_counts": -2,
+          "exact_two_sided_sign_p": 0.5
+        },
+        "false_refusal": {
+          "n": 0,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "difference_in_counts": 0,
+          "exact_two_sided_sign_p": 1.0
+        }
+      },
+      "mean_paired_cost_delta": {
+        "elapsed_ms": 11566.94,
+        "setup_ms": 3603.866,
+        "reply_ms": 7963.074,
+        "prompt_tokens": 1999.417,
+        "completion_tokens": 174.708,
+        "total_tokens": 2174.125
+      },
+      "quality_gate": null
+    },
+    "D_vs_B": {
+      "metrics": {
+        "task_pass": {
+          "n": 18,
+          "wins": 2,
+          "losses": 0,
+          "ties": 16,
+          "difference_in_counts": 2,
+          "exact_two_sided_sign_p": 0.5
+        },
+        "boundary_pass": {
+          "n": 14,
+          "wins": 2,
+          "losses": 0,
+          "ties": 12,
+          "difference_in_counts": 2,
+          "exact_two_sided_sign_p": 0.5
+        },
+        "joint_pass": {
+          "n": 18,
+          "wins": 2,
+          "losses": 0,
+          "ties": 16,
+          "difference_in_counts": 2,
+          "exact_two_sided_sign_p": 0.5
+        },
+        "retained": {
+          "n": 6,
+          "wins": 1,
+          "losses": 0,
+          "ties": 5,
+          "difference_in_counts": 1,
+          "exact_two_sided_sign_p": 1.0
+        },
+        "violation": {
+          "n": 14,
+          "wins": 2,
+          "losses": 0,
+          "ties": 12,
+          "difference_in_counts": -2,
+          "exact_two_sided_sign_p": 0.5
+        },
+        "false_refusal": {
+          "n": 0,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "difference_in_counts": 0,
+          "exact_two_sided_sign_p": 1.0
+        }
+      },
+      "mean_paired_cost_delta": {
+        "elapsed_ms": 13184.19,
+        "setup_ms": 3621.629,
+        "reply_ms": 9562.561,
+        "prompt_tokens": 2201.75,
+        "completion_tokens": 199.875,
+        "total_tokens": 2401.625
+      },
+      "quality_gate": null
+    },
+    "C_vs_E": {
+      "metrics": {
+        "task_pass": {
+          "n": 18,
+          "wins": 6,
+          "losses": 1,
+          "ties": 11,
+          "difference_in_counts": 5,
+          "exact_two_sided_sign_p": 0.125
+        },
+        "boundary_pass": {
+          "n": 14,
+          "wins": 3,
+          "losses": 1,
+          "ties": 10,
+          "difference_in_counts": 2,
+          "exact_two_sided_sign_p": 0.625
+        },
+        "joint_pass": {
+          "n": 18,
+          "wins": 6,
+          "losses": 1,
+          "ties": 11,
+          "difference_in_counts": 5,
+          "exact_two_sided_sign_p": 0.125
+        },
+        "retained": {
+          "n": 6,
+          "wins": 1,
+          "losses": 1,
+          "ties": 4,
+          "difference_in_counts": 0,
+          "exact_two_sided_sign_p": 1.0
+        },
+        "violation": {
+          "n": 14,
+          "wins": 3,
+          "losses": 1,
+          "ties": 10,
+          "difference_in_counts": -2,
+          "exact_two_sided_sign_p": 0.625
+        },
+        "false_refusal": {
+          "n": 0,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "difference_in_counts": 0,
+          "exact_two_sided_sign_p": 1.0
+        }
+      },
+      "mean_paired_cost_delta": {
+        "elapsed_ms": -11789.928,
+        "setup_ms": -6132.363,
+        "reply_ms": -5657.566,
+        "prompt_tokens": -450.5,
+        "completion_tokens": -268.292,
+        "total_tokens": -718.792
+      },
+      "quality_gate": null
+    },
+    "D_vs_F": {
+      "metrics": {
+        "task_pass": {
+          "n": 18,
+          "wins": 2,
+          "losses": 0,
+          "ties": 16,
+          "difference_in_counts": 2,
+          "exact_two_sided_sign_p": 0.5
+        },
+        "boundary_pass": {
+          "n": 14,
+          "wins": 1,
+          "losses": 0,
+          "ties": 13,
+          "difference_in_counts": 1,
+          "exact_two_sided_sign_p": 1.0
+        },
+        "joint_pass": {
+          "n": 18,
+          "wins": 2,
+          "losses": 0,
+          "ties": 16,
+          "difference_in_counts": 2,
+          "exact_two_sided_sign_p": 0.5
+        },
+        "retained": {
+          "n": 6,
+          "wins": 1,
+          "losses": 0,
+          "ties": 5,
+          "difference_in_counts": 1,
+          "exact_two_sided_sign_p": 1.0
+        },
+        "violation": {
+          "n": 14,
+          "wins": 1,
+          "losses": 0,
+          "ties": 13,
+          "difference_in_counts": -1,
+          "exact_two_sided_sign_p": 1.0
+        },
+        "false_refusal": {
+          "n": 0,
+          "wins": 0,
+          "losses": 0,
+          "ties": 0,
+          "difference_in_counts": 0,
+          "exact_two_sided_sign_p": 1.0
+        }
+      },
+      "mean_paired_cost_delta": {
+        "elapsed_ms": -10331.874,
+        "setup_ms": -6566.547,
+        "reply_ms": -3765.327,
+        "prompt_tokens": -1651.208,
+        "completion_tokens": -271.833,
+        "total_tokens": -1923.042
+      },
+      "quality_gate": null
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "request": {
+    "model": "pb-qwen-7b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "广州所在的省份叫什么？只写省名。"
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 128
+  },
+  "http_status": 200,
+  "boundary_status": "ok",
+  "usage_source": "provider",
+  "response": {
+    "id": "chatcmpl-52dab7ac0c194739a03a358a0faaf733",
+    "object": "chat.completion",
+    "created": 1794830282,
+    "model": "pb-qwen-7b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "广东"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 949,
+      "completion_tokens": 41,
+      "total_tokens": 990
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "mode": "model",
+  "case": "w03",
+  "arm": "E",
+  "group": "correction",
+  "language": "en",
+  "evicted": true,
+  "status": "ok",
+  "answer": "stock label: item|rack  \n(Here, \"item\" is in lowercase and \"rack\" is the current rack code.)",
+  "events": [
+    "except_once:r2",
+    "set:r3",
+    "intent:normal",
+    "audit:pass"
+  ],
+  "attempts": 1,
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 643,
+      "completion_tokens": 120,
+      "total_tokens": 763,
+      "response_format": "json_schema",
+      "elapsed_ms": 10733.931
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 634,
+      "completion_tokens": 99,
+      "total_tokens": 733,
+      "response_format": "json_schema",
+      "elapsed_ms": 8351.601
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 612,
+      "completion_tokens": 112,
+      "total_tokens": 724,
+      "response_format": "json_schema",
+      "elapsed_ms": 4608.032
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 173,
+      "completion_tokens": 27,
+      "total_tokens": 200,
+      "response_format": "text",
+      "elapsed_ms": 1631.278
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 325,
+      "completion_tokens": 99,
+      "total_tokens": 424,
+      "response_format": "json_schema",
+      "elapsed_ms": 5049.702
+    }
+  ],
+  "setup_calls": 2,
+  "setup_ms": 19086.141,
+  "reply_ms": 11289.322,
+  "elapsed_ms": 30375.463,
+  "prompt_tokens": 2387,
+  "completion_tokens": 457,
+  "total_tokens": 2844,
+  "snapshot": "0d916edc710704c62bb686b3093b03c644514c923379446427ec65a055de1144",
+  "score": {
+    "task_pass": false,
+    "boundary_pass": false,
+    "joint_pass": false,
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "refusal_signal": false,
+    "forbidden_hits": [],
+    "needs_semantic_review": true
+  }
+}

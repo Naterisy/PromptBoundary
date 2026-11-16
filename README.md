@@ -6,16 +6,18 @@ When someone says “Stop bringing that up when you tease me” and later says �
 
 Use the **Skill** to guide an agent with access to its conversation. Use the **Python controller** when you own the model call and want an explicit correction record, a pre-answer decision, and a review before returning text. Both operate in the application context. The package runs on Python 3.10+ with the standard library.
 
-## What the release measured
+## Experimental v0.2 results
 
-On a frozen 12-case bilingual suite, adding the controller to Qwen2.5-7B raised correction retention from 3/6 to 4/6, reduced violations from 4/10 to 2/10 and kept false refusals at 0/5. It cost an extra 23.87 seconds and 3,110 tokens per transcript on average. One retained correction came from the history-eviction cases. On 3B the controller reduced violations but lost one task pass. Combining the Skill and controller missed the predeclared improvement rule on both models. Read the complete [four-arm results, early failures and limitations](evaluation/REPORT.md).
+**Quality remains model-dependent; the cross-model improvement gate did not pass.** On a fresh 24-case bilingual suite with blind review, the 7B controller completed 19/24 tasks versus the old controller's 13/24, reduced violations from 8/20 to 3/20, and kept retention at 6/10. Mean time fell from 24.23 to 12.44 seconds and tokens from 2,989 to 2,270. On 3B it reduced violations but lost one task pass versus the old controller, and completed fewer tasks than the base model. The combined Skill/controller configuration also changed behavior in opposite directions across model sizes.
+
+Read the [six-arm report, all 288 answers, blind judgments and costs](evaluation/REPORT-v4.md) before choosing a configuration. The [v0.1.0 findings](evaluation/REPORT.md) remain available. v0.2 is an experimental release with bounded retries and observable degraded/fallback states; it does not establish a universal upgrade. Automatic Skill discovery was not evaluated.
 
 ## Install and try it
 
 From a terminal with Python and Git:
 
 ```sh
-git clone --branch v0.1.0 https://github.com/Naterisy/PromptBoundary.git
+git clone --branch v0.2.0 https://github.com/Naterisy/PromptBoundary.git
 cd PromptBoundary
 python3 -m venv .venv
 . .venv/bin/activate
@@ -32,12 +34,12 @@ cp -R skills/promptboundary ~/.agents/skills/
 
 Start a new chat and invoke `$promptboundary`, or let the agent select it from its description. For a project-scoped installation use `.agents/skills/` in that project. The Skill works independently of the Python installation. [Codex Skill discovery](https://developers.openai.com/codex/skills/)
 
-The [v0.1.0 release](https://github.com/Naterisy/PromptBoundary/releases/tag/v0.1.0) also includes a standalone Skill ZIP, a Python wheel for offline installation, and SHA-256 checksums.
+The [experimental v0.2.0 release](https://github.com/Naterisy/PromptBoundary/releases/tag/v0.2.0) also includes a standalone Skill ZIP, a Python wheel for offline installation, and SHA-256 checksums.
 
 To install the Python CLI without cloning the repository, run this inside a virtual environment.
 
 ```sh
-python -m pip install https://github.com/Naterisy/PromptBoundary/releases/download/v0.1.0/promptboundary-0.1.0-py3-none-any.whl
+python -m pip install https://github.com/Naterisy/PromptBoundary/releases/download/v0.2.0/promptboundary-0.2.0-py3-none-any.whl
 promptboundary demo
 ```
 
@@ -69,14 +71,14 @@ for request in [
     print(turn.text)
 ```
 
-To include the Skill in the application, pass its UTF-8 contents to `StageModel(..., system_prefix=...)`. Since v0.2, this prefix applies to answer generation only; interpretation and review use their own protocols. Application instructions remain in native system/developer messages. For an already loaded agent Skill, the host handles the instructions. To save and restore a session, use `turn.state.to_dict()` and `State.from_dict(saved)`. Store the returned state even on a delivery fallback so an accepted correction can carry forward. To retry the same input, start with the original state.
+To include the Skill in the application, pass its UTF-8 contents to `StageModel(..., system_prefix=...)`. Since v0.2, this prefix applies to answer generation only; interpretation and review use their own protocols. During generation, application instructions retain native system/developer roles; the structured stages receive history within their JSON input. For an already loaded agent Skill, the host handles the instructions. To save and restore a session, use `turn.state.to_dict()` and `State.from_dict(saved)`. Store the returned state even on a delivery fallback so an accepted correction can carry forward. To retry the same input, start with the original state.
 
 ## Run the HTTP middleware
 
 Start the proxy, then send the full transcript from a second terminal.
 
 ```sh
-promptboundary serve --base-url http://127.0.0.1:18764/v1 --model pb-qwen --skill SKILL.md --port 8080
+promptboundary serve --base-url http://127.0.0.1:18764/v1 --model pb-qwen --port 8080
 ```
 
 ```sh
@@ -85,7 +87,7 @@ curl -sS http://127.0.0.1:8080/v1/chat/completions \
   -d '{"model":"pb-qwen","messages":[{"role":"user","content":"Please drop the titles. Just call me Lee."},{"role":"assistant","content":"Sure, Lee."},{"role":"user","content":"Greet me and suggest a podcast topic."}],"temperature":0,"max_tokens":384}'
 ```
 
-The loopback proxy replays prior user turns on every request. It implements text-only, non-streaming Chat Completions with one choice. Use `GET /v1/models` to discover the model ID. Each model stage has its own `max_tokens` limit. The response aggregates token usage across replay, drafts, audits and retries when the provider reports it. Inspect the `X-PromptBoundary-Status` header or SDK `turn.status` for a fallback. For a network-free upstream, start `promptboundary serve --mock` and select `promptboundary-mock` in your request.
+Add `--skill SKILL.md` to test the combined configuration; its quality was not consistently better. The loopback proxy replays prior user turns on every request. It implements text-only, non-streaming Chat Completions with one choice. Use `GET /v1/models` to discover the model ID. Each model stage has its own `max_tokens` limit. The response aggregates token usage across replay, drafts, audits and retries when the provider reports it. Inspect the `X-PromptBoundary-Status` header or SDK `turn.status` for a fallback. For a network-free upstream, start `promptboundary serve --mock` and select `promptboundary-mock` in your request.
 
 ## How the controller makes a decision
 

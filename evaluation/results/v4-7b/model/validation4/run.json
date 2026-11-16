@@ -1,0 +1,60 @@
+{
+  "schema": "promptboundary-evaluation-v4",
+  "suite": "validation4",
+  "mode": "model",
+  "arms": "ABCDEF",
+  "model": "pb-qwen-7b",
+  "base_url": "http://127.0.0.1:18765/v1",
+  "backend_id": "Apple M3 Pro 18GB; llama.cpp b12179 commit669204ee2; Qwen2.5-7B-Instruct Q4_K_M shards dfce12e3862a5283ccfb88221b48480e58745165de856439950d0f22590580db 539cf93f78e887edea1c04e2d7d8cdaca9d01dae9c9025bcb8accbe29df3d72a; host127.0.0.1 port18765 ctx8192 np1 seed941 no-webui no-slots cache-ram0",
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 384,
+    "seed": 941
+  },
+  "max_retries": 1,
+  "frozen": {
+    "suite": "validation4",
+    "frozen_at": "2026-11-16",
+    "cases": 24,
+    "arms": "ABCDEF",
+    "suite_sha256": "e01bb17328e753885b32546e19beb4da941ba8df3186ba862f4a9914e58cbd36",
+    "files": {
+      "evaluation/PROTOCOL-v4.md": "5bfe46385407bc397a13b6eb83d1053ddc07e5aa2de1cbee5778ff6822904314",
+      "evaluation/score_v4.py": "d6711e916f7c6a558fdb485ca664bf92efc10b332d5e7558f05e544ce3aef6cf",
+      "evaluation/v4.py": "098e1ba8540b8a51e0152649b520971d61799e62408ed711c14260d21a69f520",
+      "evaluation/worker_v4.py": "b64c0401da5bc697909887ffdef43abf34dd83a538a4980a20cbf6e01c884b3b",
+      "evaluation/PROTOCOL-v4-amendment.md": "c6f7352ef474fe639ead18d7c9fb1105a9f535169c678f781b9bffa2c408cea1"
+    },
+    "pre_inference_amendment": "Two wording-only clarifications made during final linguistic preflight, before any holdout inference or outcome inspection: explicit customer-name capitalization and unambiguous label-output wording. Previous draft and manifest preserved as cases.preflight.json and freeze.preflight.json. Expected answers unchanged."
+  },
+  "sources": {
+    "candidate": {
+      "SKILL.md": "bf070cc50d7ca4f838bd92948c160db8a245911fcbdf11210e139536755caa30",
+      "promptboundary/__init__.py": "d201275d332993834ceb29c0530551338bc0447d2ab70e9a7881265f642bd821",
+      "promptboundary/cli.py": "cf1061e2b1e3e561d705d0238a5140dce0d83f4dd795c901941215b3213cdf1a",
+      "promptboundary/core.py": "f118155fb584015b50945706c1beef05ea5def9d1316df8f4ef11ab928b97d5e",
+      "promptboundary/demo.py": "b80998343c98737c36a50be05da77aba3cf8184872187834494995f358bcb541",
+      "promptboundary/middleware.py": "115b921fdf9ea1f5e3f1fcee06fed85dd3d814ad535221ee2b41d82b75d92c73",
+      "promptboundary/upstream.py": "590d4cb4f65e5d2bdf29fcc473723e43825eeb474882260256084fec5a2db632"
+    },
+    "v0.1.0": {
+      "SKILL.md": "0a6447f05274dfb578459ff37b739c0d9ec2061bbc7c7cbfa0d0be9e2b70b939",
+      "promptboundary/__init__.py": "d201275d332993834ceb29c0530551338bc0447d2ab70e9a7881265f642bd821",
+      "promptboundary/cli.py": "cf1061e2b1e3e561d705d0238a5140dce0d83f4dd795c901941215b3213cdf1a",
+      "promptboundary/core.py": "35cbb8c2881c06ceee51fa6dee9b370851d52a9039abee5698f9a945fed63d33",
+      "promptboundary/demo.py": "b80998343c98737c36a50be05da77aba3cf8184872187834494995f358bcb541",
+      "promptboundary/middleware.py": "115b921fdf9ea1f5e3f1fcee06fed85dd3d814ad535221ee2b41d82b75d92c73",
+      "promptboundary/upstream.py": "f808c2a29072fd027588d6558c99c01ab011c6f5d28f2be118e958299f406a74"
+    }
+  },
+  "api_cost_usd": 0,
+  "arm_definitions": {
+    "A": "base native chat",
+    "B": "candidate Skill + native chat",
+    "C": "candidate controller and adapter",
+    "D": "candidate controller and adapter + candidate Skill",
+    "E": "v0.1.0 controller and adapter",
+    "F": "v0.1.0 controller and adapter + v0.1.0 Skill"
+  },
+  "note": "Skill stage placement is implemented by each frozen adapter. Setup calls, all retries, token usage and timings are retained."
+}

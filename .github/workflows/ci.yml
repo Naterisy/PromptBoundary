@@ -27,3 +27,9 @@ jobs:
           evaluation/results/v2-regression/model/primary
           evaluation/results/v3-3b/model/validation3
           evaluation/results/v3-7b/model/validation3
+      - name: Verify six-arm measurements and blind adjudication offline
+        run: |
+          python -m evaluation.v4 verify --out evaluation/results/v4-7b/model/validation4
+          python -m evaluation.v4 verify --out evaluation/results/v4-3b/model/validation4
+          python -m evaluation.reconcile_v4 evaluation/results/v4-7b/model/validation4
+          python -m evaluation.reconcile_v4 evaluation/results/v4-3b/model/validation4

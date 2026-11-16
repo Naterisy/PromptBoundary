@@ -1,0 +1,43 @@
+{
+  "mode": "model",
+  "case": "w02",
+  "arm": "A",
+  "group": "correction",
+  "language": "zh",
+  "evicted": false,
+  "status": "ok",
+  "answer": "集合：北厅",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 117,
+      "completion_tokens": 5,
+      "total_tokens": 122,
+      "elapsed_ms": 280.347
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 280.352,
+  "elapsed_ms": 280.352,
+  "prompt_tokens": 117,
+  "completion_tokens": 5,
+  "total_tokens": 122,
+  "snapshot": "f267b136746e70e065768669cf1b139812fa6d7967257a76aa09af79269ee9e3",
+  "score": {
+    "task_pass": true,
+    "boundary_pass": true,
+    "joint_pass": true,
+    "retained": true,
+    "violation": false,
+    "false_refusal": null,
+    "refusal_signal": false,
+    "forbidden_hits": [],
+    "needs_semantic_review": true
+  }
+}

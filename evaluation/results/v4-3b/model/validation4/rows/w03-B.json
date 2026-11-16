@@ -1,0 +1,43 @@
+{
+  "mode": "model",
+  "case": "w03",
+  "arm": "B",
+  "group": "correction",
+  "language": "en",
+  "evicted": true,
+  "status": "ok",
+  "answer": "To fulfill the request for the stock label for cobalt clips, I will print the label as follows:\n\ncobalt clips|current_rack_code",
+  "events": [
+    "finish:stop"
+  ],
+  "attempts": 1,
+  "calls": [
+    {
+      "stage": "chat",
+      "usage_source": "provider",
+      "prompt_tokens": 444,
+      "completion_tokens": 30,
+      "total_tokens": 474,
+      "elapsed_ms": 1155.671
+    }
+  ],
+  "setup_calls": 0,
+  "setup_ms": 0.0,
+  "reply_ms": 1155.678,
+  "elapsed_ms": 1155.678,
+  "prompt_tokens": 444,
+  "completion_tokens": 30,
+  "total_tokens": 474,
+  "snapshot": "f267b136746e70e065768669cf1b139812fa6d7967257a76aa09af79269ee9e3",
+  "score": {
+    "task_pass": false,
+    "boundary_pass": false,
+    "joint_pass": false,
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "refusal_signal": false,
+    "forbidden_hits": [],
+    "needs_semantic_review": true
+  }
+}

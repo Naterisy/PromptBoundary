@@ -1,0 +1,82 @@
+{
+  "mode": "model",
+  "case": "w04",
+  "arm": "E",
+  "group": "correction",
+  "language": "zh",
+  "evicted": true,
+  "status": "ok",
+  "answer": "春晓",
+  "events": [
+    "set:r3",
+    "intent:normal",
+    "audit:pass"
+  ],
+  "attempts": 1,
+  "calls": [
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 639,
+      "completion_tokens": 114,
+      "total_tokens": 753,
+      "response_format": "json_schema",
+      "elapsed_ms": 2941.221
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 622,
+      "completion_tokens": 119,
+      "total_tokens": 741,
+      "response_format": "json_schema",
+      "elapsed_ms": 3159.032
+    },
+    {
+      "stage": "interpret",
+      "usage_source": "provider",
+      "prompt_tokens": 648,
+      "completion_tokens": 142,
+      "total_tokens": 790,
+      "response_format": "json_schema",
+      "elapsed_ms": 3605.436
+    },
+    {
+      "stage": "generate",
+      "usage_source": "provider",
+      "prompt_tokens": 169,
+      "completion_tokens": 3,
+      "total_tokens": 172,
+      "response_format": "text",
+      "elapsed_ms": 326.005
+    },
+    {
+      "stage": "audit",
+      "usage_source": "provider",
+      "prompt_tokens": 294,
+      "completion_tokens": 54,
+      "total_tokens": 348,
+      "response_format": "json_schema",
+      "elapsed_ms": 1493.703
+    }
+  ],
+  "setup_calls": 2,
+  "setup_ms": 6100.622,
+  "reply_ms": 5425.386,
+  "elapsed_ms": 11526.007,
+  "prompt_tokens": 2372,
+  "completion_tokens": 432,
+  "total_tokens": 2804,
+  "snapshot": "f267b136746e70e065768669cf1b139812fa6d7967257a76aa09af79269ee9e3",
+  "score": {
+    "task_pass": false,
+    "boundary_pass": false,
+    "joint_pass": false,
+    "retained": false,
+    "violation": true,
+    "false_refusal": null,
+    "refusal_signal": false,
+    "forbidden_hits": [],
+    "needs_semantic_review": true
+  }
+}

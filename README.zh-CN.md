@@ -6,34 +6,16 @@
 
 **Agent Skill** 适合能读取对话的 Agent。**Python 控制器**适合能接管模型调用的应用，可保存结构化的纠错记录、在生成前判断冲突，并检查和修订草稿。两者均在应用层工作。Python 运行时只依赖标准库，要求 Python 3.10 或更高版本。
 
-## 发布版实测
+## v0.2 实验结果
 
-在冻结的 12 个中英文合成场景中，Qwen2.5-7B 单用控制器相对原始模型达到了预先设定的改善标准。纠错保持从 3/6 到 4/6，越界从 4/10 到 2/10，误拒均为 0/5，任务通过从 7/12 到 8/12。多保住的一项纠错来自原始历史被移除的用例。每段对话平均多耗时 23.87 秒、多用 3,110 Token。
+**结果依赖模型，跨模型的改善门槛没有通过。** 在新的 24 个中英文场景和隐藏组别的独立评分中，7B 新版控制器的任务完成数为 19/24，旧版为 13/24；越界从 8/20 降到 3/20，约束保持（含纠错、偏好和隐私边界）均为 6/10。平均耗时从 24.23 秒降到 12.44 秒，Token 从 2,989 降到 2,270。但 3B 上虽然越界减少，任务完成数却比旧版少一项，也低于原始模型。Skill 与控制器组合在两个模型上的结果同样存在反转。
 
-3B 上控制器也减少了越界，但任务通过少了一项。两个模型把控制器叠加在 Skill 上都未达到改善标准。下面的延迟和 Token 差值均相对同模型的 A 组，包括重放、生成、审核和修正。各指标的分母对应不同类型的题。B、D 使用已加载的 Skill 正文，未测宿主自动选择 Skill 的命中率。[实验报告、逐题回答和失败版本](evaluation/REPORT.md)
-
-### Qwen2.5-3B-Instruct · Q4_K_M
-
-| 组别 | 保持纠错 ↑ | 越界 ↓ | 误拒 ↓ | 任务通过 ↑ | 相对 A 的额外秒数 | 相对 A 的额外 Token |
-|---|---:|---:|---:|---:|---:|---:|
-| A · 原始 | 3/6 | 5/10 | 0/5 | 7/12 | +0.00 | +0 |
-| B · 仅 Skill | 3/6 | 4/10 | 0/5 | 8/12 | -0.44 | +265 |
-| C · 仅控制器 | 3/6 | 3/10 | 0/5 | 6/12 | +13.64 | +2,896 |
-| D · 两者组合 | 3/6 | 3/10 | 0/5 | 6/12 | +11.75 | +4,515 |
-
-### Qwen2.5-7B-Instruct · Q4_K_M
-
-| 组别 | 保持纠错 ↑ | 越界 ↓ | 误拒 ↓ | 任务通过 ↑ | 相对 A 的额外秒数 | 相对 A 的额外 Token |
-|---|---:|---:|---:|---:|---:|---:|
-| A · 原始 | 3/6 | 4/10 | 0/5 | 7/12 | +0.00 | +0 |
-| B · 仅 Skill | 4/6 | 3/10 | 0/5 | 8/12 | -0.63 | +280 |
-| C · 仅控制器 | 4/6 | 2/10 | 0/5 | 8/12 | +23.87 | +3,110 |
-| D · 两者组合 | 3/6 | 3/10 | 1/5 | 6/12 | +27.38 | +5,383 |
+请结合[完整六组报告、288 条原始回答、独立评分及开销](evaluation/REPORT-v4.md)选择配置。[v0.1.0 的失败与结果](evaluation/REPORT.md)继续保留。v0.2 明确作为实验版本发布，不宣称是普遍有效的升级。实验没有测量宿主自动发现 Skill 的能力。
 
 ## 安装与免费演示
 
 ```sh
-git clone --branch v0.1.0 https://github.com/Naterisy/PromptBoundary.git
+git clone --branch v0.2.0 https://github.com/Naterisy/PromptBoundary.git
 cd PromptBoundary
 python3 -m venv .venv
 . .venv/bin/activate
@@ -50,12 +32,12 @@ cp -R skills/promptboundary ~/.agents/skills/
 
 在新对话里使用 `$promptboundary`，或让 Agent 根据描述选择它。只想在某个项目中使用时，把目录复制到该项目的 `.agents/skills/`。Skill 可以脱离 Python 包独立安装。[Codex Skill 文档](https://developers.openai.com/codex/skills/)
 
-[v0.1.0 发布页](https://github.com/Naterisy/PromptBoundary/releases/tag/v0.1.0) 同时提供独立 Skill ZIP、可离线安装的 Python wheel 及 SHA-256 校验值。
+[v0.2.0 实验版发布页](https://github.com/Naterisy/PromptBoundary/releases/tag/v0.2.0) 同时提供独立 Skill ZIP、可离线安装的 Python wheel 及 SHA-256 校验值。
 
 只安装 Python CLI 时，可在虚拟环境中直接执行：
 
 ```sh
-python -m pip install https://github.com/Naterisy/PromptBoundary/releases/download/v0.1.0/promptboundary-0.1.0-py3-none-any.whl
+python -m pip install https://github.com/Naterisy/PromptBoundary/releases/download/v0.2.0/promptboundary-0.2.0-py3-none-any.whl
 promptboundary demo
 ```
 
@@ -80,14 +62,14 @@ for request in ["以后别叫我老板。推荐一种早餐。", "用刚才那�
     print(turn.text)
 ```
 
-每个对话使用独立的 `State`。用 `turn.state.to_dict()` 和 `State.from_dict(saved)` 保存和恢复会话。生成失败时，返回状态仍会保留已经确认的纠错。如需重试同一个用户回合，应传入该回合之前的状态。如需组合使用 Skill 与控制器，把 Skill 文件的 UTF-8 正文作为 `system_prefix` 传入 `StageModel`。从 v0.2 起，这个前缀只参与回答生成，解析与审核使用各自的协议；应用指令仍放在原生 system/developer 消息中。适配器会把对话和待审核草稿发送到配置的推理端点。处理私人内容时可选用本机模型。如需保存会话状态，应自行设置访问权限和清理期限。
+每个对话使用独立的 `State`。用 `turn.state.to_dict()` 和 `State.from_dict(saved)` 保存和恢复会话。生成失败时，返回状态仍会保留已经确认的纠错。如需重试同一个用户回合，应传入该回合之前的状态。如需组合使用 Skill 与控制器，把 Skill 文件的 UTF-8 正文作为 `system_prefix` 传入 `StageModel`。从 v0.2 起，这个前缀只参与回答生成，解析与审核使用各自的协议；生成阶段的应用指令保留原生 system/developer 角色，结构化阶段则通过 JSON 输入接收历史。适配器会把对话和待审核草稿发送到配置的推理端点。处理私人内容时可选用本机模型。如需保存会话状态，应自行设置访问权限和清理期限。
 
 ## 运行 HTTP 中间件
 
 先启动代理，再在另一个终端提交完整消息历史。
 
 ```sh
-promptboundary serve --base-url http://127.0.0.1:18764/v1 --model pb-qwen --skill SKILL.md --port 8080
+promptboundary serve --base-url http://127.0.0.1:18764/v1 --model pb-qwen --port 8080
 ```
 
 ```sh
@@ -96,7 +78,7 @@ curl -sS http://127.0.0.1:8080/v1/chat/completions \
   -d '{"model":"pb-qwen","messages":[{"role":"user","content":"Please drop the titles. Just call me Lee."},{"role":"assistant","content":"Sure, Lee."},{"role":"user","content":"Greet me and suggest a podcast topic."}],"temperature":0,"max_tokens":384}'
 ```
 
-代理只监听本机回环地址，每次从消息历史重建状态，支持单个候选、非流式纯文本 Chat Completions。用 `GET /v1/models` 查询模型名。`max_tokens` 按每次模型调用计算。响应会汇总提供方返回的历史重放、生成、审核和重试 Token 数。通过响应头 `X-PromptBoundary-Status` 或 SDK 的 `turn.status` 检查是否发生回退。想用本地 Mock 测试 HTTP 接口时运行 `promptboundary serve --mock`，请求中的模型名填 `promptboundary-mock`。
+如需测试组合配置，可额外添加 `--skill SKILL.md`；其效果并未在两个模型上保持一致。代理只监听本机回环地址，每次从消息历史重建状态，支持单个候选、非流式纯文本 Chat Completions。用 `GET /v1/models` 查询模型名。`max_tokens` 按每次模型调用计算。响应会汇总提供方返回的历史重放、生成、审核和重试 Token 数。通过响应头 `X-PromptBoundary-Status` 或 SDK 的 `turn.status` 检查是否发生回退。想用本地 Mock 测试 HTTP 接口时运行 `promptboundary serve --mock`，请求中的模型名填 `promptboundary-mock`。
 
 ## 控制器如何做判断
 

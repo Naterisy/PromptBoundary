@@ -1,0 +1,23 @@
+{
+  "method": "Predeclared conservative intersection; model-agent judgments, not human annotations",
+  "reviewers": {
+    "primary": {
+      "agent": "blind_primary",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "ultra",
+      "n": 144
+    },
+    "secondary": {
+      "agent": "blind_secondary",
+      "model": "gpt-6-astra",
+      "reasoning_effort": "ultra",
+      "n": 36
+    }
+  },
+  "disagreements": [],
+  "hashes": {
+    "reviews-primary.json": "2edd52816b7bdcb3b34ff9b1b6b523cd52af11931eab7764b7ec04b130cfe12f",
+    "reviews-secondary.json": "1bd1f44e30ff7a056e1d860b4de8cb434c23182a7e67f105b7e572fb4bb76823",
+    "reviews.json": "7d2650a7a2da25a5b4f1d0cdb815ddaf34cc737d41210a8f041bc93e49364113"
+  }
+}

@@ -1,5 +1,31 @@
 # Reproduce the evaluation
 
+The [v0.2 report](REPORT-v4.md) contains both model results and the failed cross-model gate. The release is experimental.
+
+The v0.2 comparison uses the [frozen v4 protocol](PROTOCOL-v4.md), 24 new bilingual cases and six arms. A/B/C/D use the base model, loaded Skill, candidate controller and both. E/F run the archived v0.1.0 controller, without/with its original Skill. The [research note](RESEARCH-v4.md) distinguishes prior evidence from hypotheses tested here. Keep a clean source copy for each implementation:
+
+```sh
+mkdir -p /tmp/promptboundary-v010
+git archive v0.1.0 | tar -x -C /tmp/promptboundary-v010
+python3 -m evaluation.v4 run --baseline /tmp/promptboundary-v010 \
+    --out evaluation/results/reproduction-v4 \
+    --base-url http://127.0.0.1:18765/v1 --model pb-qwen-7b \
+    --backend-id "exact weights/checksums, inference build, hardware and server command"
+```
+
+Do not edit the candidate, baseline, Skill or frozen evaluator during a run or between model-size comparisons. The command resumes only an identical snapshot and counts every model call. The primary 7B and confirmation 3B runs use the same suite; this is a model-size comparison, not two independent task samples. Automatic Skill discovery is not measured. History eviction intentionally compares retained controller state with direct prompting that has no persisted state.
+
+Natural-language task completion and privacy judgments await review. After all 144 rows finish, use `python3 -m evaluation.v4 blind --out <run-directory>`. Give reviewers only `blind-review.json`. The protocol requires a primary independent agent to review every answer and a second independent agent to review the 36 semantic answers. Preserve both judgments and reconcile disagreements conservatively before running `python3 -m evaluation.v4 adjudicate --out <run-directory> --reviews <merged-reviews.json>`. The map's `.private` filename means it is withheld during scoring; its eventual public contents refer only to synthetic cases and anonymous condition labels.
+
+To verify the saved measurements and final reviewed scores without a model:
+
+```sh
+python3 -m evaluation.v4 verify --out evaluation/results/v4-7b/model/validation4
+python3 -m evaluation.v4 verify --out evaluation/results/v4-3b/model/validation4
+```
+
+The following commands reproduce the earlier four-arm experiments, whose inputs, scores and raw answers remain unchanged.
+
 Run these commands from the repository root, using Python 3.10+ and one local OpenAI-compatible Chat Completions server. The controller requires JSON object responses. The default endpoint is http://127.0.0.1:18764/v1 and the default model alias is pb-qwen. The runner accepts only loopback URLs.
 
 ```sh

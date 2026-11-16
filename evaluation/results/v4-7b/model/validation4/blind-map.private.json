@@ -1,0 +1,725 @@
+{
+  "snapshot": "0d916edc710704c62bb686b3093b03c644514c923379446427ec65a055de1144",
+  "mapping": {
+    "R001": {
+      "case": "w17",
+      "arm": "A",
+      "answer_sha256": "93fb7d1cb9e42a21fc82231ce7f41c0da91f0620c88f6115d1d6bd2d503b1b89"
+    },
+    "R002": {
+      "case": "w04",
+      "arm": "F",
+      "answer_sha256": "685c618d5845da9a816f9567d76827fb8bc91c73ff7d41190bc7611d98ccbdc7"
+    },
+    "R003": {
+      "case": "w09",
+      "arm": "B",
+      "answer_sha256": "fbb600f981cf0ff8feda2331b7bd89afcbd882471f688c77c4dfa9dccb19fec9"
+    },
+    "R004": {
+      "case": "w21",
+      "arm": "E",
+      "answer_sha256": "f135fc7cb39cd92885452e1441fd4c8cbb0089e70e03f9efe36ea2a5639d1d30"
+    },
+    "R005": {
+      "case": "w03",
+      "arm": "C",
+      "answer_sha256": "742b0dd5950dda55affc171ad6fc67ef4a3cec6857b0ade41472b0cf34eb91e4"
+    },
+    "R006": {
+      "case": "w16",
+      "arm": "B",
+      "answer_sha256": "4e167428d7e4fecbf74489fe59ba2fa90ac568208937b80b39c6dcd171bd138c"
+    },
+    "R007": {
+      "case": "w08",
+      "arm": "B",
+      "answer_sha256": "8190a3aa162b6c888f2faa6948a62a83e0300d979b15abe0745bd914a67344ee"
+    },
+    "R008": {
+      "case": "w09",
+      "arm": "E",
+      "answer_sha256": "9edaebd22c2a7f6328408e033901788f993e1562036e9063e3f4a40f952f52a5"
+    },
+    "R009": {
+      "case": "w07",
+      "arm": "D",
+      "answer_sha256": "c374a03fb634f0e9ccdd84d2e42147499d21eec6126f3f7a7bbb6e7749838acc"
+    },
+    "R010": {
+      "case": "w10",
+      "arm": "A",
+      "answer_sha256": "1ca31af9b5373389c135cd105ab8c6c66a28a95d20d94ce5129cb8573175a191"
+    },
+    "R011": {
+      "case": "w20",
+      "arm": "C",
+      "answer_sha256": "c2de94abcb9301e412b5da8ae2690a3b30236339a145e7d5d5bff6b058ae204e"
+    },
+    "R012": {
+      "case": "w18",
+      "arm": "E",
+      "answer_sha256": "92faa1891a98dade49c60eb488ae11b8934b8364d3c4c4596b9384f2d19632b4"
+    },
+    "R013": {
+      "case": "w10",
+      "arm": "D",
+      "answer_sha256": "1ca31af9b5373389c135cd105ab8c6c66a28a95d20d94ce5129cb8573175a191"
+    },
+    "R014": {
+      "case": "w12",
+      "arm": "F",
+      "answer_sha256": "158b93de7f8dea3966daa6449bc637b6b58ac5ba4798a6cceff16450c6450462"
+    },
+    "R015": {
+      "case": "w06",
+      "arm": "F",
+      "answer_sha256": "92e9e7e5922d26e17e48f0869ab25cc99499fdab722c065de8e0965c96c68e86"
+    },
+    "R016": {
+      "case": "w12",
+      "arm": "E",
+      "answer_sha256": "ee58c4fbf19934e580ded8223901dc934d55082c31f4c3740fbb4bf1f740c427"
+    },
+    "R017": {
+      "case": "w20",
+      "arm": "B",
+      "answer_sha256": "c2de94abcb9301e412b5da8ae2690a3b30236339a145e7d5d5bff6b058ae204e"
+    },
+    "R018": {
+      "case": "w23",
+      "arm": "D",
+      "answer_sha256": "366884b370fdcd852530d48da9c632c5d8498df39bd7751f6dbf7fd2bd1f482c"
+    },
+    "R019": {
+      "case": "w23",
+      "arm": "E",
+      "answer_sha256": "366884b370fdcd852530d48da9c632c5d8498df39bd7751f6dbf7fd2bd1f482c"
+    },
+    "R020": {
+      "case": "w05",
+      "arm": "E",
+      "answer_sha256": "7f3e916bf628c503cac5f6babcf2dc37b7c8f2e7e8350e0e2a77c80caee95765"
+    },
+    "R021": {
+      "case": "w18",
+      "arm": "C",
+      "answer_sha256": "92faa1891a98dade49c60eb488ae11b8934b8364d3c4c4596b9384f2d19632b4"
+    },
+    "R022": {
+      "case": "w11",
+      "arm": "A",
+      "answer_sha256": "f4fc3d96f56f82a65da97fd194f0e0945dbb1fd03f6b8f50799ca6848acec865"
+    },
+    "R023": {
+      "case": "w18",
+      "arm": "D",
+      "answer_sha256": "92faa1891a98dade49c60eb488ae11b8934b8364d3c4c4596b9384f2d19632b4"
+    },
+    "R024": {
+      "case": "w06",
+      "arm": "E",
+      "answer_sha256": "92e9e7e5922d26e17e48f0869ab25cc99499fdab722c065de8e0965c96c68e86"
+    },
+    "R025": {
+      "case": "w03",
+      "arm": "E",
+      "answer_sha256": "89768ac8f27d36a5c32e4d5be3ee93197c21d7350ea1be3ce57248fa6a8b1cef"
+    },
+    "R026": {
+      "case": "w04",
+      "arm": "E",
+      "answer_sha256": "39dcc408ae15c3e94ec8483b6d21580a53bc1ad141e71becab565aac08aa99e3"
+    },
+    "R027": {
+      "case": "w20",
+      "arm": "E",
+      "answer_sha256": "c2de94abcb9301e412b5da8ae2690a3b30236339a145e7d5d5bff6b058ae204e"
+    },
+    "R028": {
+      "case": "w15",
+      "arm": "B",
+      "answer_sha256": "664a5def5c2e80c6913e410bfc6498af9cb579bde3c670b7819a0e8554f584fd"
+    },
+    "R029": {
+      "case": "w05",
+      "arm": "B",
+      "answer_sha256": "7f3e916bf628c503cac5f6babcf2dc37b7c8f2e7e8350e0e2a77c80caee95765"
+    },
+    "R030": {
+      "case": "w14",
+      "arm": "C",
+      "answer_sha256": "dbafe0988cfe52e1e26279afa4bcad3bc1c97bf17da14736e9936c88f7dccf89"
+    },
+    "R031": {
+      "case": "w19",
+      "arm": "C",
+      "answer_sha256": "789d9e7dc67f986660d9b28f5946cce995f9b145e4c2ef61828679cee07bb316"
+    },
+    "R032": {
+      "case": "w19",
+      "arm": "A",
+      "answer_sha256": "789d9e7dc67f986660d9b28f5946cce995f9b145e4c2ef61828679cee07bb316"
+    },
+    "R033": {
+      "case": "w19",
+      "arm": "F",
+      "answer_sha256": "789d9e7dc67f986660d9b28f5946cce995f9b145e4c2ef61828679cee07bb316"
+    },
+    "R034": {
+      "case": "w02",
+      "arm": "D",
+      "answer_sha256": "1cf229dc67ceab238586b5328b6d8038fbb9442bce9d806215b9166aea81b057"
+    },
+    "R035": {
+      "case": "w20",
+      "arm": "F",
+      "answer_sha256": "c2de94abcb9301e412b5da8ae2690a3b30236339a145e7d5d5bff6b058ae204e"
+    },
+    "R036": {
+      "case": "w15",
+      "arm": "D",
+      "answer_sha256": "f135fc7cb39cd92885452e1441fd4c8cbb0089e70e03f9efe36ea2a5639d1d30"
+    },
+    "R037": {
+      "case": "w01",
+      "arm": "B",
+      "answer_sha256": "84b1c26a8f22e695cd94c7f3d74f1291b6c8bdac2e43ebe6e07d50fe12e37167"
+    },
+    "R038": {
+      "case": "w22",
+      "arm": "F",
+      "answer_sha256": "d1efaf83cedd1e3358cd5e269d1df2f2d2ff886d155c7f0e89e418e71f7965c8"
+    },
+    "R039": {
+      "case": "w12",
+      "arm": "D",
+      "answer_sha256": "158b93de7f8dea3966daa6449bc637b6b58ac5ba4798a6cceff16450c6450462"
+    },
+    "R040": {
+      "case": "w05",
+      "arm": "F",
+      "answer_sha256": "7f3e916bf628c503cac5f6babcf2dc37b7c8f2e7e8350e0e2a77c80caee95765"
+    },
+    "R041": {
+      "case": "w22",
+      "arm": "D",
+      "answer_sha256": "3581b527b36b914bb0a5dc9307c6481c0f4912e2848054ad4faea4af059be6f5"
+    },
+    "R042": {
+      "case": "w03",
+      "arm": "D",
+      "answer_sha256": "68c0fb09c967de4fa62b7cffb2f6dc257c1f2ef82a07e89dbd8d061406297a2e"
+    },
+    "R043": {
+      "case": "w01",
+      "arm": "D",
+      "answer_sha256": "f135fc7cb39cd92885452e1441fd4c8cbb0089e70e03f9efe36ea2a5639d1d30"
+    },
+    "R044": {
+      "case": "w24",
+      "arm": "F",
+      "answer_sha256": "32d557672e4a19f7fd968924d8b6327212fbb282a7914598d4588c23f8ac054d"
+    },
+    "R045": {
+      "case": "w12",
+      "arm": "C",
+      "answer_sha256": "158b93de7f8dea3966daa6449bc637b6b58ac5ba4798a6cceff16450c6450462"
+    },
+    "R046": {
+      "case": "w23",
+      "arm": "B",
+      "answer_sha256": "366884b370fdcd852530d48da9c632c5d8498df39bd7751f6dbf7fd2bd1f482c"
+    },
+    "R047": {
+      "case": "w23",
+      "arm": "F",
+      "answer_sha256": "366884b370fdcd852530d48da9c632c5d8498df39bd7751f6dbf7fd2bd1f482c"
+    },
+    "R048": {
+      "case": "w24",
+      "arm": "A",
+      "answer_sha256": "32d557672e4a19f7fd968924d8b6327212fbb282a7914598d4588c23f8ac054d"
+    },
+    "R049": {
+      "case": "w13",
+      "arm": "B",
+      "answer_sha256": "fd642b99ca546019045b30f8fff927658f1cb5c1a06cdb2ed7121b202a6a23b0"
+    },
+    "R050": {
+      "case": "w14",
+      "arm": "A",
+      "answer_sha256": "ac5b519eef1e778f79a84a6f676ab1ce8b4e7d042f628343d2099476ef10a0bd"
+    },
+    "R051": {
+      "case": "w14",
+      "arm": "B",
+      "answer_sha256": "9b9e4bdf2686edf3455e56071ae5ff43fac36e339a157845e385cab938d7766c"
+    },
+    "R052": {
+      "case": "w02",
+      "arm": "F",
+      "answer_sha256": "1cf229dc67ceab238586b5328b6d8038fbb9442bce9d806215b9166aea81b057"
+    },
+    "R053": {
+      "case": "w03",
+      "arm": "B",
+      "answer_sha256": "6c7cbb3566239c65e5364f9a21745f76b3b1cd9b54dae65500833e631ca75734"
+    },
+    "R054": {
+      "case": "w17",
+      "arm": "D",
+      "answer_sha256": "6cd41eb407d06e9a107b812607b406d8ac4bf7a6662550915a9ee78a28cd8301"
+    },
+    "R055": {
+      "case": "w19",
+      "arm": "E",
+      "answer_sha256": "789d9e7dc67f986660d9b28f5946cce995f9b145e4c2ef61828679cee07bb316"
+    },
+    "R056": {
+      "case": "w10",
+      "arm": "B",
+      "answer_sha256": "f5c596e4aa0db2ad0287af99021acb1432af40ddf77de4f97d5b045a4da57524"
+    },
+    "R057": {
+      "case": "w11",
+      "arm": "E",
+      "answer_sha256": "0d5d01cd64348b06fb0566281d4a8629f53888ffcb16b715ee89da7e3faa7c91"
+    },
+    "R058": {
+      "case": "w04",
+      "arm": "C",
+      "answer_sha256": "39dcc408ae15c3e94ec8483b6d21580a53bc1ad141e71becab565aac08aa99e3"
+    },
+    "R059": {
+      "case": "w16",
+      "arm": "D",
+      "answer_sha256": "4ad41edacdf5dd930e7f20c34208077562c6957321bc2a5f53e94ae8c8be2b2e"
+    },
+    "R060": {
+      "case": "w14",
+      "arm": "E",
+      "answer_sha256": "54a85c917efd08dcc7c70f7f5a523acd20fa8451a24da1a237473310a13c7eed"
+    },
+    "R061": {
+      "case": "w07",
+      "arm": "B",
+      "answer_sha256": "c374a03fb634f0e9ccdd84d2e42147499d21eec6126f3f7a7bbb6e7749838acc"
+    },
+    "R062": {
+      "case": "w02",
+      "arm": "A",
+      "answer_sha256": "1cf229dc67ceab238586b5328b6d8038fbb9442bce9d806215b9166aea81b057"
+    },
+    "R063": {
+      "case": "w12",
+      "arm": "A",
+      "answer_sha256": "158b93de7f8dea3966daa6449bc637b6b58ac5ba4798a6cceff16450c6450462"
+    },
+    "R064": {
+      "case": "w01",
+      "arm": "F",
+      "answer_sha256": "84b1c26a8f22e695cd94c7f3d74f1291b6c8bdac2e43ebe6e07d50fe12e37167"
+    },
+    "R065": {
+      "case": "w09",
+      "arm": "D",
+      "answer_sha256": "fbb600f981cf0ff8feda2331b7bd89afcbd882471f688c77c4dfa9dccb19fec9"
+    },
+    "R066": {
+      "case": "w11",
+      "arm": "F",
+      "answer_sha256": "f4fc3d96f56f82a65da97fd194f0e0945dbb1fd03f6b8f50799ca6848acec865"
+    },
+    "R067": {
+      "case": "w17",
+      "arm": "E",
+      "answer_sha256": "aece57fe8557e89995f5d13d4243da954e9316801556f004ee6529f257c23509"
+    },
+    "R068": {
+      "case": "w14",
+      "arm": "F",
+      "answer_sha256": "0e8baaaf09a5d9f4ce00be7fe7909dcce9695e3088a032d1b12debd9c912c8dd"
+    },
+    "R069": {
+      "case": "w13",
+      "arm": "D",
+      "answer_sha256": "5f4c826ab633564c847e564a458c852ff16dd3bbf0d7ba03015a3d4b88e7d04a"
+    },
+    "R070": {
+      "case": "w13",
+      "arm": "C",
+      "answer_sha256": "857709508cc7a02ca2cf0a1ae8079f96b1e622d4e61282b49b4d4dcb43739d91"
+    },
+    "R071": {
+      "case": "w01",
+      "arm": "E",
+      "answer_sha256": "2a0a87700a02d664a440fddd3617412d9142c585fbeebe04d9db45817eef5c04"
+    },
+    "R072": {
+      "case": "w10",
+      "arm": "C",
+      "answer_sha256": "1ca31af9b5373389c135cd105ab8c6c66a28a95d20d94ce5129cb8573175a191"
+    },
+    "R073": {
+      "case": "w04",
+      "arm": "A",
+      "answer_sha256": "9bf3baf7988c3c9d91e067510bc0749bf006fa17c53121aff02945d4fd063892"
+    },
+    "R074": {
+      "case": "w17",
+      "arm": "F",
+      "answer_sha256": "6cd41eb407d06e9a107b812607b406d8ac4bf7a6662550915a9ee78a28cd8301"
+    },
+    "R075": {
+      "case": "w06",
+      "arm": "A",
+      "answer_sha256": "92e9e7e5922d26e17e48f0869ab25cc99499fdab722c065de8e0965c96c68e86"
+    },
+    "R076": {
+      "case": "w11",
+      "arm": "B",
+      "answer_sha256": "f4fc3d96f56f82a65da97fd194f0e0945dbb1fd03f6b8f50799ca6848acec865"
+    },
+    "R077": {
+      "case": "w03",
+      "arm": "F",
+      "answer_sha256": "701733be3dbae3b1d28e2459b2fbb52c5ca4cedbb14199684b171544b576c17e"
+    },
+    "R078": {
+      "case": "w17",
+      "arm": "B",
+      "answer_sha256": "6cd41eb407d06e9a107b812607b406d8ac4bf7a6662550915a9ee78a28cd8301"
+    },
+    "R079": {
+      "case": "w03",
+      "arm": "A",
+      "answer_sha256": "0073e15c03a14902d1b808d51133763d5362163eefdd189791382fa0a394f6f8"
+    },
+    "R080": {
+      "case": "w19",
+      "arm": "B",
+      "answer_sha256": "789d9e7dc67f986660d9b28f5946cce995f9b145e4c2ef61828679cee07bb316"
+    },
+    "R081": {
+      "case": "w22",
+      "arm": "B",
+      "answer_sha256": "4cd3423c23ce0882e5e380902bf5565a9aedc486e9fa18388994e5adc9b6cf90"
+    },
+    "R082": {
+      "case": "w05",
+      "arm": "C",
+      "answer_sha256": "7f3e916bf628c503cac5f6babcf2dc37b7c8f2e7e8350e0e2a77c80caee95765"
+    },
+    "R083": {
+      "case": "w24",
+      "arm": "E",
+      "answer_sha256": "32d557672e4a19f7fd968924d8b6327212fbb282a7914598d4588c23f8ac054d"
+    },
+    "R084": {
+      "case": "w02",
+      "arm": "C",
+      "answer_sha256": "1cf229dc67ceab238586b5328b6d8038fbb9442bce9d806215b9166aea81b057"
+    },
+    "R085": {
+      "case": "w05",
+      "arm": "A",
+      "answer_sha256": "7f3e916bf628c503cac5f6babcf2dc37b7c8f2e7e8350e0e2a77c80caee95765"
+    },
+    "R086": {
+      "case": "w09",
+      "arm": "F",
+      "answer_sha256": "f135fc7cb39cd92885452e1441fd4c8cbb0089e70e03f9efe36ea2a5639d1d30"
+    },
+    "R087": {
+      "case": "w05",
+      "arm": "D",
+      "answer_sha256": "7f3e916bf628c503cac5f6babcf2dc37b7c8f2e7e8350e0e2a77c80caee95765"
+    },
+    "R088": {
+      "case": "w18",
+      "arm": "A",
+      "answer_sha256": "92faa1891a98dade49c60eb488ae11b8934b8364d3c4c4596b9384f2d19632b4"
+    },
+    "R089": {
+      "case": "w21",
+      "arm": "B",
+      "answer_sha256": "08c701ad6a3d2f4b8d049959e0f911fece607fa5011789bacc6eaf2829dbda58"
+    },
+    "R090": {
+      "case": "w01",
+      "arm": "A",
+      "answer_sha256": "c58d28ec152194971a552d421da3a4198d8e7f61781ce7929d18d233ae717822"
+    },
+    "R091": {
+      "case": "w07",
+      "arm": "E",
+      "answer_sha256": "c374a03fb634f0e9ccdd84d2e42147499d21eec6126f3f7a7bbb6e7749838acc"
+    },
+    "R092": {
+      "case": "w24",
+      "arm": "C",
+      "answer_sha256": "32d557672e4a19f7fd968924d8b6327212fbb282a7914598d4588c23f8ac054d"
+    },
+    "R093": {
+      "case": "w18",
+      "arm": "F",
+      "answer_sha256": "92faa1891a98dade49c60eb488ae11b8934b8364d3c4c4596b9384f2d19632b4"
+    },
+    "R094": {
+      "case": "w15",
+      "arm": "A",
+      "answer_sha256": "86edf0d2335ac47ae7cc945ced9b21ead1d3f66d315343760976d25f6cd0b8f0"
+    },
+    "R095": {
+      "case": "w06",
+      "arm": "D",
+      "answer_sha256": "92e9e7e5922d26e17e48f0869ab25cc99499fdab722c065de8e0965c96c68e86"
+    },
+    "R096": {
+      "case": "w23",
+      "arm": "C",
+      "answer_sha256": "366884b370fdcd852530d48da9c632c5d8498df39bd7751f6dbf7fd2bd1f482c"
+    },
+    "R097": {
+      "case": "w08",
+      "arm": "D",
+      "answer_sha256": "8190a3aa162b6c888f2faa6948a62a83e0300d979b15abe0745bd914a67344ee"
+    },
+    "R098": {
+      "case": "w24",
+      "arm": "D",
+      "answer_sha256": "32d557672e4a19f7fd968924d8b6327212fbb282a7914598d4588c23f8ac054d"
+    },
+    "R099": {
+      "case": "w21",
+      "arm": "C",
+      "answer_sha256": "12a38e0a46614e5316f7c6e59e9a5c9db0ddcb16c7b35e0dc82e1fcd949a3291"
+    },
+    "R100": {
+      "case": "w06",
+      "arm": "B",
+      "answer_sha256": "92e9e7e5922d26e17e48f0869ab25cc99499fdab722c065de8e0965c96c68e86"
+    },
+    "R101": {
+      "case": "w07",
+      "arm": "A",
+      "answer_sha256": "c374a03fb634f0e9ccdd84d2e42147499d21eec6126f3f7a7bbb6e7749838acc"
+    },
+    "R102": {
+      "case": "w16",
+      "arm": "C",
+      "answer_sha256": "dadb38e22e91e182e293f98b7451274899d2f81d9a1e5e4af41fccc3d76a0725"
+    },
+    "R103": {
+      "case": "w15",
+      "arm": "C",
+      "answer_sha256": "64295a1f17a257a3ee5a57f1ecc869367df968661d98d3b458d6eb93e4f8fd42"
+    },
+    "R104": {
+      "case": "w16",
+      "arm": "A",
+      "answer_sha256": "f594af7aa02d9283ff3d6691045875e25aa96f5c1ef5b0c538af20bdd20dcf70"
+    },
+    "R105": {
+      "case": "w07",
+      "arm": "C",
+      "answer_sha256": "c374a03fb634f0e9ccdd84d2e42147499d21eec6126f3f7a7bbb6e7749838acc"
+    },
+    "R106": {
+      "case": "w13",
+      "arm": "E",
+      "answer_sha256": "c65ebd5ec29a6798a608ad721fbe86bed837ec917ce4b7665ec2fa57afb3bf86"
+    },
+    "R107": {
+      "case": "w14",
+      "arm": "D",
+      "answer_sha256": "fbbacc213c63c6cb6f3d7800d00a7d4b530bb17d9f48500fa89792c0909f2f18"
+    },
+    "R108": {
+      "case": "w22",
+      "arm": "C",
+      "answer_sha256": "ff86c12674ca3c0560aa2233552714a89630b141c244caa42ff9f952661cfa58"
+    },
+    "R109": {
+      "case": "w10",
+      "arm": "F",
+      "answer_sha256": "1ca31af9b5373389c135cd105ab8c6c66a28a95d20d94ce5129cb8573175a191"
+    },
+    "R110": {
+      "case": "w22",
+      "arm": "E",
+      "answer_sha256": "54a85c917efd08dcc7c70f7f5a523acd20fa8451a24da1a237473310a13c7eed"
+    },
+    "R111": {
+      "case": "w08",
+      "arm": "A",
+      "answer_sha256": "8190a3aa162b6c888f2faa6948a62a83e0300d979b15abe0745bd914a67344ee"
+    },
+    "R112": {
+      "case": "w10",
+      "arm": "E",
+      "answer_sha256": "1ca31af9b5373389c135cd105ab8c6c66a28a95d20d94ce5129cb8573175a191"
+    },
+    "R113": {
+      "case": "w23",
+      "arm": "A",
+      "answer_sha256": "366884b370fdcd852530d48da9c632c5d8498df39bd7751f6dbf7fd2bd1f482c"
+    },
+    "R114": {
+      "case": "w11",
+      "arm": "C",
+      "answer_sha256": "f4fc3d96f56f82a65da97fd194f0e0945dbb1fd03f6b8f50799ca6848acec865"
+    },
+    "R115": {
+      "case": "w02",
+      "arm": "E",
+      "answer_sha256": "54a85c917efd08dcc7c70f7f5a523acd20fa8451a24da1a237473310a13c7eed"
+    },
+    "R116": {
+      "case": "w08",
+      "arm": "E",
+      "answer_sha256": "54a85c917efd08dcc7c70f7f5a523acd20fa8451a24da1a237473310a13c7eed"
+    },
+    "R117": {
+      "case": "w21",
+      "arm": "F",
+      "answer_sha256": "d62c2a54124fd799dae5673bd9574043faf126b027772b338417a157ecc24613"
+    },
+    "R118": {
+      "case": "w19",
+      "arm": "D",
+      "answer_sha256": "789d9e7dc67f986660d9b28f5946cce995f9b145e4c2ef61828679cee07bb316"
+    },
+    "R119": {
+      "case": "w02",
+      "arm": "B",
+      "answer_sha256": "1cf229dc67ceab238586b5328b6d8038fbb9442bce9d806215b9166aea81b057"
+    },
+    "R120": {
+      "case": "w11",
+      "arm": "D",
+      "answer_sha256": "f4fc3d96f56f82a65da97fd194f0e0945dbb1fd03f6b8f50799ca6848acec865"
+    },
+    "R121": {
+      "case": "w04",
+      "arm": "B",
+      "answer_sha256": "5951e29882f3f39e7936729f1a95584958e1c5efb2c5543c40cbb99a3194bc37"
+    },
+    "R122": {
+      "case": "w16",
+      "arm": "F",
+      "answer_sha256": "54a85c917efd08dcc7c70f7f5a523acd20fa8451a24da1a237473310a13c7eed"
+    },
+    "R123": {
+      "case": "w01",
+      "arm": "C",
+      "answer_sha256": "f135fc7cb39cd92885452e1441fd4c8cbb0089e70e03f9efe36ea2a5639d1d30"
+    },
+    "R124": {
+      "case": "w20",
+      "arm": "A",
+      "answer_sha256": "c2de94abcb9301e412b5da8ae2690a3b30236339a145e7d5d5bff6b058ae204e"
+    },
+    "R125": {
+      "case": "w07",
+      "arm": "F",
+      "answer_sha256": "c374a03fb634f0e9ccdd84d2e42147499d21eec6126f3f7a7bbb6e7749838acc"
+    },
+    "R126": {
+      "case": "w20",
+      "arm": "D",
+      "answer_sha256": "c2de94abcb9301e412b5da8ae2690a3b30236339a145e7d5d5bff6b058ae204e"
+    },
+    "R127": {
+      "case": "w06",
+      "arm": "C",
+      "answer_sha256": "92e9e7e5922d26e17e48f0869ab25cc99499fdab722c065de8e0965c96c68e86"
+    },
+    "R128": {
+      "case": "w09",
+      "arm": "A",
+      "answer_sha256": "0e77c7c22040c1c564ac9ab483e2a7bc04620cf8fe2863da90247debfd7f7f40"
+    },
+    "R129": {
+      "case": "w17",
+      "arm": "C",
+      "answer_sha256": "6cd41eb407d06e9a107b812607b406d8ac4bf7a6662550915a9ee78a28cd8301"
+    },
+    "R130": {
+      "case": "w08",
+      "arm": "F",
+      "answer_sha256": "8190a3aa162b6c888f2faa6948a62a83e0300d979b15abe0745bd914a67344ee"
+    },
+    "R131": {
+      "case": "w18",
+      "arm": "B",
+      "answer_sha256": "92faa1891a98dade49c60eb488ae11b8934b8364d3c4c4596b9384f2d19632b4"
+    },
+    "R132": {
+      "case": "w24",
+      "arm": "B",
+      "answer_sha256": "32d557672e4a19f7fd968924d8b6327212fbb282a7914598d4588c23f8ac054d"
+    },
+    "R133": {
+      "case": "w08",
+      "arm": "C",
+      "answer_sha256": "8190a3aa162b6c888f2faa6948a62a83e0300d979b15abe0745bd914a67344ee"
+    },
+    "R134": {
+      "case": "w21",
+      "arm": "A",
+      "answer_sha256": "8e6ee14148264ac958f9a84bb0c9ed7473621c8b4c8288a50d9c958cd501861e"
+    },
+    "R135": {
+      "case": "w16",
+      "arm": "E",
+      "answer_sha256": "d4e27092633ee696bd3fdfbab29e490b9f2611c47721e17fd2e769c0340f7d3b"
+    },
+    "R136": {
+      "case": "w04",
+      "arm": "D",
+      "answer_sha256": "39dcc408ae15c3e94ec8483b6d21580a53bc1ad141e71becab565aac08aa99e3"
+    },
+    "R137": {
+      "case": "w09",
+      "arm": "C",
+      "answer_sha256": "fbb600f981cf0ff8feda2331b7bd89afcbd882471f688c77c4dfa9dccb19fec9"
+    },
+    "R138": {
+      "case": "w12",
+      "arm": "B",
+      "answer_sha256": "158b93de7f8dea3966daa6449bc637b6b58ac5ba4798a6cceff16450c6450462"
+    },
+    "R139": {
+      "case": "w13",
+      "arm": "A",
+      "answer_sha256": "14feea349680e4ff8732bf5ef7e5cdeab8d88eee17e1d40eab1d088626be22ef"
+    },
+    "R140": {
+      "case": "w15",
+      "arm": "E",
+      "answer_sha256": "f135fc7cb39cd92885452e1441fd4c8cbb0089e70e03f9efe36ea2a5639d1d30"
+    },
+    "R141": {
+      "case": "w22",
+      "arm": "A",
+      "answer_sha256": "05d43e46d4af1b6c5d5f33d5ec47f08a1e8da5e628723ccd611f6556afdc70b2"
+    },
+    "R142": {
+      "case": "w21",
+      "arm": "D",
+      "answer_sha256": "c45a15e74a247395699c4af661de131ab319cd05b4b59784fa12b00f540a0436"
+    },
+    "R143": {
+      "case": "w13",
+      "arm": "F",
+      "answer_sha256": "fb813c9f7832a505755078b9a8aa87066e43c2a5b42ff4e917a6590cf8c72c07"
+    },
+    "R144": {
+      "case": "w15",
+      "arm": "F",
+      "answer_sha256": "fe5205817e3f7343d85aed1e46e4475c30de7141a729e79a81fadb94669b2b63"
+    }
+  }
+}
