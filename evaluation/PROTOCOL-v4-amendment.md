@@ -1,0 +1,7 @@
+# v4 pre-inference wording amendment
+
+A final linguistic preflight, after the first manifest was recorded but before any v4 inference or output inspection, identified two avoidable ambiguities in exact-output tasks. One instruction used uppercase schema placeholders without explicitly saying how to capitalize a supplied proper name. Another Chinese instruction could be read either as requesting the replacement label or as requesting the literal two characters used to refer to a label. The revised wording explicitly preserves the supplied name's case and asks for the new label's two characters.
+
+These are wording clarifications only. Expected answers, histories, behavior groups, language counts, eviction flags, all scoring rules, comparison gates and execution settings are unchanged. No fixture text was sent to the implementer or root coordinator before candidate freeze. No measured v4 answer existed when the amendment was made. The evaluator has not seen v4 outcomes and did not inspect the candidate controller implementation.
+
+The first suite and manifest remain preserved as `cases.preflight.json` and `freeze.preflight.json` beside the private final suite. The first suite hash was `f8595f485f0793eba317ddc738b18a5ea3acbf2928a4fd9ff7df9254786e0ed7`. The revised suite hash is `e01bb17328e753885b32546e19beb4da941ba8df3186ba862f4a9914e58cbd36`. Publish both drafts and their manifests after completion so the limited amendment is independently inspectable. `freeze.json` additionally binds this amendment document.

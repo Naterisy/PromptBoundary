@@ -3,11 +3,13 @@
   "frozen_at": "2026-11-16",
   "cases": 24,
   "arms": "ABCDEF",
-  "suite_sha256": "f8595f485f0793eba317ddc738b18a5ea3acbf2928a4fd9ff7df9254786e0ed7",
+  "suite_sha256": "e01bb17328e753885b32546e19beb4da941ba8df3186ba862f4a9914e58cbd36",
   "files": {
     "evaluation/PROTOCOL-v4.md": "5bfe46385407bc397a13b6eb83d1053ddc07e5aa2de1cbee5778ff6822904314",
     "evaluation/score_v4.py": "d6711e916f7c6a558fdb485ca664bf92efc10b332d5e7558f05e544ce3aef6cf",
     "evaluation/v4.py": "098e1ba8540b8a51e0152649b520971d61799e62408ed711c14260d21a69f520",
-    "evaluation/worker_v4.py": "b64c0401da5bc697909887ffdef43abf34dd83a538a4980a20cbf6e01c884b3b"
-  }
+    "evaluation/worker_v4.py": "b64c0401da5bc697909887ffdef43abf34dd83a538a4980a20cbf6e01c884b3b",
+    "evaluation/PROTOCOL-v4-amendment.md": "c6f7352ef474fe639ead18d7c9fb1105a9f535169c678f781b9bffa2c408cea1"
+  },
+  "pre_inference_amendment": "Two wording-only clarifications made during final linguistic preflight, before any holdout inference or outcome inspection: explicit customer-name capitalization and unambiguous label-output wording. Previous draft and manifest preserved as cases.preflight.json and freeze.preflight.json. Expected answers unchanged."
 }
