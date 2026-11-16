@@ -10,6 +10,7 @@ from pathlib import Path
 from . import BoundaryController, MockModel, OpenAICompatible, StageModel, State
 from .demo import DEMO_TURNS
 from .middleware import make_server
+from .responses import OpenAIResponses
 
 
 def parser():
@@ -21,6 +22,8 @@ def parser():
         transport = cmd.add_mutually_exclusive_group()
         transport.add_argument("--mock", action="store_true", help="Use the offline demo fixture (default)")
         transport.add_argument("--base-url", help="Explicit OpenAI-compatible API base URL including /v1")
+        cmd.add_argument("--api", choices=["chat", "responses"], default="chat",
+                         help="Upstream API protocol (default: chat)")
         cmd.add_argument("--model", help="Upstream model ID, required with --base-url")
         cmd.add_argument("--api-key-env", metavar="NAME", help="Read an optional bearer key from this variable")
         cmd.add_argument("--timeout", type=float, default=120, help="Upstream timeout in seconds (default 120)")
@@ -29,7 +32,7 @@ def parser():
         if name == "serve":
             cmd.add_argument("--port", type=int, default=8080)
         else:
-            cmd.add_argument("--temperature", type=float, default=0.0)
+            cmd.add_argument("--temperature", type=float, help="Defaults to zero on Chat Completions; omit on reasoning endpoints")
             cmd.add_argument("--max-tokens", type=int, default=512, help="Per-stage completion token limit")
             cmd.add_argument("--json", action="store_true", help="Emit a JSON transcript with per-stage metrics")
         if name == "chat":
@@ -46,8 +49,9 @@ def _upstream(args):
             key = os.environ.get(args.api_key_env)
             if not key:
                 raise ValueError("The explicitly selected API-key variable is empty.")
-        return OpenAICompatible(args.base_url, args.model, api_key=key, timeout=args.timeout)
-    if args.api_key_env or args.model:
+        transport = OpenAIResponses if args.api == "responses" else OpenAICompatible
+        return transport(args.base_url, args.model, api_key=key, timeout=args.timeout)
+    if args.api_key_env or args.model or args.api == "responses":
         raise ValueError("Use --base-url when selecting an upstream model or a key.")
     return MockModel()
 
@@ -70,10 +74,12 @@ def main(argv=None):
                 except KeyboardInterrupt:
                     pass
             return 0
-        if not 0 <= args.temperature <= 2 or args.max_tokens < 1:
+        if (args.temperature is not None and not 0 <= args.temperature <= 2) or args.max_tokens < 1:
             raise ValueError("Use a temperature from 0 to 2 and a positive max-tokens value.")
-        model = StageModel(upstream, {"temperature": args.temperature, "max_tokens": args.max_tokens},
-                           system_prefix=prefix)
+        generation = {"max_tokens": args.max_tokens}
+        if args.temperature is not None or args.api == "chat":
+            generation["temperature"] = args.temperature or 0.0
+        model = StageModel(upstream, generation, system_prefix=prefix)
         controller = BoundaryController(model, max_retries=args.max_retries)
         state = State()
         transcript = []

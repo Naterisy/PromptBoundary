@@ -1,0 +1,1 @@
+{"case":"n04","model":"gpt-6.1-sol","served_models":["gpt-6.1-sol"],"arm":"patched","input_sha256":"f3161cdfab0b5ac2c6fe705221b8765acaac48358e611d13bea82e38f16db768","answer":"Roasted Pumpkin","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":5810.115,"calls":3}

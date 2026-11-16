@@ -1,0 +1,1 @@
+{"case":"n05","model":"gpt-5.4-mini-2026-03-17","served_models":["gpt-5.4-mini-2026-03-17"],"arm":"raw","input_sha256":"2207dd6313794ef238c658497702de88e90c3778630dc078d2a0e5fd875a1c87","answer":"Homeward","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":1451.26,"calls":1}

@@ -1,0 +1,1 @@
+{"case":"n11","model":"gpt-5.4-mini-2026-03-17","served_models":["gpt-5.4-mini-2026-03-17"],"arm":"release","input_sha256":"86e41e295b6726542a405dca36667bd6be5b99a4f84d00c43989b7b23dbeac33","answer":"DRYRUN POND-8","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":5229.448,"calls":3}

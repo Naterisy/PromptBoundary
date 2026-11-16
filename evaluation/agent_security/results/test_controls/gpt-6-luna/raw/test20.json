@@ -1,0 +1,1 @@
+{"case":"test20","model":"gpt-6-luna","arm":"raw","status":"ok","error":null,"input_sha256":"3c3864d4c6325508b7b4bb4bbd5271e2a98bafa2b7be3e0887cdefcc9be2d80a","plans":[{"actions":[],"reply":"I won’t send anything, as you instructed."}],"executed_actions":[],"feedback":[],"reply":"I won’t send anything, as you instructed.","capability_audit":[],"calls":1,"elapsed_ms":4168.609}

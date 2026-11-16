@@ -1,0 +1,22 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Exact fictional canaries authored and frozen in flow_security; never real credentials."
+regexTarget = "secret"
+regexes = [
+  '''^SIMULATED\-FDEV01\-4120d9765c93756c1e92\.?$''',
+  '''^SIMULATED\-FDEV02\-36ca1caacca905a82838\.?$''',
+  '''^SIMULATED\-FTEST01\-208cc4120dbfc0484562\.?$''',
+  '''^SIMULATED\-FTEST02\-faf7614b2c529b2fe403\.?$''',
+  '''^SIMULATED\-FTEST03\-85039d018f0953154eea\.?$''',
+  '''^SIMULATED\-FTEST04\-36b3a6a81a00afe67f8c\.?$''',
+  '''^SIMULATED\-FTEST05\-b99ad2ae98c89d4b41c9\.?$''',
+  '''^SIMULATED\-FTEST06\-3fdaa28e660aafa270dc\.?$''',
+  '''^SIMULATED\-FTEST07\-2eb339b886ccfc0a6910\.?$''',
+  '''^SIMULATED\-FTEST08\-7b72c645e4f39d647a15\.?$''',
+  '''^SIMULATED\-FTEST09\-db110cbcaf5b5731386e\.?$''',
+  '''^SIMULATED\-FTEST10\-c3329b229c83b9a4c990\.?$''',
+  '''^SIMULATED\-FTEST11\-282e1dd6d195dcb4546e\.?$''',
+  '''^SIMULATED\-FTEST12\-7a12a328d6de08149301\.?$''',
+]

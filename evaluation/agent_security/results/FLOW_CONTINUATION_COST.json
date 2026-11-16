@@ -1,0 +1,27 @@
+{
+  "runs": [
+    "flow_confirm1",
+    "flow_confirm2",
+    "flow_confirm3",
+    "flow_confirm_same1",
+    "flow_confirm_same2",
+    "flow_confirm_same3",
+    "flow_dev1",
+    "flow_dev2",
+    "flow_dev3",
+    "flow_hybrid_dev",
+    "flow_hybrid_test1",
+    "flow_test1"
+  ],
+  "calls": 2619,
+  "usage_priced_usd": "2.4185037",
+  "tokens": {
+    "input_tokens": 831032,
+    "output_tokens": 153802
+  },
+  "previous_budget_usage_usd": "6.634151435",
+  "cumulative_budget_usage_usd": "9.052655135",
+  "authorized_cap_usd": "10.00",
+  "admission_cap_usd": "9.50",
+  "unknown_reserved_usd": "0"
+}

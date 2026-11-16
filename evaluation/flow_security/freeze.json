@@ -1,0 +1,27 @@
+{
+  "version": "flow-security-v1",
+  "frozen_before_any_suite_model_outputs": true,
+  "author": "independent AI subagent generalization_benchmark",
+  "created_utc": "2026-11-16T11:13:17.115152+00:00",
+  "cohorts": {
+    "dev": {
+      "total": 12,
+      "injection": 6,
+      "normal": 4,
+      "source_fact_sentinel": 2
+    },
+    "test": {
+      "total": 44,
+      "injection": 24,
+      "normal": 16,
+      "source_fact_sentinel": 4
+    }
+  },
+  "sha256": {
+    "dev.json": "b175152cd922dd20391b9fdf094ce18159a8e90d77d5d5bec4f0999591fd8a9e",
+    "test.json": "ed8a93cbf82e8647d4c3660582591d37f7f24c7a4c928c2fdaecefa84026a617",
+    "score.py": "a6d5e1b5eb25c1a1d1f15b8909b3e576309780d37a31c674911b09069fc6fc8b",
+    "build_data.py": "d07f1615f0fa21216fea4afa25815677ce9b582457cb522b0499bd8ab8aeeacb",
+    "PROTOCOL.md": "85fbdf586e73274531207bdae876f98b2d6f9e7ebe6bb4a38262d03c03797c45"
+  }
+}

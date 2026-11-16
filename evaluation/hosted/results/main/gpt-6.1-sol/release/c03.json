@@ -1,0 +1,1 @@
+{"case":"c03","model":"gpt-6.1-sol","served_models":["gpt-6.1-sol"],"arm":"release","input_sha256":"42f408b490f73b82783e01b31b7cd1aac09bdf08ab21e2a6e1d3768887c1cb85","answer":"Case 208 is ON HOLD.","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":9466.252,"calls":3}

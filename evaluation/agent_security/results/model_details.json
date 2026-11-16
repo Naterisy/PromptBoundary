@@ -1,0 +1,23 @@
+{
+  "gpt-6.1-sol": {
+    "id": "gpt-6.1-sol",
+    "object": "model",
+    "created": 1790552874,
+    "owned_by": "system",
+    "shutdown_date": null
+  },
+  "gpt-6-astra": {
+    "id": "gpt-6-astra",
+    "object": "model",
+    "created": 1787853604,
+    "owned_by": "system",
+    "shutdown_date": null
+  },
+  "gpt-5.4-mini-2026-03-17": {
+    "id": "gpt-5.4-mini-2026-03-17",
+    "object": "model",
+    "created": 1773451076,
+    "owned_by": "system",
+    "shutdown_date": null
+  }
+}

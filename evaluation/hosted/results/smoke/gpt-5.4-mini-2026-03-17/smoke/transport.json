@@ -1,0 +1,1 @@
+{"case":"transport","model":"gpt-5.4-mini-2026-03-17","served_models":["gpt-5.4-mini-2026-03-17"],"arm":"smoke","input_sha256":"7585c6637b1511dd09d501165ef2d88ba1077882629ae9900778e67568c8a24c","answer":"7","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":4117.557,"calls":1}

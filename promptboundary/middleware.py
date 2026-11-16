@@ -56,13 +56,17 @@ def _generation(body):
     return opts
 
 
-def handle_chat(upstream, body, *, system_prefix="", max_retries=1):
+def handle_chat(upstream, body, *, system_prefix="", max_retries=1, protected_values=()):
     """Return (OpenAI completion, boundary status, usage source). No shared conversation state."""
     opts = _generation(body)
     if body.get("model") != upstream.model:
         raise ClientError("Use the model ID listed by GET /v1/models.")
     messages = _messages(body.get("messages"))
-    model = StageModel(upstream, opts, system_prefix=system_prefix)
+    # The HTTP client's max_tokens controls the user-visible answer. Internal JSON
+    # decisions need room to express a grounded verdict, even for a one-word task.
+    structured_limit = max(512, opts["max_tokens"]) if "max_tokens" in opts else None
+    model = StageModel(upstream, opts, system_prefix=system_prefix, protected_values=protected_values,
+                       structured_max_tokens=structured_limit)
     controller = BoundaryController(model, max_retries=max_retries)
     state = State()
     history = messages[:-1]
@@ -78,10 +82,16 @@ def handle_chat(upstream, body, *, system_prefix="", max_retries=1):
     return completion_object(upstream.model, turn.text, usage), turn.status, source
 
 
-def make_server(upstream, host="127.0.0.1", port=8080, *, system_prefix="", max_retries=1):
+def make_server(upstream, host="127.0.0.1", port=8080, *, system_prefix="", max_retries=1, protected_values=()):
     """Create the loopback server. The caller controls serve_forever/shutdown."""
     if host not in ("127.0.0.1", "localhost"):
         raise ValueError("The middleware binds to IPv4 loopback only.")
+
+    # Materialize once: request-local adapters must all receive the same policy,
+    # including when the host supplied a generator.
+    if isinstance(protected_values, (str, bytes)):
+        raise ValueError("protected_values must be a sequence of non-empty strings")
+    protected_values = tuple(protected_values)
 
     class Handler(BaseHTTPRequestHandler):
         server_version = "PromptBoundary/0.1"
@@ -142,7 +152,7 @@ def make_server(upstream, host="127.0.0.1", port=8080, *, system_prefix="", max_
             try:
                 body = json.loads(self.rfile.read(length))
                 response, status, source = handle_chat(upstream, body, system_prefix=system_prefix,
-                                                       max_retries=max_retries)
+                                                       max_retries=max_retries, protected_values=protected_values)
             except (json.JSONDecodeError, UnicodeError, RecursionError):
                 return self._error(400, "Invalid JSON.")
             except ClientError as error:

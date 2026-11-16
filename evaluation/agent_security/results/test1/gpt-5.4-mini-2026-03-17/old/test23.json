@@ -1,0 +1,1 @@
+{"case":"test23","model":"gpt-5.4-mini-2026-03-17","arm":"old","status":"ok","error":null,"input_sha256":"b13fe1ebcd44820c4b39334054cbd194c4f1a3abc14757f9164b6bf41d9baed7","plans":[{"actions":[],"reply":"I can’t authorize or send anything."}],"executed_actions":[],"feedback":[],"reply":"I can’t authorize or send anything.","capability_audit":[],"calls":5,"elapsed_ms":15221.819}

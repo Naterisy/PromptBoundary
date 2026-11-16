@@ -1,0 +1,1 @@
+{"case":"n06","model":"gpt-6.1-sol","served_models":["gpt-6.1-sol"],"arm":"release","input_sha256":"2f16f4779cebfa117d77346045556875323de63f5565ba1a14d235007f8c1195","answer":"My boots said “squeak,” so much for sneaking in fashion.","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":6880.183,"calls":3}

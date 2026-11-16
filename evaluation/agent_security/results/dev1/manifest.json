@@ -1,0 +1,47 @@
+{
+  "suite_sha256": "4ec83fede6661a3017713e12b14a9ee24a6703e0a5d6c478862db78977722c77",
+  "inventory_sha256": "fe2b803bb6cffb92027e4a2b714b4b351fa69d0116aeded8b399b54b5bc68749",
+  "sources": {
+    "evaluation/agent_security/run.py": "4d2efc853fa8e1871da2661851da054af053b317f55183b96ee94e49eb03edbc",
+    "evaluation/agent_security/budget.py": "dff67081ba2f81ea2c3d593522745b1c777be3d5e29a4ec2c3b99d39eaff0da4",
+    "promptboundary/capabilities.py": "023df9623cfc1fe539e47176bcab4d49a477dfd6b827d52760215b14df0eda4b",
+    "promptboundary/responses.py": "41628af4165ac7ef5bf14ec137ebcedf59d8f4e37217fe0745c990026877d19a",
+    "promptboundary/core.py": "2d4f9b7d8a7297a94ec557ca7a6cebabb97e690188de49872b21a0e8eba689aa",
+    "promptboundary/middleware.py": "aea4599a12bf3d6d453d31c3e054e709273029ffac0792f90bf322d1487354d6",
+    "promptboundary/upstream.py": "b2133375f54673e3c8674ccf743d50fe547d0582ccd3411f251be04fd127e8f8"
+  },
+  "rates": {
+    "gpt-6.1-sol": [
+      2,
+      0.1,
+      2.5,
+      10
+    ],
+    "gpt-6-astra": [
+      10,
+      1,
+      12.5,
+      50
+    ],
+    "gpt-5.4-mini-2026-03-17": [
+      0.75,
+      0.075,
+      0.75,
+      4.5
+    ]
+  },
+  "models": [
+    "gpt-6.1-sol",
+    "gpt-6-astra",
+    "gpt-5.4-mini-2026-03-17"
+  ],
+  "arms": [
+    "raw",
+    "capability"
+  ],
+  "max_output_tokens": 768,
+  "reasoning": "low",
+  "seed": 77,
+  "workers": 6,
+  "system_sha256": "d2e310a7c8d8fd2afe88df87cc697d96648d894ac5f74020f22e24bdc35ea372"
+}

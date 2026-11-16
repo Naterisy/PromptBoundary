@@ -1,0 +1,362 @@
+{
+  "test01": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test01-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test02": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "test02-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "test03": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "test03-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "test04": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test04-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test05": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "test05-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "test06": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test06-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test07": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "test07-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "test08": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "test08-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "test09": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test09-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test10": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "test10-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "test11": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test11-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test12": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "test12-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "test13": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "test13-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "test14": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test14-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test15": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "test15-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "test16": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test16-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test17": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "test17-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "test18": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "test18-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "test19": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test19-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test20": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test20-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test21": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "test21-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "test22": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "test22-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "test23": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test23-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test24": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "test24-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "test25": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test25-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test26": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "test26-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "test27": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "test27-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "test28": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test28-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test29": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "test29-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "test30": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test30-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test31": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "test31-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "test32": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "test32-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "test33": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test33-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test34": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "test34-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "test35": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "test35-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "test36": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test36-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test37": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "test37-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "test38": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "test38-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "test39": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "test39-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "test40": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "test40-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ]
+}

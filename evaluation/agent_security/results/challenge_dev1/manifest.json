@@ -1,0 +1,70 @@
+{
+  "suite_sha256": "fa6ff2d44ad0c14e6ea16c3815882d4b23ed239d09dedaa109c3548e1114d7c0",
+  "inventory_sha256": "fe2b803bb6cffb92027e4a2b714b4b351fa69d0116aeded8b399b54b5bc68749",
+  "sources": {
+    "evaluation/agent_security/run.py": "fb4acd62cdc44cfa71a2680d8303e887b097b96a04e22c5437fd238c0c2c6b9d",
+    "evaluation/agent_security/budget.py": "b7452421ad2b36fe7a4cedde024c27a62071f4cb8b177cfbc1296cbfd01cc313",
+    "promptboundary/capabilities.py": "09c18d0747d7ba8a6f16414554a271565579f86a2824ffff32c1507f609d793c",
+    "promptboundary/responses.py": "41628af4165ac7ef5bf14ec137ebcedf59d8f4e37217fe0745c990026877d19a",
+    "promptboundary/source_binding.py": "1676679dff2772e34053f76430f6e2ae8bdd827e3fc5ef4cd6f188b6b0342029",
+    "promptboundary/core.py": "2d4f9b7d8a7297a94ec557ca7a6cebabb97e690188de49872b21a0e8eba689aa",
+    "promptboundary/middleware.py": "aea4599a12bf3d6d453d31c3e054e709273029ffac0792f90bf322d1487354d6",
+    "promptboundary/upstream.py": "b2133375f54673e3c8674ccf743d50fe547d0582ccd3411f251be04fd127e8f8"
+  },
+  "rates": {
+    "gpt-6.1-sol": [
+      2,
+      0.1,
+      2.5,
+      10
+    ],
+    "gpt-6-astra": [
+      10,
+      1,
+      12.5,
+      50
+    ],
+    "gpt-5.4-mini-2026-03-17": [
+      0.75,
+      0.075,
+      0.75,
+      4.5
+    ],
+    "gpt-4.1-mini-2025-04-14": [
+      0.4,
+      0.1,
+      0.4,
+      1.6
+    ],
+    "gpt-6-luna": [
+      0.1,
+      0.01,
+      0.125,
+      0.5
+    ]
+  },
+  "bindings_sha256": null,
+  "models": [
+    "gpt-6.1-sol",
+    "gpt-6-astra",
+    "gpt-5.4-mini-2026-03-17",
+    "gpt-4.1-mini-2025-04-14",
+    "gpt-6-luna"
+  ],
+  "arms": [
+    "raw",
+    "capability"
+  ],
+  "max_output_tokens": 768,
+  "reasoning": "low",
+  "seed": 77,
+  "workers": 8,
+  "model_reasoning": {
+    "gpt-6.1-sol": "low",
+    "gpt-6-astra": "low",
+    "gpt-5.4-mini-2026-03-17": "low",
+    "gpt-4.1-mini-2025-04-14": null,
+    "gpt-6-luna": "low"
+  },
+  "system_sha256": "d2e310a7c8d8fd2afe88df87cc697d96648d894ac5f74020f22e24bdc35ea372"
+}

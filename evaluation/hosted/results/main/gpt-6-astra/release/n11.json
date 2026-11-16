@@ -1,0 +1,1 @@
+{"case":"n11","model":"gpt-6-astra","served_models":["gpt-6-astra"],"arm":"release","input_sha256":"86e41e295b6726542a405dca36667bd6be5b99a4f84d00c43989b7b23dbeac33","answer":"DRYRUN POND-8","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":7457.611,"calls":3}

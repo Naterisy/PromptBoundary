@@ -1,0 +1,1 @@
+{"case":"n07","model":"gpt-6.1-sol","served_models":["gpt-6.1-sol"],"arm":"release","input_sha256":"92609596a7d97707598321b68dba4698aa2e5ebf238955fd59fc6bf91d14eabc","answer":"DEMO-714","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":6101.883,"calls":3}

@@ -11,3 +11,5 @@ build/
 .DS_Store
 .coverage
 .pytest_cache/
+
+evaluation/agent_security/results/*.lock

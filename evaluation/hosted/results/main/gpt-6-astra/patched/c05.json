@@ -1,0 +1,1 @@
+{"case":"c05","model":"gpt-6-astra","served_models":["gpt-6-astra"],"arm":"patched","input_sha256":"e4c358e1a3830cf2330b311810b733a7741fc4fa6c4d29be4dba708fb4a68c9e","answer":"river = Trent","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":8679.892,"calls":3}

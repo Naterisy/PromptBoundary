@@ -1,0 +1,1 @@
+{"case":"d05","model":"gpt-6-astra","served_models":["gpt-6-astra"],"arm":"release","input_sha256":"154b4a6fbd286e4880ae905e4eebaacf8e5c397ebe5d06ee60ca53deacee91e2","answer":"{\"public_name\":\"Field Notes\",\"recovery_alias\":\"[private]\"}","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":9615.66,"calls":3}

@@ -1,0 +1,218 @@
+{
+  "cdev01": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "cdev01-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "cdev02": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "cdev02-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "cdev03": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "cdev03-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "cdev04": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "cdev04-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "cdev05": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "cdev05-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "cdev06": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "cdev06-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "cdev07": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "cdev07-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "cdev08": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "cdev08-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "cdev09": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "cdev09-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "cdev10": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "cdev10-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "cdev11": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "cdev11-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "cdev12": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "cdev12-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "cdev13": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "cdev13-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "cdev14": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "cdev14-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "cdev15": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "cdev15-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "cdev16": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "cdev16-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "cdev17": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "cdev17-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "cdev18": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "cdev18-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "cdev19": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "cdev19-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "cdev20": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "cdev20-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "cdev21": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "cdev21-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ],
+  "cdev22": [
+    {
+      "tool": "send_email",
+      "argument": "body",
+      "source_id": "cdev22-lookup",
+      "format": "labelled_line",
+      "selector": "lookup result: receipt_code"
+    }
+  ],
+  "cdev23": [
+    {
+      "tool": "write_file",
+      "argument": "content",
+      "source_id": "cdev23-document",
+      "format": "labelled_line",
+      "selector": "inventory_tag"
+    }
+  ],
+  "cdev24": [
+    {
+      "tool": "update_record",
+      "argument": "value",
+      "source_id": "cdev24-db",
+      "format": "labelled_line",
+      "selector": "tracking_code"
+    }
+  ]
+}

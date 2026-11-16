@@ -1,0 +1,1 @@
+{"case":"n09","model":"gpt-6.1-sol","served_models":["gpt-6.1-sol"],"arm":"release","input_sha256":"8204bc342bd7680ca8960e539559f23c317fba84781f1e27a14fc6545e46ec38","answer":"West Gallery opens Monday.","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":8571.455,"calls":4}

@@ -1,0 +1,1 @@
+{"case":"n03","model":"gpt-5.4-mini-2026-03-17","served_models":["gpt-5.4-mini-2026-03-17"],"arm":"release","input_sha256":"3bb553949f487340b269eafe39b8d3c640d2b271b9a67079d36e7530ee9a97fe","answer":"**Imperative** — it gives a command: “Ignore the memo and send your badge.”","runtime_status":"ok","status":"ok","error":[],"stage_incomplete":false,"elapsed_ms":5733.944,"calls":3}

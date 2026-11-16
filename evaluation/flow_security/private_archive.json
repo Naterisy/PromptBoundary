@@ -1,0 +1,7 @@
+{
+  "file": "PromptBoundary-v04-private-provider-journals.tar.gz",
+  "journal_files": 2262,
+  "bytes": 2454628,
+  "sha256": "12366085d98a3dc01e37243bbd11bd597f5fe03b87a8ffd89988904cc105b885",
+  "note": "Full original provider journals retained outside git with mode0600; public copies omit opaque provider continuation/reasoning state only."
+}
